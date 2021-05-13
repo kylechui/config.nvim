@@ -31,7 +31,7 @@ M.search_dotfiles = function()
   require('telescope.builtin').find_files({
     prompt_title = 'Configuration files',
     cwd = '~/.config/nvim',
-    file_ignore_patterns = { '%.vim', 'spell/.*' },
+    -- file_ignore_patterns = { '%.vim', 'spell/.*' },
   })
 end
 
