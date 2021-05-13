@@ -39,7 +39,7 @@ M.search_workspace = function()
   require('telescope.builtin').find_files({
     prompt_title = 'Workspace files',
     cwd = '~/Documents/github/',
-    file_ignore_patterns = { '%.pdf', '%.svg' },
+    file_ignore_patterns = { '%.pdf', '%.svg', '%.docx', '.sty', '.tikz', '.tikzstyles' },
   })
 end
 return M
