@@ -70,4 +70,7 @@ map('v', '<Leader>p', '"_dP', { noremap = true, silent = true })
 -- Spell check
 map('i', '<C-l>', '<C-g>u<ESC>b[s1z=`]a<C-g>u', { noremap = true, silent = true })
 -- Smart carriage return
-map('i' , '<CR>','v:lua.MUtils.smart_cr()', {expr = true , noremap = true})
+map('i' , '<CR>','v:lua.MUtils.smart_cr()', { expr = true , noremap = true })
+-- Git binds
+map('n' , '<Leader>gc','<Cmd>Git commit<CR>', { noremap = true })
+map('n' , '<Leader>gp','<Cmd>Git commit<CR>', { noremap = true })
