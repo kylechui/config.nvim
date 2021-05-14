@@ -12,7 +12,7 @@ o.expandtab=true
 o.maxmempattern=2500
 o.mouse='n'
 -- gui stuff
-vim.g.gruvbox_material_background='hard'
+-- vim.g.gruvbox_material_background='hard'
 vim.cmd('colorscheme gruvbox-material')
 o.guifont='FiraCode Nerd Font:h16'
 vim.g.neovide_cursor_animation_length=0.1

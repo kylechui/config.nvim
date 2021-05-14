@@ -8,7 +8,7 @@ local gls = gl.section
 gl.short_line_list = {'packer', 'NvimTree', 'Outline', 'LspTrouble'}
 
 local colors = {
-    bg = '#1D2021',
+    bg = '#282828',
     fg = '#D4BE98',
     section_bg = '#3C3836',
     red1 = '#EA6962',
@@ -249,7 +249,7 @@ gls.right[8] = {
                 end
             end
         },
-        separator = ' |',
+        separator = '|',
         separator_highlight = {colors.bg, colors.section_bg, 'bold'},
         highlight = {colors.red1, colors.section_bg}
     }
