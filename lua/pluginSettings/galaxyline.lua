@@ -215,7 +215,7 @@ gls.right[5] = {
     GitBranch = {
         provider = {function() return '  ' end, 'GitBranch'},
         condition = condition.check_git_workspace,
-        highlight = {colors.middlegrey, colors.section_bg}
+        highlight = {colors.orange, colors.section_bg}
     }
 }
 gls.right[6] = {
