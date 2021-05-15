@@ -34,11 +34,12 @@ augroup highlight_yank
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Visual", timeout=300}
 augroup END
 ]])
--- Spell check for files with a lot of text content
+-- Some settings for files with more prose
 vim.cmd([[
-augroup spellCheck
+augroup writingStuff
   autocmd!
   autocmd FileType text,tex,md setlocal spell
   autocmd FileType text,tex,md set spelllang=en_gb
+  autocmd FileType text,md set textwidth=80
 augroup END
 ]])
