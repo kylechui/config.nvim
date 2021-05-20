@@ -5,10 +5,10 @@ local wo = vim.wo
 
 o.clipboard='unnamedplus'
 o.modelines=0
-o.tabstop=4
-o.softtabstop=4
-o.shiftwidth=4
-o.expandtab=true
+bo.tabstop=4
+bo.softtabstop=4
+bo.shiftwidth=4
+bo.expandtab=true
 o.maxmempattern=2500
 o.mouse='n'
 -- gui stuff
