@@ -5,11 +5,16 @@ local wo = vim.wo
 
 o.clipboard='unnamedplus'
 o.modelines=0
+o.maxmempattern=2500
+-- For some reason you need to set tab options both globally and locally
+o.expandtab=true
+o.tabstop=4
+o.softtabstop=4
+o.shiftwidth=4
+bo.expandtab=true
 bo.tabstop=4
 bo.softtabstop=4
 bo.shiftwidth=4
-bo.expandtab=true
-o.maxmempattern=2500
 o.mouse='n'
 -- gui stuff
 vim.cmd('colorscheme gruvbox-material')
@@ -18,10 +23,10 @@ vim.g.neovide_cursor_animation_length=0.1
 vim.g.neovide_cursor_animate_in_insert_mode=0
 wo.number=true
 wo.relativenumber=true
+wo.wrap=true
 wo.cursorline=true
 wo.breakindent=true
 wo.linebreak=true
-o.wrap=true
 o.scrolloff=8
 o.termguicolors=true
 o.hlsearch=false
@@ -42,6 +47,6 @@ augroup writingStuff
   autocmd FileType text,tex,md set tabstop=2
   autocmd FileType text,tex,md set softtabstop=2
   autocmd FileType text,tex,md set shiftwidth=2
-  autocmd FileType text,md set textwidth=80
+  autocmd FileType text,md set set textwidth=80
 augroup END
 ]])

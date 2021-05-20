@@ -99,6 +99,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kylec/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/kylec/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/kylec/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
@@ -106,6 +110,10 @@ _G.packer_plugins = {
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/kylec/.local/share/nvim/site/pack/packer/start/packer.nvim"
+  },
+  playground = {
+    loaded = true,
+    path = "/home/kylec/.local/share/nvim/site/pack/packer/start/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -118,6 +126,10 @@ _G.packer_plugins = {
   ["presence.nvim"] = {
     loaded = true,
     path = "/home/kylec/.local/share/nvim/site/pack/packer/start/presence.nvim"
+  },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/home/kylec/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim"
   },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
@@ -138,6 +150,10 @@ _G.packer_plugins = {
   ["vim-be-good"] = {
     loaded = true,
     path = "/home/kylec/.local/share/nvim/site/pack/packer/start/vim-be-good"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/kylec/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
   ["vim-surround"] = {
     loaded = true,
