@@ -21,6 +21,12 @@ vim.cmd('colorscheme gruvbox-material')
 o.guifont='FiraCode Nerd Font:h16'
 vim.g.neovide_cursor_animation_length=0.1
 vim.g.neovide_cursor_animate_in_insert_mode=0
+o.number=true
+o.relativenumber=true
+o.wrap=true
+o.cursorline=true
+o.breakindent=true
+o.linebreak=true
 wo.number=true
 wo.relativenumber=true
 wo.wrap=true
