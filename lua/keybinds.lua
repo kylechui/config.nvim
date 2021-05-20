@@ -27,9 +27,9 @@ map('n', 'L', 'g_', { noremap = true, silent = true })
 map('v', 'L', 'g_', { noremap = true, silent = true })
 -- Indent/dedent blocks fo text
 map('v', '>', '>gv', { noremap = true, silent = true })
-map('v', '<', '<gv', { noremap = true, silent = true })
+map('v', '<s-lt>', '<gv', { noremap = true, silent = true }) -- Neovide bug
 -- Make Y actually make sense
-map('n', 'Y', 'y$', { noremap = true, silent = true })
+map('n', 'Y', 'yg_', { noremap = true, silent = true })
 -- Better buffer navigation/deletion
 map('n', '<Leader>j', '<Cmd>bn<CR>', { noremap = true, silent = true })
 map('n', '<Leader>k', '<Cmd>bp<CR>', { noremap = true, silent = true })
@@ -72,6 +72,7 @@ map('i', '<C-l>', '<C-g>u<ESC>b[s1z=`]a<C-g>u', { noremap = true, silent = true 
 -- Smart carriage return
 map('i' , '<CR>','v:lua.MUtils.smart_cr()', { expr = true , noremap = true })
 -- Git binds
+map('n' , '<Leader>gg','<Cmd>Git<CR>', { noremap = true })
 map('n' , '<Leader>gc','<Cmd>Git commit<CR>', { noremap = true })
 map('n' , '<Leader>gd','<Cmd>Git diff<CR>', { noremap = true })
 map('n' , '<Leader>gp','<Cmd>Git push<CR>', { noremap = true })

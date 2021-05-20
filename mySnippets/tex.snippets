@@ -47,13 +47,23 @@ snippet "(?<!\\)(tsu[bp])" "text subscript and superscript" wrA
 endsnippet
 
 context "text()"
+snippet "(?<!\\)\^" "text superscript" wrA
+\\tsup{$1}$0
+endsnippet
+
+context "text()"
+snippet "(?<!\\)\_" "text subscript" wrA
+\\tsub{$1}$0
+endsnippet
+
+context "text()"
 snippet "(?<= )([b-zB-HJ-Z]|\\[CFRMNQRZ])([?!.,;\- ])" "single variables" wrA
 $`!p snip.rv = match.group(1)`$`!p snip.rv = match.group(2)`$0
 endsnippet
 
 context "text()"
-snippet " (-?[\d\.]+)([?!,; ])" "digit conversion" wrA
- $`!p snip.rv = match.group(1)`$`!p snip.rv = match.group(2)`$0
+snippet "(?<=[ ])(-?[\d\.]+)([?!,; ])" "digit conversion" wrA
+$`!p snip.rv = match.group(1)`$`!p snip.rv = match.group(2)`$0
 endsnippet
 
 context "text()"
@@ -101,7 +111,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet "(([a-zA-Z\d\^\_\\]|\{[^\{\}]+\})+)\/" "simple fraction" wrA
+snippet "(([a-zA-Z\d\^\_\\']|\{[^\{\}]+\})+)\/" "simple fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
@@ -134,7 +144,7 @@ endsnippet
 
 context "math()"
 snippet "(?<![\\oi])((o|i|ii)?int)" "integrals" wrA
-\\`!p snip.rv = match.group(1)`_{${1:-\infty}}^{${2:\infty}}${3:f(x)} \dx ${0:x}
+\\`!p snip.rv = match.group(1)`_{${1:-\infty}}^{${2:\infty}}${3:f(x)} \,\mathrm d${0:x}
 endsnippet
 
 context "math()"

@@ -5,14 +5,13 @@ local wo = vim.wo
 
 o.clipboard='unnamedplus'
 o.modelines=0
-o.tabstop=2
-o.softtabstop=2
-o.shiftwidth=2
+o.tabstop=4
+o.softtabstop=4
+o.shiftwidth=4
 o.expandtab=true
 o.maxmempattern=2500
 o.mouse='n'
 -- gui stuff
--- vim.g.gruvbox_material_background='hard'
 vim.cmd('colorscheme gruvbox-material')
 o.guifont='FiraCode Nerd Font:h16'
 vim.g.neovide_cursor_animation_length=0.1
@@ -40,6 +39,9 @@ augroup writingStuff
   autocmd!
   autocmd FileType text,tex,md setlocal spell
   autocmd FileType text,tex,md set spelllang=en_gb
+  autocmd FileType text,tex,md set tabstop=2
+  autocmd FileType text,tex,md set softtabstop=2
+  autocmd FileType text,tex,md set shiftwidth=2
   autocmd FileType text,md set textwidth=80
 augroup END
 ]])
