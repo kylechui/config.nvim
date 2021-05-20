@@ -75,6 +75,4 @@ map('i', '<C-l>', '<C-g>u<ESC>b[s1z=`]a<C-g>u', { noremap = true, silent = true 
 map('i' , '<CR>','v:lua.MUtils.smart_cr()', { expr = true , noremap = true })
 -- Git binds
 map('n' , '<Leader>gg','<Cmd>Git<CR>', { noremap = true })
-map('n' , '<Leader>gc','<Cmd>Git commit<CR>', { noremap = true })
-map('n' , '<Leader>gd','<Cmd>Git diff<CR>', { noremap = true })
 map('n' , '<Leader>gp','<Cmd>Git push<CR>', { noremap = true })
