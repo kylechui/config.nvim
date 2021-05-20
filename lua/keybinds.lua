@@ -41,6 +41,8 @@ map('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 map('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 map('n', '<C-w>', '<Cmd>bd!<CR>', { noremap = true, silent = true })
 map('i', '<C-w>', '<Cmd>bd!<CR>', { noremap = true, silent = true })
+map('n', '<A-h>', '<Cmd>BufferLineMovePrev<CR>', { noremap = true, silent = true })
+map('n', '<A-l>', '<Cmd>BufferLineMoveNext<CR>', { noremap = true, silent = true })
 -- Telescope fuzzy find stuff
 map('n', '<Leader>f.', '<Cmd>lua require(\'telescope.builtin\').find_files()<CR>', { noremap = true, silent = true })
 map('n', '<Leader>ff', '<Cmd>lua require(\'pluginSettings.telescope\').search_workspace()<CR>', { noremap = true, silent = true })
