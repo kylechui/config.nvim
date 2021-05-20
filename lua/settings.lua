@@ -47,12 +47,12 @@ augroup END
 -- Some settings for files with more prose
 vim.cmd([[
 augroup writingStuff
-  autocmd!
-  autocmd FileType text,tex,md setlocal spell
-  autocmd FileType text,tex,md set spelllang=en_gb
-  autocmd FileType text,tex,md set tabstop=2
-  autocmd FileType text,tex,md set softtabstop=2
-  autocmd FileType text,tex,md set shiftwidth=2
-  autocmd FileType text,md set set textwidth=80
+    autocmd!
+    autocmd FileType text,tex,md setlocal spell
+    autocmd FileType text,tex,md set spelllang=en_gb
+    autocmd FileType text,tex,md set tabstop=2
+    autocmd FileType text,tex,md set softtabstop=2
+    autocmd FileType text,tex,md set shiftwidth=2
+    autocmd FileType text,md set set textwidth=80
 augroup END
 ]])
