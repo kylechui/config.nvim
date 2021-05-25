@@ -37,6 +37,8 @@ o.scrolloff=8
 o.termguicolors=true
 o.hlsearch=false
 o.incsearch=true
+o.lazyredraw=true
+o.inccommand='nosplit' -- Genius
 -- Highlight yanked text
 vim.cmd([[
 augroup highlight_yank
