@@ -1,4 +1,4 @@
-# nvim-config
+# config.nvim
 My Lua configuration for Neovim on Linux. I mainly use
 this setup for [taking notes](https://github.com/kylechui/latex) and doing
 homework in LaTeX.
