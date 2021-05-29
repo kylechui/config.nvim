@@ -26,7 +26,7 @@ return require('packer').startup(function()
     }
     use 'akinsho/nvim-bufferline.lua'
     -- File explorer
-    use 'kyazdani42/nvim-tree.lua'
+    use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons' }
     -- Colour scheme
     use 'sainnhe/gruvbox-material'
     -- Treesitter for better syntax highlighting
@@ -44,13 +44,15 @@ return require('packer').startup(function()
     use 'ThePrimeagen/vim-be-good'
     -- Discord integration
     use 'andweeb/presence.nvim' 
-    -- use { 'kylechui/presence.nvim', branch = 'dynamic_text_update' }
     -- Highlight hex codes
     use 'norcalli/nvim-colorizer.lua'
     -- To-do list manager
     use 'dbeniamine/todo.txt-vim'
     -- Automatically insert pairs (for delimiters)
     use 'windwp/nvim-autopairs'
-    -- Github integration
-    use 'tpope/vim-fugitive'
+    -- Git integration
+ 	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+ 	use 'tpope/vim-fugitive'
+    -- Markdown viewing
+    use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
 end)
