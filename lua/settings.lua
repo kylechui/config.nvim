@@ -1,44 +1,29 @@
--- Define macros
-local o = vim.o
-local bo = vim.bo
-local wo = vim.wo
+-- I'm lazy
+local opt = vim.opt
 
-o.clipboard='unnamedplus'
-o.modelines=0
-o.maxmempattern=2500
--- For some reason you need to set tab options both globally and locally
-o.expandtab=true
-o.tabstop=4
-o.softtabstop=4
-o.shiftwidth=4
-bo.expandtab=true
-bo.tabstop=4
-bo.softtabstop=4
-bo.shiftwidth=4
-o.mouse='n'
+opt.clipboard='unnamedplus'
+opt.modelines=0
+opt.maxmempattern=2500
 -- gui stuff
 vim.cmd('colorscheme gruvbox-material')
-o.guifont='FiraCode Nerd Font:h16'
+opt.guifont='FiraCode NF:h16'
+opt.termguicolors=true
+opt.mouse='n'
+opt.number=true
+opt.relativenumber=true
+opt.wrap=true
+opt.cursorline=true
+opt.breakindent=true
+opt.linebreak=true
+opt.scrolloff=8
+
+opt.lazyredraw=true
+opt.hlsearch=false
+opt.incsearch=true
+opt.inccommand='nosplit'
+-- Neovide specific settings
 vim.g.neovide_cursor_animation_length=0.1
 vim.g.neovide_cursor_animate_in_insert_mode=0
-o.number=true
-o.relativenumber=true
-o.wrap=true
-o.cursorline=true
-o.breakindent=true
-o.linebreak=true
-wo.number=true
-wo.relativenumber=true
-wo.wrap=true
-wo.cursorline=true
-wo.breakindent=true
-wo.linebreak=true
-o.scrolloff=8
-o.termguicolors=true
-o.hlsearch=false
-o.incsearch=true
-o.lazyredraw=true
-o.inccommand='nosplit' -- Genius
 -- Highlight yanked text
 vim.cmd([[
 augroup highlight_yank
