@@ -16,11 +16,18 @@ opt.cursorline=true
 opt.breakindent=true
 opt.linebreak=true
 opt.scrolloff=8
+opt.tabstop=2
+opt.softtabstop=2
+opt.shiftwidth=2
+opt.expandtab=true
+opt.shiftround=true
 
 opt.lazyredraw=true
 opt.hlsearch=false
 opt.incsearch=true
 opt.inccommand='nosplit'
+opt.splitbelow=true
+opt.splitright=true
 -- Neovide specific settings
 vim.g.neovide_cursor_animation_length=0.1
 vim.g.neovide_cursor_animate_in_insert_mode=0
