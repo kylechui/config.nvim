@@ -1,7 +1,7 @@
 # config.nvim
 My Lua configuration for Neovim on Linux. I mainly use
 this setup for [taking notes](https://github.com/kylechui/latex) and doing
-homework in LaTeX.
+homework in LaTeX. [Obligatory link to Castel's blog.](https://castel.dev/post/lecture-notes-1/)
 ## Screenshots
 ## Dependencies
 * Requires [Neovim Nightly (0.5+)](https://github.com/neovim/neovim/releases/tag/nightly)
