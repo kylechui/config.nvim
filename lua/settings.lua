@@ -5,7 +5,8 @@ opt.clipboard='unnamedplus'
 opt.modelines=0
 opt.maxmempattern=2500
 -- gui stuff
-vim.cmd('colorscheme gruvbox-material')
+vim.cmd('colorscheme gruvbox-flat')
+vim.g.gruvbox_flat_style="dark"
 opt.guifont='FiraCode NF:h16'
 opt.termguicolors=true
 opt.mouse='n'

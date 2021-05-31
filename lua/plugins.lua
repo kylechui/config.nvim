@@ -28,7 +28,7 @@ return require('packer').startup(function()
     -- File explorer
     use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons' }
     -- Colour scheme
-    use 'sainnhe/gruvbox-material'
+    use 'eddyekofo94/gruvbox-flat.nvim'
     -- Treesitter for better syntax highlighting
     use { 'nvim-treesitter/nvim-treesitter', run = 'vim.cmd[[TSUpdate]]' }
     use 'nvim-treesitter/playground'
@@ -51,8 +51,10 @@ return require('packer').startup(function()
     -- Automatically insert pairs (for delimiters)
     use 'windwp/nvim-autopairs'
     -- Git integration
- 	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
- 	use 'tpope/vim-fugitive'
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use 'tpope/vim-fugitive'
     -- Markdown viewing
     use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
+    -- Startup analyser
+    use 'tweekmonster/startuptime.vim'
 end)
