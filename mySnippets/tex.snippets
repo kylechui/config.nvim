@@ -138,6 +138,19 @@ snippet "(?<!\\)(binom|[cdt]?frac)" "fractions and binomial coefficients" irA
 endsnippet
 
 context "math()"
+snippet "(?<!\\)([rl])?lim([a-zA-Z])([pn]?)(\d+|[a-zA-Z]|inf) " "limits" wrA
+\lim_{`!p
+snip.rv = match.group(2)
+snip.rv += "\\to "
+if (match.group(3) == "p"): snip.rv += "+"
+if (match.group(3) == "n"): snip.rv += "-"
+snip.rv += "\infty" if (match.group(4) == "inf") else match.group(4)
+if (match.group(1) == "l"): snip.rv += "^-"
+if (match.group(1) == "r"): snip.rv += "^+"
+`}
+endsnippet
+
+context "math()"
 snippet "(?<!\\)sum" "summation" wrA
 \sum_{${1:i}=${2:0}}^{${3:\infty}}$0
 endsnippet
@@ -154,8 +167,8 @@ endsnippet
 
 priority 10
 context "math()"
-snippet "(?<=[a-zA-Z])(?<!mat)(\d)" "single digit subscript" irA
-_`!p snip.rv = match.group(1)`$0
+snippet "(?<=[a-zA-Z])(?<!(mat|lim))(?<!lim[a-zA-Z])(?<!lim[a-zA-Z]{2})(\d)" "single digit subscript" irA
+_`!p snip.rv = match.group(2)`$0
 endsnippet
 
 priority 10
