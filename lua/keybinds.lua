@@ -2,7 +2,7 @@ local map = vim.api.nvim_set_keymap
 -- Set up <Space> to be the global leader
 map('n', '<Space>', '<NOP>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
--- Keybinds for editing and sourcing init files
+-- Keybinds for editing and reloading init files
 map('n', '<Leader>s', '<Cmd>lua require(\'pluginSettings.telescope\').search_dotfiles()<CR>', { noremap = true, silent = true })
 map('n', '<Leader>r', '<Cmd>luafile $MYVIMRC<CR>', { noremap = true })
 -- Edit snippets
@@ -69,7 +69,10 @@ map('v', '<Leader>p', '"_dP', { noremap = true, silent = true })
 -- Spell check
 map('i', '<C-l>', '<C-g>u<ESC>b[s1z=`]a<C-g>u', { noremap = true, silent = true })
 -- Smart carriage return
-map('i' , '<CR>','v:lua.MUtils.smart_cr()', { expr = true , noremap = true })
+map('i' , '<CR>', 'v:lua.MUtils.smart_cr()', { expr = true , noremap = true })
 -- Git binds
-map('n' , '<Leader>g','<Cmd>Git<CR>', { noremap = true })
-map('n' , '<Leader>gp','<Cmd>Git push<CR>', { noremap = true })
+map('n' , '<Leader>g', '<Cmd>Git<CR>', { noremap = true })
+map('n' , '<Leader>gp', '<Cmd>Git push<CR>', { noremap = true })
+-- Font size adjustment
+map('n' , '<C-=>', '<Cmd>lua require(\'utils\').AdjustFontSize(1)<CR>', { noremap = true })
+map('n' , '<C-->', '<Cmd>lua require(\'utils\').AdjustFontSize(-1)<CR>', { noremap = true })
