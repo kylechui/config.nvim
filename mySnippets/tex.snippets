@@ -27,6 +27,11 @@ endsnippet
 # Text modifiers
 #
 context "text()"
+snippet date "date" w
+`!v strftime("%Y-%m-%d")`$0
+endsnippet
+
+context "text()"
 snippet " "quotes" iA
 \`\`$1''$0
 endsnippet
@@ -230,18 +235,18 @@ snippet ;b "beta" iA
 endsnippet
 
 context "math()"
+snippet ";([dD])" "delta" irA
+\\`!p snip.rv = match.group(1)`elta$0
+endsnippet
+
+context "math()"
 snippet ;e "epsilon" iA
 \eps$0
 endsnippet
 
 context "math()"
-snippet ;t "tau" iA
-\tau$0
-endsnippet
-
-context "math()"
-snippet ;g "gamma" iA
-\gamma$0
+snippet ";([gG])" "gamma" irA
+\\`!p snip.rv = match.group(1)`amma$0
 endsnippet
 
 context "math()"
@@ -252,6 +257,11 @@ endsnippet
 context "math()"
 snippet ;o "omega" iA
 \omega$0
+endsnippet
+
+context "math()"
+snippet ;t "tau" iA
+\tau$0
 endsnippet
 
 priority 30
