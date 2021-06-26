@@ -25,9 +25,11 @@ map('n', 'H', 'g^', { noremap = true, silent = true })
 map('v', 'H', 'g^', { noremap = true, silent = true })
 map('n', 'L', 'g$', { noremap = true, silent = true })
 map('v', 'L', 'g$', { noremap = true, silent = true })
--- Indent/dedent blocks fo text
+-- Better indent/dedent lines and blocks of text
+map('n', '>', '>>', { noremap = true, silent = true })
+map('n', '<', '<<', { noremap = true, silent = true })
 map('v', '>', '>gv', { noremap = true, silent = true })
-map('v', '<s-lt>', '<gv', { noremap = true, silent = true }) -- Neovide bug
+map('v', '<', '<gv', { noremap = true, silent = true })
 -- Make Y actually make sense
 map('n', 'Y', 'yg$', { noremap = true, silent = true })
 -- Better buffer navigation/deletion
