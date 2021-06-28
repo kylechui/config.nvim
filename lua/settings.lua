@@ -6,7 +6,7 @@ opt.modelines=0
 opt.maxmempattern=2500
 -- gui stuff
 vim.cmd('colorscheme gruvbox-flat')
-vim.g.gruvbox_flat_style="dark"
+vim.g.gruvbox_flat_style='dark'
 opt.guifont='FiraCode NF:h16'
 opt.termguicolors=true
 opt.mouse='n'
@@ -27,16 +27,17 @@ opt.lazyredraw=true
 opt.hlsearch=false
 opt.incsearch=true
 opt.inccommand='nosplit'
-opt.splitbelow=true
 opt.splitright=true
 -- Neovide specific settings
-vim.g.neovide_cursor_animation_length=0.1
-vim.g.neovide_cursor_animate_in_insert_mode=0
+vim.cmd([[
+let g:neovide_cursor_animation_length=0.05
+let g:neovide_cursor_animate_in_insert_mode=0
+]])
 -- Highlight yanked text
 vim.cmd([[
 augroup highlight_yank
     autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Visual", timeout=300}
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="Visual", timeout=300}
 augroup END
 ]])
 -- Some settings for files with more prose
@@ -44,10 +45,13 @@ vim.cmd([[
 augroup writingStuff
     autocmd!
     autocmd FileType text,tex,md setlocal spell
-    autocmd FileType text,tex,md set spelllang=en_gb
     autocmd FileType text,tex,md set tabstop=2
     autocmd FileType text,tex,md set softtabstop=2
     autocmd FileType text,tex,md set shiftwidth=2
     autocmd FileType text,md set textwidth=80
 augroup END
+]])
+-- Better help files
+vim.cmd([[
+command! -nargs=1 H lua require('utils').get_help("<args>")
 ]])

@@ -6,8 +6,11 @@ local config = vim.api.nvim_exec([[echo stdpath('config')]], true)..'/lua/'
 -- and reopening NeoVim
 dofile(config..'plugins.lua')
 dofile(config..'pluginSettings/galaxyline.lua')
+dofile(config..'pluginSettings/gruvbox-flat.lua')
 dofile(config..'pluginSettings/nvim-autopairs.lua')
+dofile(config..'pluginSettings/nvim-bufferline.lua')
 dofile(config..'pluginSettings/nvim-colorizer.lua')
+dofile(config..'pluginSettings/nvim-lspinstall.lua')
 dofile(config..'pluginSettings/nvim-tree.lua')
 dofile(config..'pluginSettings/nvim-treesitter.lua')
 dofile(config..'pluginSettings/presence.lua')

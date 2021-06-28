@@ -30,7 +30,7 @@ return require('packer').startup(function()
     -- Colour scheme
     use 'eddyekofo94/gruvbox-flat.nvim'
     -- Treesitter for better syntax highlighting
-    use { 'nvim-treesitter/nvim-treesitter', run = 'vim.cmd[[TSUpdate]]' }
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-treesitter/playground'
     -- Universal way to add comments
     use 'b3nj5m1n/kommentary'
@@ -46,15 +46,15 @@ return require('packer').startup(function()
     use 'andweeb/presence.nvim' 
     -- Highlight hex codes
     use 'norcalli/nvim-colorizer.lua'
-    -- To-do list manager
-    use 'dbeniamine/todo.txt-vim'
     -- Automatically insert pairs (for delimiters)
     use 'windwp/nvim-autopairs'
     -- Git integration
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     use 'tpope/vim-fugitive'
     -- Markdown viewing
     use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
     -- Startup analyser
     use 'tweekmonster/startuptime.vim'
+    -- LSP Stuff
+    use 'neovim/nvim-lspconfig'
+    use 'kabouzeid/nvim-lspinstall'
 end)
