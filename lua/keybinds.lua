@@ -7,8 +7,6 @@ map('n', '<Leader>s', '<Cmd>lua require(\'pluginSettings.telescope\').search_dot
 map('n', '<Leader>r', '<Cmd>luafile $MYVIMRC<CR>', { noremap = true })
 -- Edit snippets
 map('n', '<Leader>u', '<Cmd>UltiSnipsEdit<CR>', { noremap = true, silent = true })
--- Open Todo List
-map('n', '<Leader>t', '<Cmd>e ~/Documents/github/Todo.txt<CR>', { noremap = true, silent = true })
 -- Saving files with <C-s>
 map('n', '<C-s>', '<Cmd>up!<CR>', { noremap = true, silent = true })
 map('i', '<C-s>', '<Esc><Cmd>up!<CR>', { noremap = true, silent = true })
@@ -51,11 +49,6 @@ map('n', '<Leader>ff', '<Cmd>lua require(\'pluginSettings.telescope\').search_wo
 map('n', '<Leader>fb', '<Cmd>lua require(\'telescope.builtin\').buffers()<CR>', { noremap = true, silent = true })
 map('n', '<Leader>fg', '<Cmd>lua require(\'telescope.builtin\').live_grep()<CR>', { noremap = true, silent = true })
 map('n', '<Leader>fh', '<Cmd>lua require(\'telescope.builtin\').help_tags()<CR>', { noremap = true, silent = true })
--- Moving lines up and down
-map('n', 'J', '<Cmd>m+<CR>', { noremap = true, silent = true })
-map('v', 'J', ':m \'>+1<CR>gv', { noremap = true, silent = true })
-map('n', 'K', '<Cmd>m-2<CR>', { noremap = true, silent = true })
-map('v', 'K', ':m \'<-2<CR>gv', { noremap = true, silent = true })
 -- Navigate by wrapped lines by default
 map('n', 'j', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'j\' : \'gj\'', { noremap = true, silent = true, expr = true })
 map('n', 'k', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'k\' : \'gk\'', { noremap = true, silent = true, expr = true })
@@ -76,5 +69,11 @@ map('i' , '<CR>', 'v:lua.MUtils.smart_cr()', { expr = true , noremap = true })
 map('n' , '<Leader>g', '<Cmd>Git<CR>', { noremap = true })
 map('n' , '<Leader>gp', '<Cmd>Git push<CR>', { noremap = true })
 -- Font size adjustment
-map('n' , '<C-=>', '<Cmd>lua require(\'utils\').AdjustFontSize(1)<CR>', { noremap = true })
-map('n' , '<C-->', '<Cmd>lua require(\'utils\').AdjustFontSize(-1)<CR>', { noremap = true })
+map('n' , '<C-=>', '<Cmd>lua require(\'utils\').adjust_font_size(1)<CR>', { noremap = true })
+map('n' , '<C-->', '<Cmd>lua require(\'utils\').adjust_font_size(-1)<CR>', { noremap = true })
+-- LSP nonsense
+map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
+map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+-- Better help
+map('c', 'h ', 'H ', { noremap = true, silent = true })
