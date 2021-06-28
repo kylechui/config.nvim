@@ -9,3 +9,14 @@ for (int ${1:i}; `!p snip.rv = t[1]` = 0; `!p snip.rv = t[1]` < sz) {
 	$0
 }
 endsnippet
+
+snippet "vt([cis])" "vector" brA
+vector<`!p
+thing = {
+	'c': 'char',
+	'i': 'int',
+	's': 'string',
+}
+snip.rv = thing[match.group(1)]
+`> ${0:arr}
+endsnippet
