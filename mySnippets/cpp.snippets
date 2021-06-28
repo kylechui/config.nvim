@@ -1,0 +1,11 @@
+snippet "for([^ ]+) " "auto for loop" brA
+for (auto& `!p snip.rv = match.group(1)` : ${1:arr}) {
+	$0
+}
+endsnippet
+
+snippet "for " "for loop" brA
+for (int ${1:i}; `!p snip.rv = t[1]` = 0; `!p snip.rv = t[1]` < sz) {
+	$0
+}
+endsnippet
