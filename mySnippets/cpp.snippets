@@ -1,3 +1,12 @@
+global !p
+types = {
+	'b': 'bool',
+	'c': 'char',
+	'i': 'int',
+	's': 'string',
+}
+endglobal
+
 snippet "for([^ ]+) " "auto for loop" brA
 for (auto& `!p snip.rv = match.group(1)` : ${1:arr}) {
 	$0
@@ -5,19 +14,53 @@ for (auto& `!p snip.rv = match.group(1)` : ${1:arr}) {
 endsnippet
 
 snippet "for " "for loop" brA
-for (int ${1:i}; `!p snip.rv = t[1]` = 0; `!p snip.rv = t[1]` < sz) {
+for (int ${1:i}; $1 = ${2:0}; $1 < ${3:sz}) {
 	$0
 }
 endsnippet
 
-snippet "vt([bcis])" "vector" brA
-vector<`!p
-thing = {
-	'b': 'bool',
-	'c': 'char',
-	'i': 'int',
-	's': 'string',
-}
-snip.rv = thing[match.group(1)]
-`> ${0:arr}
+snippet "vec([bcis])" "vector" wrA
+vector<`!p snip.rv = types[match.group(1)]`> ${0:arr}
+endsnippet
+
+snippet "vec " "general vector" wrA
+vector<${1:type}> ${0:arr}
+endsnippet
+
+snippet "(u?)map([bcis])([bcis])" "map" wrA
+`!p
+if (match.group(1) != ""):
+	snip.rv = "unordered_"
+snip.rv += "map<" + types[match.group(2)] + ", " + types[match.group(3)] + ">"
+` ${0:mp}
+endsnippet
+
+snippet "(u?)map " "general map" wrA
+`!p
+if (match.group(1) != ""):
+	snip.rv = "unordered_"
+`map<${2:type}, ${3:type}> ${0:mp}
+endsnippet
+
+snippet "(u?)set([bcis])" "set" wrA
+`!p
+if (match.group(1) != ""):
+	snip.rv = "unordered_"
+snip.rv += "set<" + types[match.group(2)] + ">"
+` ${0:st}
+endsnippet
+
+snippet "(u?)set " "general set" wrA
+`!p
+if (match.group(1) != ""):
+	snip.rv = "unordered_"
+`set<${2:type}> ${0:mp}
+endsnippet
+
+snippet "stk([bcis])" "stack" wrA
+stack<`!p snip.rv = types[match.group(1)]`> ${0:stk}
+endsnippet
+
+snippet "stk " "general stack" wrA
+stack<${1:type}> ${0:stk}
 endsnippet
