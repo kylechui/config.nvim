@@ -7,7 +7,7 @@ opt.maxmempattern=2500
 -- gui stuff
 vim.cmd('colorscheme gruvbox-flat')
 vim.g.gruvbox_flat_style='dark'
-opt.guifont='FiraCode NF:h16'
+opt.guifont='FiraCode Nerd Font Mono:h16'
 opt.termguicolors=true
 opt.mouse='n'
 opt.number=true
