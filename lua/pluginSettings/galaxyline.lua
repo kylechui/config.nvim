@@ -23,7 +23,6 @@ local colors = {
     grey3 = '#3E4452',
     grey = '#848586',
     middlegrey = '#8791A5',
-    darkgrey = '#5C6370'
 }
 
 -- Local helper functions
