@@ -77,3 +77,5 @@ map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent
 map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 -- Better help
 map('c', 'h ', 'H ', { noremap = true, silent = true })
+-- Select all
+map('n', '<C-a>', 'ggVG', { noremap = true, silent = true })
