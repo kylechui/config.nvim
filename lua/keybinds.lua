@@ -15,7 +15,7 @@ map('v', '<C-s>', '<Esc><Cmd>up!<CR>', { noremap = true, silent = true })
 map('i', '', '<C-w>', { noremap = true, silent = true })
 map('c', '', '<C-w>', { noremap = true, silent = true })
 map('i', '<C-BS>', '<C-w>', { noremap = true, silent = true })
-map('c', '<C-BS>', '<C-w>', { noremap = true, silent = true })
+map('c', '<C-BS>', '<C-w>', { noremap = true })
 -- Open/close file explorer
 map('n', '<C-\\>', '<Esc><Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
 -- Move towards the beginning/end of a line
@@ -75,7 +75,8 @@ map('n' , '<C-->', '<Cmd>lua require(\'utils\').adjust_font_size(-1)<CR>', { nor
 map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
 map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
--- Better help
-map('c', 'h ', 'H ', { noremap = true, silent = true })
 -- Select all
 map('n', '<C-a>', 'ggVG', { noremap = true, silent = true })
+map('i', '<C-a>', '<Esc>ggVG', { noremap = true, silent = true })
+-- Disable ex mode
+map('n', 'Q', '<NOP>', { noremap = true, silent = true })

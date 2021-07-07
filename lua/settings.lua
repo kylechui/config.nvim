@@ -51,7 +51,3 @@ augroup writingStuff
     autocmd FileType text,md set textwidth=80
 augroup END
 ]])
--- Better help files
-vim.cmd([[
-command! -nargs=1 H lua require('utils').get_help("<args>")
-]])
