@@ -5,11 +5,11 @@ vim.g.nvim_tree_gitignore=1
 -- vim.g.nvim_tree_root_folder_modifier=':.'
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 vim.g.nvim_tree_bindings = {
-    ["."]     = tree_cb("toggle_dotfiles"),
-    ["n"]     = tree_cb("create"),
-    ["r"]     = tree_cb("full_rename"),
-    ["<"]     = tree_cb("dir_up"),
-    ["<C-r>"] = tree_cb("refresh"),
+    { key = { "." },      cb = tree_cb("toggle_dotfiles") },
+    { key = { "n" },      cb = tree_cb("create") },
+    { key = { "r" },      cb = tree_cb("full_rename") },
+    { key = { "<" },      cb = tree_cb("dir_up") },
+    { key = { "<C-r>" },  cb = tree_cb("refresh") },
 } 
 
 vim.g.nvim_tree_icons = {
