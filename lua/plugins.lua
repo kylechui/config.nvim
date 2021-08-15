@@ -14,6 +14,7 @@ return require('packer').startup(function()
     -- Telescope nonsense
     use {
         'nvim-telescope/telescope.nvim',
+        branch = '0.5-compat',
         requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} }
     }
     use 'nvim-telescope/telescope-fzy-native.nvim'
@@ -30,7 +31,14 @@ return require('packer').startup(function()
     -- Colour scheme
     use 'eddyekofo94/gruvbox-flat.nvim'
     -- Treesitter for better syntax highlighting
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+    }
+    use {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      branch = '0.5-compat',
+    }
     use 'nvim-treesitter/playground'
     -- Universal way to add comments
     use 'b3nj5m1n/kommentary'

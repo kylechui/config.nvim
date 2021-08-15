@@ -7,6 +7,17 @@ require'nvim-treesitter.configs'.setup {
       ["punctuation.special"] = "TSInclude",
       ["text.math"] = "TSFunction",
       ["text.title"] = "TSParameter",
-    }
+    },
+  },
+  textobjects = {
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<Leader>;"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<Leader>,"] = "@parameter.inner",
+      },
+    },
   },
 }
