@@ -35,7 +35,7 @@ let g:neovide_cursor_animate_in_insert_mode=0
 ]])
 -- Highlight yanked text
 vim.cmd([[
-augroup highlight_yank
+augroup highlightYank
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="Visual", timeout=300}
 augroup END
@@ -49,5 +49,12 @@ augroup writingStuff
     autocmd FileType text,tex,md set softtabstop=2
     autocmd FileType text,tex,md set shiftwidth=2
     autocmd FileType text,md set textwidth=80
+augroup END
+]])
+-- Autocommands for compiling/running C++ files
+vim.cmd([[
+augroup cppCommands
+    autocmd!
+    autocmd FileType cpp nnoremap <C-'> <Cmd>term g++ -o %:r.out % -std=c++11 && ./%:r.out<CR>
 augroup END
 ]])
