@@ -8,7 +8,7 @@ opt.clipboard='unnamedplus'
 opt.modelines=0
 opt.maxmempattern=2500
 -- gui stuff
-vim.cmd('colorscheme gruvbox-flat')
+vim.g.colors_name='gruvbox-flat'
 vim.g.gruvbox_flat_style='dark'
 opt.guifont='JetBrains Mono:h12'
 opt.termguicolors=true
@@ -31,11 +31,9 @@ opt.hlsearch=false
 opt.incsearch=true
 opt.inccommand='nosplit'
 opt.splitright=true
--- Neovide specific settings
-vim.cmd([[
-let g:neovide_cursor_animation_length=0.05
-let g:neovide_cursor_animate_in_insert_mode=0
-]])
+-- Neovide-specific cursor settings
+vim.g.neovide_cursor_animation_length=0.05
+vim.g.neovide_cursor_animate_in_insert_mode=0
 -- Highlight yanked text
 vim.cmd([[
 augroup highlightYank
