@@ -1,13 +1,16 @@
 -- I'm lazy
 local opt = vim.opt
 
+-- Define workspace path
+vim.env.WORKSPACE='~/Documents/github/'
+
 opt.clipboard='unnamedplus'
 opt.modelines=0
 opt.maxmempattern=2500
 -- gui stuff
 vim.cmd('colorscheme gruvbox-flat')
 vim.g.gruvbox_flat_style='dark'
-opt.guifont='FiraCode Nerd Font Mono:h16'
+opt.guifont='JetBrains Mono:h12'
 opt.termguicolors=true
 opt.mouse='n'
 opt.number=true
@@ -55,6 +58,6 @@ augroup END
 vim.cmd([[
 augroup cppCommands
     autocmd!
-    autocmd FileType cpp nnoremap <C-'> <Cmd>term g++ -o %:r.out % -std=c++11 && ./%:r.out<CR>
+    autocmd FileType cpp nnoremap <C-'> <Cmd>term g++ -std=c++11 -o %:r.out % && %:r.out<CR>
 augroup END
 ]])
