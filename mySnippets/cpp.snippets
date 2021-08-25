@@ -24,7 +24,7 @@ for (int ${1:i} = ${2:0}; $1 < ${3:sz}; $1++) {
 }
 endsnippet
 
-snippet "vec([bcis])" "vector" wrA
+snippet "vec([bcis]|ll)" "vector" wrA
 vector<`!p snip.rv = types[match.group(1)]`>$0
 endsnippet
 
@@ -32,7 +32,7 @@ snippet "vec " "general vector" wrA
 vector<${1:type}>$0
 endsnippet
 
-snippet "(u?)map([bcis])([bcis])" "map" wrA
+snippet "(u?)map([bcis]|ll)([bcis]|ll)" "map" wrA
 `!p
 if (match.group(1) != ""):
 	snip.rv = "unordered_"
@@ -47,7 +47,7 @@ if (match.group(1) != ""):
 `map<${2:type}, ${3:type}>$0
 endsnippet
 
-snippet "(u?)set([bcis])" "set" wrA
+snippet "(u?)set([bcis]|ll)" "set" wrA
 `!p
 if (match.group(1) != ""):
 	snip.rv = "unordered_"
@@ -62,7 +62,7 @@ if (match.group(1) != ""):
 `set<${2:type}>$0
 endsnippet
 
-snippet "stk([bcis])" "stack" wrA
+snippet "stk([bcis]|ll)" "stack" wrA
 stack<`!p snip.rv = types[match.group(1)]`>$0
 endsnippet
 
