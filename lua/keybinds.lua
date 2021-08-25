@@ -80,3 +80,6 @@ map('n', '<C-a>', 'ggVG', { noremap = true, silent = true })
 map('i', '<C-a>', '<Esc>ggVG', { noremap = true, silent = true })
 -- Disable ex mode
 map('n', 'Q', '<NOP>', { noremap = true, silent = true })
+map('n', '<D-Q>', '<NOP>', { noremap = true, silent = true })
+-- Map esc to go to normal mode for terminal
+map('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
