@@ -27,7 +27,7 @@ M.search_workspace = function()
   require('telescope.builtin').find_files({
     prompt_title = 'Workspace files',
     cwd = vim.env.WORKSPACE,
-    file_ignore_patterns = { '.docx' },
+    file_ignore_patterns = { '.docx', '.pdf' },
   })
 end
 return M
