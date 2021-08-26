@@ -19,6 +19,7 @@ M.search_dotfiles = function()
   require('telescope.builtin').find_files({
     prompt_title = 'Configuration files',
     cwd = vim.fn['stdpath']('config'),
+    file_ignore_patterns = { '.png' },
   })
 end
 
