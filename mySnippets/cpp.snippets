@@ -8,7 +8,7 @@ types = {
 }
 endglobal
 
-snippet #inc "include" bA
+snippet inc "include" b
 #include <${1:iostream}>
 endsnippet
 
@@ -68,4 +68,16 @@ endsnippet
 
 snippet "stk " "general stack" wrA
 stack<${1:type}>$0
+endsnippet
+
+snippet "fn([bcis]|ll) " "function" brA
+`!p snip.rv = types[match.group(1)]` ${1:functionName}($2) {
+	$0
+}
+endsnippet
+
+snippet "fn " "general function" brA
+${1:int} ${2:main}($3) {
+	$0
+}
 endsnippet
