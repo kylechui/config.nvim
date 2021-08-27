@@ -3,11 +3,14 @@ local config = vim.fn['stdpath']('config')..'/lua/'
 
 dofile(config..'settings.lua')
 dofile(config..'keybinds.lua')
+dofile(config..'snippets.lua')
 
 -- Plugin Shenanigans
 -- I use dofile instead of require so I can reload my settings without closing
 -- and reopening NeoVim
 dofile(config..'plugins.lua')
+-- dofile(config..'pluginSettings/LuaSnip.lua')
+dofile(config..'pluginSettings/formatter.lua')
 dofile(config..'pluginSettings/galaxyline.lua')
 dofile(config..'pluginSettings/gruvbox-flat.lua')
 dofile(config..'pluginSettings/nvim-autopairs.lua')

@@ -46,16 +46,23 @@ vim.cmd([[
 augroup writingStuff
     autocmd!
     autocmd FileType text,tex,md setlocal spell
-    autocmd FileType text,tex,md set tabstop = 2
-    autocmd FileType text,tex,md set softtabstop = 2
-    autocmd FileType text,tex,md set shiftwidth = 2
-    autocmd FileType text,md set textwidth = 80
+    autocmd FileType text,tex,md set tabstop=2
+    autocmd FileType text,tex,md set softtabstop=2
+    autocmd FileType text,tex,md set shiftwidth=2
+    autocmd FileType text,md set textwidth=80
 augroup END
 ]])
 -- Autocommands for compiling/running C++ files
 vim.cmd([[
 augroup cppCommands
     autocmd!
-    autocmd FileType cpp nnoremap <C-'> <Cmd>term g++ -std=c++11 -o %:r.out % && %:r.out<CR>
+    autocmd FileType cpp nnoremap <C-'> <Cmd>!g++ -std=c++11 -o %:r.out %<CR><Cmd>term ./%:r.out<CR>
 augroup END
 ]])
+-- Format on write
+--[[ vim.api.nvim_exec([[
+augroup formatAutogroup
+  autocmd!
+  autocmd BufWritePost *.cpp FormatWrite
+augroup END
+]]--, true) ]]

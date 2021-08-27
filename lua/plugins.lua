@@ -14,7 +14,6 @@ return require('packer').startup(function()
     -- Telescope nonsense
     use {
         'nvim-telescope/telescope.nvim',
-        branch = '0.5-compat',
         requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} }
     }
     use 'nvim-telescope/telescope-fzy-native.nvim'
@@ -47,6 +46,7 @@ return require('packer').startup(function()
     -- LaTeX integration
     use 'lervag/vimtex'
     -- Snippets
+    use 'L3MON4D3/LuaSnip'
     use 'sirver/ultisnips'
     -- Get good
     use 'ThePrimeagen/vim-be-good'
@@ -65,4 +65,6 @@ return require('packer').startup(function()
     -- LSP Stuff
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
+    -- Code formatter
+    use 'mhartington/formatter.nvim'
 end)
