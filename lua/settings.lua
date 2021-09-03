@@ -46,9 +46,6 @@ vim.cmd([[
 augroup writingStuff
     autocmd!
     autocmd FileType text,tex,md setlocal spell
-    autocmd FileType text,tex,md set tabstop=2
-    autocmd FileType text,tex,md set softtabstop=2
-    autocmd FileType text,tex,md set shiftwidth=2
     autocmd FileType text,md set textwidth=80
 augroup END
 ]])
