@@ -32,6 +32,7 @@ return require('packer').startup(function()
     -- Treesitter for better syntax highlighting
     use {
       'nvim-treesitter/nvim-treesitter',
+      branch = '0.5-compat',
       run = ':TSUpdate',
     }
     use {
@@ -58,6 +59,7 @@ return require('packer').startup(function()
     use 'windwp/nvim-autopairs'
     -- Git integration
     use 'tpope/vim-fugitive'
+    -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     -- Markdown viewing
     use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
     -- Startup analyser
