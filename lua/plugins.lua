@@ -20,8 +20,11 @@ return require('packer').startup(function()
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     -- Status line and bufferline
     use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
+        'NTBBloodbath/galaxyline.nvim',
+        -- 'glepnir/galaxyline.nvim',
+        --[[ config = function()
+          require('galaxyline.themes.eviline')
+        end, ]]
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
     use 'akinsho/nvim-bufferline.lua'
