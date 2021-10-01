@@ -48,9 +48,11 @@ return require('packer').startup(function()
     -- Surround stuff with delimiters
     use 'tpope/vim-surround'
     -- LaTeX integration
-    use 'lervag/vimtex'
+    use {
+      'lervag/vimtex',
+      commit = "fbe94cd3eaed89d6c1236af486466b1fcc3b82c9"
+    }   
     -- Snippets
-    use 'L3MON4D3/LuaSnip'
     use 'sirver/ultisnips'
     -- Get good
     use 'ThePrimeagen/vim-be-good'
