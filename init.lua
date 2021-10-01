@@ -3,7 +3,6 @@ local config = vim.fn['stdpath']('config')..'/lua/'
 
 dofile(config..'settings.lua')
 dofile(config..'keybinds.lua')
-dofile(config..'snippets.lua')
 
 -- Plugin Shenanigans
 -- I use dofile instead of require so I can reload my settings without closing
