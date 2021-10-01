@@ -17,7 +17,7 @@ map('c', '', '<C-w>', { noremap = true, silent = true })
 map('i', '<C-BS>', '<C-w>', { noremap = true, silent = true })
 map('c', '<C-BS>', '<C-w>', { noremap = true })
 -- Open/close file explorer
-map('n', '<C-\\>', '<Esc><Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
+map('n', '<C-\\>', '<Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
 -- Move towards the beginning/end of a line
 map('n', 'H', 'g^', { noremap = true, silent = true })
 map('v', 'H', 'g^', { noremap = true, silent = true })
