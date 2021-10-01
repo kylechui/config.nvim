@@ -56,6 +56,14 @@ augroup cppCommands
     autocmd FileType cpp nnoremap <C-'> <Cmd>!g++ -std=c++11 -o %:r.out %<CR><Cmd>term ./%:r.out<CR>
 augroup END
 ]])
+-- Save/restore code folds
+vim.cmd([[
+augroup saveFolds
+    autocmd!
+    autocmd BufWinLeave ?* mkview
+    autocmd BufWinEnter ?* silent! loadview
+augroup END
+]])
 -- Format on write
 --[[ vim.api.nvim_exec([[
 augroup formatAutogroup
