@@ -17,7 +17,7 @@ map('c', '', '<C-w>', { noremap = true, silent = true })
 map('i', '<C-BS>', '<C-w>', { noremap = true, silent = true })
 map('c', '<C-BS>', '<C-w>', { noremap = true })
 -- Open/close file explorer
-map('n', '<C-\\>', '<Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
+map('n', '<C-\\>', '<Cmd>NvimTreeFindFile<CR>', { noremap = true, silent = true })
 -- Move towards the beginning/end of a line
 map('n', 'H', 'g^', { noremap = true, silent = true })
 map('v', 'H', 'g^', { noremap = true, silent = true })
@@ -64,7 +64,7 @@ map('v', '<Leader>p', '"_dP', { noremap = true, silent = true })
 -- Spell check
 map('i', '<C-l>', '<C-g>u<ESC>b[s1z=`]a<C-g>u', { noremap = true, silent = true })
 -- Smart carriage return
-map('i' , '<CR>', 'v:lua.MUtils.smart_cr()', { expr = true , noremap = true })
+-- map('i' , '<CR>', 'v:lua.MUtils.smart_cr()', { expr = true , noremap = true })
 -- Git binds
 map('n' , '<Leader>g', '<Cmd>Git<CR>', { noremap = true })
 map('n' , '<Leader>gp', '<Cmd>Git push<CR>', { noremap = true })

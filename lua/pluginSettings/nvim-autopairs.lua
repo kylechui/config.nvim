@@ -14,6 +14,3 @@ MUtils.completion_confirm=function()
     return npairs.autopairs_cr()
   end
 end
-
-
-remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})

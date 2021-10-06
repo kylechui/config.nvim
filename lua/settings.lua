@@ -25,6 +25,7 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
 opt.shiftround = true
+opt.viewoptions = "folds,cursor"
 
 opt.lazyredraw = true
 opt.hlsearch = false

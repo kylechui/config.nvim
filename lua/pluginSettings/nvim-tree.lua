@@ -1,21 +1,23 @@
--- vim.g.nvim_tree_follow=1
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+
 vim.g.nvim_tree_gitignore=1
+
 require'bufferline'.setup{}
 require'nvim-tree'.setup{
   follow = 1,
   view = {
     width = 36,
+    mappings = {
+      list = {
+          { key = { "." },      cb = tree_cb("toggle_dotfiles") },
+          { key = { "n" },      cb = tree_cb("create") },
+          { key = { "r" },      cb = tree_cb("full_rename") },
+          { key = { "<" },      cb = tree_cb("dir_up") },
+          { key = { "<C-r>" },  cb = tree_cb("refresh") },
+      }
+    }
   }
 }
-
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-local list = {
-    { key = { "." },      cb = tree_cb("toggle_dotfiles") },
-    { key = { "n" },      cb = tree_cb("create") },
-    { key = { "r" },      cb = tree_cb("full_rename") },
-    { key = { "<" },      cb = tree_cb("dir_up") },
-    { key = { "<C-r>" },  cb = tree_cb("refresh") },
-} 
 
 vim.g.nvim_tree_icons = {
     default = '',
