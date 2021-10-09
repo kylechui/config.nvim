@@ -116,7 +116,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet "(([a-zA-Z\d\^\_\\']|\{[^\{\}]+\})+)\/" "simple fraction" wrA
+snippet "(([a-zA-Z\d\^\_\\\!']|\{[^\{\}]+\})+)\/" "simple fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
