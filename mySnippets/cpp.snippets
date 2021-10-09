@@ -82,6 +82,10 @@ ${1:int} ${2:main}($3) {
 }
 endsnippet
 
+snippet sort "sort function" bA
+sort(begin(${1:arr}), end($1));
+endsnippet
+
 snippet class "class creator" b
 class ${1:className} {
 public:
@@ -98,6 +102,8 @@ using ll = long long;
 using ld = long double;
 
 int main() {
+	int n;
+	cin >> n;
 	$0
 }
 endsnippet
