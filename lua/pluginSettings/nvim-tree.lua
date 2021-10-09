@@ -16,6 +16,10 @@ require'nvim-tree'.setup{
           { key = { "<C-r>" },  cb = tree_cb("refresh") },
       }
     }
+  },
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
   }
 }
 
