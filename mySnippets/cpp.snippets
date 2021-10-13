@@ -86,6 +86,10 @@ snippet sort "sort function" bA
 sort(begin(${1:arr}), end($1));
 endsnippet
 
+snippet reverse "reverse function" bA
+reverse(begin(${1:arr}), end($1));
+endsnippet
+
 snippet class "class creator" b
 class ${1:className} {
 public:
@@ -102,8 +106,12 @@ using ll = long long;
 using ld = long double;
 
 int main() {
-	int n;
-	cin >> n;
+	int num;
+	cin >> num;
 	$0
 }
+endsnippet
+
+snippet getline "getline" bA
+getline(cin, ${1:arr});
 endsnippet
