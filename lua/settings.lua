@@ -55,6 +55,7 @@ vim.cmd([[
 augroup cppCommands
     autocmd!
     autocmd FileType cpp nnoremap <C-'> <Cmd>!g++ -std=c++11 -o %:r.out %<CR><Cmd>term ./%:r.out<CR>
+    autocmd FileType cpp nnoremap <C-CR> <Cmd>!g++ -std=c++11 -o %:r.out %<CR><Cmd>term ./%:r.out<input.txt<CR>
 augroup END
 ]])
 -- Save/restore code folds
