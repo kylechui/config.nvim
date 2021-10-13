@@ -3,7 +3,7 @@ def env(name):
   [x,y] = vim.eval('vimtex#env#is_inside("' + str(name) + '")')
   return x != '0' and y != '0'
 def text():
-  return vim.eval('vimtex#syntax#in_mathzone()') != '1' and not env('lstlisting')
+  return vim.eval('vimtex#syntax#in_mathzone()') != '1' and not env('lstlisting') and not comment()
 def math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 def comment(): 
