@@ -1,0 +1,13 @@
+snippet setup "skeleton code" bA
+<!DOCTYPE html>
+
+$0
+endsnippet
+
+snippet tag "html element" bA
+<${1:head}>$0</${1/ .*//}>
+endsnippet
+
+snippet "(h[1-6])" "header" brA
+<`!p snip.rv = match.group(1)`>$0</`!p snip.rv = match.group(1)`>
+endsnippet
