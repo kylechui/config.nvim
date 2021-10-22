@@ -26,6 +26,8 @@ opt.shiftwidth = 2
 opt.expandtab = true
 opt.shiftround = true
 opt.viewoptions = "folds,cursor"
+opt.ignorecase = true
+opt.smartcase = true
 
 opt.lazyredraw = true
 opt.hlsearch = false
