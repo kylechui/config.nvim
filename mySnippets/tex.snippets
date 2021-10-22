@@ -89,6 +89,16 @@ snippet ^^ "superscript" iA
 endsnippet
 
 context "math()"
+snippet <= "less than or equal to" iA
+\leq
+endsnippet
+
+context "math()"
+snippet >= "greater than or equal to" iA
+\geq
+endsnippet
+
+context "math()"
 snippet tt "text" iA
 \text{$1}$0
 endsnippet
@@ -152,7 +162,7 @@ if (match.group(3) == "n"): snip.rv += "-"
 snip.rv += "\infty" if (match.group(4) == "inf") else match.group(4)
 if (match.group(1) == "l"): snip.rv += "^-"
 if (match.group(1) == "r"): snip.rv += "^+"
-`}
+`} $0
 endsnippet
 
 context "math()"
