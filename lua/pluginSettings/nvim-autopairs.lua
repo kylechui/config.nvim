@@ -1,7 +1,6 @@
 require('nvim-autopairs').setup{}
 require('nvim-autopairs').remove_rule('"', {'tex', 'latex'})
 
-local remap = vim.api.nvim_set_keymap
 local npairs = require('nvim-autopairs')
 
 -- skip it, if you use another global object
