@@ -115,3 +115,12 @@ endsnippet
 snippet getline "getline" bA
 getline(cin, ${1:arr});
 endsnippet
+
+snippet guard "include guard" bA
+#ifndef $1
+#define $1
+
+$0
+
+#endif
+endsnippet
