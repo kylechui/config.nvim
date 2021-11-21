@@ -1,15 +1,12 @@
-require('nvim-autopairs').setup{}
-require('nvim-autopairs').remove_rule('"', {'tex', 'latex'})
-
 local npairs = require('nvim-autopairs')
+local Rule = require('nvim-autopairs.rule')
 
--- skip it, if you use another global object
-_G.MUtils= {}
+npairs.setup({
+  map_cr = true,
+})
 
-MUtils.completion_confirm=function()
-  if vim.fn.pumvisible() ~= 0  then
-      return npairs.esc("<cr>")
-  else
-    return npairs.autopairs_cr()
-  end
-end
+-- Don't autopair " when in a .tex file
+npairs.remove_rule('"')
+npairs.add_rules({
+  Rule("\"", "\"", "-tex")
+})
