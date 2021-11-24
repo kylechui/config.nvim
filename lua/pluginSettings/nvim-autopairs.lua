@@ -9,4 +9,5 @@ npairs.setup({
 npairs.remove_rule('"')
 npairs.add_rules({
   Rule("\"", "\"", "-tex")
+    :with_move()
 })
