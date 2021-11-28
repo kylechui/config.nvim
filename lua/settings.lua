@@ -28,6 +28,7 @@ opt.shiftround = true
 opt.viewoptions = "folds,cursor"
 opt.ignorecase = true
 opt.smartcase = true
+opt.colorcolumn = "80"
 
 opt.lazyredraw = true
 opt.hlsearch = false
@@ -49,7 +50,7 @@ vim.cmd([[
 augroup writingStuff
     autocmd!
     autocmd FileType text,tex,md setlocal spell
-    autocmd FileType text,md set textwidth=80
+    autocmd FileType text,markdown set textwidth=80
 augroup END
 ]])
 -- Autocommands for compiling/running C++ files
