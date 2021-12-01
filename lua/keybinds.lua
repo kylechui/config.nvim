@@ -28,8 +28,6 @@ map('n', '>', '>>', { noremap = true, silent = true })
 map('n', '<', '<<', { noremap = true, silent = true })
 map('v', '>', '>gv', { noremap = true, silent = true })
 map('v', '<', '<gv', { noremap = true, silent = true })
--- Make Y actually make sense
-map('n', 'Y', 'yg$', { noremap = true, silent = true })
 -- Better buffer navigation/deletion
 map('n', '<Leader>j', '<Cmd>bn<CR>', { noremap = true, silent = true })
 map('n', '<Leader>k', '<Cmd>bp<CR>', { noremap = true, silent = true })

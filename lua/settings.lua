@@ -33,7 +33,6 @@ opt.colorcolumn = "80"
 opt.lazyredraw = true
 opt.hlsearch = false
 opt.incsearch = true
-opt.inccommand = 'nosplit'
 opt.splitright = true
 -- Neovide-specific cursor settings
 vim.g.neovide_cursor_animation_length = 0.05
