@@ -6,8 +6,17 @@ npairs.setup({
 })
 
 -- Don't autopair " when in a .tex file
-npairs.remove_rule('"')
-npairs.add_rules({
-  Rule("\"", "\"", "-tex")
-    :with_move()
-})
+npairs.get_rule('"')[2]
+    :with_pair(function()
+        if vim.bo.filetype == 'tex' then
+            return false
+        end
+    end)
+
+-- Don't autopair ' when in a .tex file
+npairs.get_rule('\'')[1]
+    :with_pair(function()
+        if vim.bo.filetype == 'tex' then
+            return false
+        end
+    end)
