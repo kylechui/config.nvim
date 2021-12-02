@@ -63,7 +63,7 @@ return require('packer').startup(function()
     use 'tpope/vim-fugitive'
     -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     -- Markdown viewing
-    use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
+    use { 'iamcco/markdown-preview.nvim' }
     -- Startup analyser
     use 'tweekmonster/startuptime.vim'
     -- LSP Stuff

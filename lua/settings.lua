@@ -8,8 +8,12 @@ opt.clipboard = 'unnamedplus'
 opt.modelines = 0
 opt.maxmempattern = 2500
 -- GUI stuff
-vim.g.colors_name = 'gruvbox-flat'
 vim.g.gruvbox_flat_style = 'dark'
+vim.cmd([[
+    colorscheme gruvbox-flat
+]])
+-- vim.g.colors_name = 'gruvbox-flat'
+
 opt.guifont = 'JetBrains Mono:h12'
 opt.termguicolors = true
 opt.mouse = 'n'
@@ -58,6 +62,7 @@ augroup cppCommands
     autocmd!
     autocmd FileType cpp nnoremap <C-'> <Cmd>!g++ -std=c++11 -o %:r.out %<CR><Cmd>term ./%:r.out<CR>
     autocmd FileType cpp nnoremap <C-CR> <Cmd>!g++ -std=c++11 -o %:r.out %<CR><Cmd>term ./%:r.out<input.txt<CR>
+    autocmd FileType cpp set tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 ]])
 -- Save/restore code folds
