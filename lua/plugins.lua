@@ -41,7 +41,7 @@ return require('packer').startup(function()
     }
     use 'nvim-treesitter/playground'
     -- Universal way to add comments
-    use 'b3nj5m1n/kommentary'
+    use 'numToStr/Comment.nvim'
     -- Surround stuff with delimiters
     use 'tpope/vim-surround'
     -- LaTeX integration
