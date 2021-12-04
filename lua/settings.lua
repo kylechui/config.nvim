@@ -16,7 +16,7 @@ vim.cmd([[
 
 opt.guifont = 'JetBrains Mono:h12'
 opt.termguicolors = true
-opt.mouse = 'n'
+opt.mouse = 'a'
 opt.number = true
 opt.relativenumber = true
 opt.wrap = true
@@ -24,15 +24,15 @@ opt.cursorline = true
 opt.breakindent = true
 opt.linebreak = true
 opt.scrolloff = 8
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
 opt.expandtab = true
 opt.shiftround = true
-opt.viewoptions = "folds,cursor"
+opt.viewoptions = 'folds,cursor'
 opt.ignorecase = true
 opt.smartcase = true
-opt.colorcolumn = "80"
+opt.colorcolumn = '80'
 
 opt.lazyredraw = true
 opt.hlsearch = false
@@ -45,14 +45,14 @@ vim.g.neovide_cursor_animate_in_insert_mode = 0
 vim.cmd([[
 augroup highlightYank
     autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup = "Visual", timeout = 300}
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup = 'Visual', timeout = 300}
 augroup END
 ]])
 -- Some settings for files with more prose
 vim.cmd([[
 augroup writingStuff
     autocmd!
-    autocmd FileType text,tex,md setlocal spell
+    autocmd FileType text,tex,md setlocal spell tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType text,markdown set textwidth=80
 augroup END
 ]])
@@ -62,7 +62,6 @@ augroup cppCommands
     autocmd!
     autocmd FileType cpp nnoremap <C-'> <Cmd>!g++ -std=c++11 -o %:r.out %<CR><Cmd>term ./%:r.out<CR>
     autocmd FileType cpp nnoremap <C-CR> <Cmd>!g++ -std=c++11 -o %:r.out %<CR><Cmd>term ./%:r.out<input.txt<CR>
-    autocmd FileType cpp set tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 ]])
 -- Save/restore code folds
@@ -73,10 +72,3 @@ augroup saveFolds
     autocmd BufWinEnter ?* silent! loadview
 augroup END
 ]])
--- Format on write
---[[ vim.api.nvim_exec([[
-augroup formatAutogroup
-  autocmd!
-  autocmd BufWritePost *.cpp FormatWrite
-augroup END
-]]--, true) ]]
