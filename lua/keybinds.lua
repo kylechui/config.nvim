@@ -53,8 +53,8 @@ map('n', 'k', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'k\' : \'gk\'
 map('v', 'j', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'j\' : \'gj\'', { noremap = true, silent = true, expr = true })
 map('v', 'k', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'k\' : \'gk\'', { noremap = true, silent = true, expr = true })
 -- Universal comments with <C-/>
-map('n', '<C-/>', '<Plug>kommentary_line_default', {})
-map('v', '<C-/>', '<Plug>kommentary_visual_default', {})
+map('n', '<C-/>', 'gcc', {})
+map('v', '<C-/>', 'gb', {})
 -- Allow for repeating commands in visual mode
 map('v', '.', ':normal.<CR>', { noremap = true, silent = true })
 -- Better deletion of visual selections
