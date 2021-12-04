@@ -9,6 +9,7 @@ dofile(config..'keybinds.lua')
 -- and reopening NeoVim
 dofile(config..'plugins.lua')
 -- dofile(config..'pluginSettings/formatter.lua')
+dofile(config..'pluginSettings/comment.lua')
 dofile(config..'pluginSettings/galaxyline.lua')
 dofile(config..'pluginSettings/gruvbox-flat.lua')
 dofile(config..'pluginSettings/nvim-autopairs.lua')

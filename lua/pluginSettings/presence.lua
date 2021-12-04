@@ -1,4 +1,4 @@
-require("presence"):setup({
-    main_image = "file",
-    -- log_level = "debug",
+require('presence'):setup({
+    main_image = 'file',
+    -- log_level = 'debug',
 })

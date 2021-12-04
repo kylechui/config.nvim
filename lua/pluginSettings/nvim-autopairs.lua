@@ -2,7 +2,7 @@ local npairs = require('nvim-autopairs')
 local Rule = require('nvim-autopairs.rule')
 
 npairs.setup({
-  map_cr = true,
+    map_cr = true,
 })
 
 -- Don't autopair " when in a .tex file
