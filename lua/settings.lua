@@ -38,6 +38,7 @@ opt.lazyredraw = true
 opt.hlsearch = false
 opt.incsearch = true
 opt.splitright = true
+opt.completeopt='menu,menuone,noselect'
 -- Neovide-specific cursor settings
 vim.g.neovide_cursor_animation_length = 0.05
 vim.g.neovide_cursor_animate_in_insert_mode = 0

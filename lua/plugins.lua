@@ -71,4 +71,12 @@ return require('packer').startup(function()
     use 'kabouzeid/nvim-lspinstall'
     -- Code formatter
     use 'mhartington/formatter.nvim'
+    -- Autocomplete engine
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
+    -- For UltiSnips users
+    use 'quangnguyen30192/cmp-nvim-ultisnips'
 end)
