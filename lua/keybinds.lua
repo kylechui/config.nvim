@@ -78,3 +78,6 @@ map('i', '<C-a>', '<Esc>ggVG', { noremap = true, silent = true })
 map('n', 'Q', '<NOP>', { noremap = true, silent = true })
 -- Map esc to go to normal mode for terminal
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+-- Map <C-j> and <C-k> to scroll up and down autocompletion list in command mode
+map('c', '<C-j>', '<C-n>', { silent = true })
+map('c', '<C-k>', '<C-p>', { silent = true })
