@@ -13,7 +13,6 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} }
     }
-    use 'nvim-telescope/telescope-fzy-native.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     -- Status line and bufferline
     use {
@@ -61,14 +60,14 @@ return require('packer').startup(function()
     use 'windwp/nvim-autopairs'
     -- Git integration
     use 'tpope/vim-fugitive'
-    -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     -- Markdown viewing
     use { 'iamcco/markdown-preview.nvim' }
     -- Startup analyser
     use 'tweekmonster/startuptime.vim'
     -- LSP Stuff
     use 'neovim/nvim-lspconfig'
-    use 'kabouzeid/nvim-lspinstall'
+    use 'williamboman/nvim-lsp-installer'
     -- Code formatter
     use 'mhartington/formatter.nvim'
     -- Autocomplete engine
