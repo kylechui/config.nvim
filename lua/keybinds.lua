@@ -10,7 +10,7 @@ map('n', '<Leader>u', '<Cmd>UltiSnipsEdit<CR>', { noremap = true, silent = true 
 -- Saving files with <C-s>
 map('n', '<C-s>', '<Cmd>up!<CR>', { noremap = true, silent = true })
 map('i', '<C-s>', '<Esc><Cmd>up!<CR>', { noremap = true, silent = true })
-map('v', '<C-s>', '<Esc><Cmd>up!<CR>', { noremap = true, silent = true })
+map('x', '<C-s>', '<Esc><Cmd>up!<CR>', { noremap = true, silent = true })
 -- Deleting words with <C-BS>
 map('i', '', '<C-w>', { noremap = true, silent = true })
 map('c', '', '<C-w>', { noremap = true, silent = true })
@@ -20,14 +20,14 @@ map('c', '<C-BS>', '<C-w>', { noremap = true })
 map('n', '<C-\\>', '<Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
 -- Move towards the beginning/end of a line
 map('n', 'H', 'g^', { noremap = true, silent = true })
-map('v', 'H', 'g^', { noremap = true, silent = true })
+map('x', 'H', 'g^', { noremap = true, silent = true })
 map('n', 'L', 'g$', { noremap = true, silent = true })
-map('v', 'L', 'g$', { noremap = true, silent = true })
+map('x', 'L', 'g$', { noremap = true, silent = true })
 -- Better indent/dedent lines and blocks of text
 map('n', '>', '>>', { noremap = true, silent = true })
 map('n', '<', '<<', { noremap = true, silent = true })
-map('v', '>', '>gv', { noremap = true, silent = true })
-map('v', '<', '<gv', { noremap = true, silent = true })
+map('x', '>', '>gv', { noremap = true, silent = true })
+map('x', '<', '<gv', { noremap = true, silent = true })
 -- Better buffer navigation/deletion
 map('n', '<Leader>j', '<Cmd>bn<CR>', { noremap = true, silent = true })
 map('n', '<Leader>k', '<Cmd>bp<CR>', { noremap = true, silent = true })
@@ -50,15 +50,15 @@ map('n', '<Leader>fh', '<Cmd>lua require(\'telescope.builtin\').help_tags()<CR>'
 -- Navigate by wrapped lines by default
 map('n', 'j', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'j\' : \'gj\'', { noremap = true, silent = true, expr = true })
 map('n', 'k', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'k\' : \'gk\'', { noremap = true, silent = true, expr = true })
-map('v', 'j', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'j\' : \'gj\'', { noremap = true, silent = true, expr = true })
-map('v', 'k', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'k\' : \'gk\'', { noremap = true, silent = true, expr = true })
+map('x', 'j', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'j\' : \'gj\'', { noremap = true, silent = true, expr = true })
+map('x', 'k', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'k\' : \'gk\'', { noremap = true, silent = true, expr = true })
 -- Universal comments with <C-/>
 map('n', '<C-/>', 'gcc', {})
-map('v', '<C-/>', 'gb', {})
+map('x', '<C-/>', 'gb', {})
 -- Allow for repeating commands in visual mode
-map('v', '.', ':normal.<CR>', { noremap = true, silent = true })
+map('x', '.', ':normal.<CR>', { noremap = true, silent = true })
 -- Better deletion of visual selections
-map('v', '<Leader>p', '"_dP', { noremap = true, silent = true })
+map('x', '<Leader>p', '"_dP', { noremap = true, silent = true })
 -- Spell check
 map('i', '<C-l>', '<C-g>u<ESC>b[s1z=`]a<C-g>u', { noremap = true, silent = true })
 -- Git binds
