@@ -1,7 +1,5 @@
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
-vim.g.nvim_tree_gitignore=1
-
 require'bufferline'.setup{}
 require'nvim-tree'.setup{
     follow = 1,
