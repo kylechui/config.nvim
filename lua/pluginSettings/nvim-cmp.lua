@@ -25,7 +25,7 @@ cmp.setup({
     },
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'ultisnips' }, -- For UltiSnips users
+        -- { name = 'ultisnips' }, -- For UltiSnips users
     }, {
         { name = 'buffer', keyword_length = 5 },
     })
@@ -53,3 +53,17 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 require('lspconfig')['clangd'].setup {
     capabilities = capabilities
 }
+
+require('lspconfig')['pyright'].setup {
+    capabilities = capabilities
+}
+
+local nvim_lsp = require('lspconfig')
+local pid = vim.fn.getpid()
+local omnisharp_bin = vim.fn.getenv('HOME') .. '/repos/omnisharp-linux-x64/run'
+require('lspconfig').omnisharp.setup({
+    cmd = { omnisharp_bin, '--languageserver', '--hostPID', tostring(pid) },
+    on_attach = on_attach,
+    capabilities = capabilities,
+    root_dir = nvim_lsp.util.root_pattern('.sln') or nvim_lsp.util.root_pattern('.csproj')
+})
