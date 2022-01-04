@@ -432,11 +432,13 @@ snippet = "align equals" wA
 &=$0
 endsnippet
 
+priority 10
 context "env('itemize')"
 snippet "  it" "new item" brA
 \item $0
 endsnippet
 
+priority 11
 context "env('enumerate')"
 snippet "  it" "new item" brA
 \item $0
