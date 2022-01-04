@@ -62,6 +62,16 @@ if (match.group(1) != ""):
 `set<${2:type}>$0
 endsnippet
 
+snippet "pair([bcis]|ll)([bcis]|ll)" "pair" wrA
+`!p
+snip.rv = "pair<" + types[match.group(1)] + ", " + types[match.group(2)] + ">"
+`$0
+endsnippet
+
+snippet "pair " "general pair" wrA
+pair<${1:type}, ${2:type}>$0
+endsnippet
+
 snippet "stk([bcis]|ll)" "stack" wrA
 stack<`!p snip.rv = types[match.group(1)]`>$0
 endsnippet
@@ -133,11 +143,6 @@ snip.rv += transformed_guard + '\n'
 $0
 
 #endif
-endsnippet
-
-snippet bruh "kdfjalksdjfk" bA
-${1}
-${1/\w/\u$0/}
 endsnippet
 
 snippet ignore "cin ignore" bA
