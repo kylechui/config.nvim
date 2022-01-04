@@ -53,7 +53,7 @@ augroup END
 vim.cmd([[
 augroup writingStuff
     autocmd!
-    autocmd FileType text,tex,md setlocal spell tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType text,tex,markdown setlocal spell tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType text,markdown set textwidth=80
 augroup END
 ]])
@@ -61,8 +61,8 @@ augroup END
 vim.cmd([[
 augroup cppCommands
     autocmd!
-    autocmd FileType cpp nnoremap <C-'> <Cmd>!g++ -std=c++11 -o %:r.out %<CR><Cmd>term ./%:r.out<CR>
-    autocmd FileType cpp nnoremap <C-CR> <Cmd>!g++ -std=c++11 -o %:r.out %<CR><Cmd>term ./%:r.out<input.txt<CR>
+    autocmd FileType cpp nnoremap <C-'> <Cmd>!g++ -Wall -std=c++17 -o %:r.out %<CR><Cmd>term time ./%:r.out<CR>
+    autocmd FileType cpp nnoremap <C-CR> <Cmd>!g++ -Wall -std=c++17 -o %:r.out %<CR><Cmd>term time ./%:r.out<input.txt<CR>
 augroup END
 ]])
 -- Save/restore code folds
