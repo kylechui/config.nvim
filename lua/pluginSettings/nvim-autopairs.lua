@@ -6,7 +6,7 @@ local Rule = require('nvim-autopairs.rule')
 npairs.setup({})
 
 -- Don't autopair " when in a .tex file
-npairs.get_rule('"')[2]
+npairs.get_rule('"')[1]
     :with_pair(function()
         if vim.bo.filetype == 'tex' then
             return false
