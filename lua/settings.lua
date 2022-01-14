@@ -49,22 +49,6 @@ augroup highlightYank
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup = 'Visual', timeout = 300}
 augroup END
 ]])
--- Some settings for files with more prose
-vim.cmd([[
-augroup writingStuff
-    autocmd!
-    autocmd FileType text,tex,markdown setlocal spell tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType text,markdown set textwidth=80
-augroup END
-]])
--- Autocommands for compiling/running C++ files
-vim.cmd([[
-augroup cppCommands
-    autocmd!
-    autocmd FileType cpp nnoremap <C-'> <Cmd>!g++ -Wall -std=c++17 -o %:r.out %<CR><Cmd>term time ./%:r.out<CR>
-    autocmd FileType cpp nnoremap <C-CR> <Cmd>!g++ -Wall -std=c++17 -o %:r.out %<CR><Cmd>term time ./%:r.out<input.txt<CR>
-augroup END
-]])
 -- Save/restore code folds
 vim.cmd([[
 augroup saveFolds
