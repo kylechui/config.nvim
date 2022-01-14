@@ -44,7 +44,7 @@ map('n', '<A-l>', '<Cmd>BufferLineMoveNext<CR>', { noremap = true, silent = true
 -- Telescope fuzzy find stuff
 map('n', '<Leader>f.', '<Cmd>lua require(\'telescope.builtin\').find_files()<CR>', { noremap = true, silent = true })
 map('n', '<Leader>ff', '<Cmd>lua require(\'pluginSettings.telescope\').search_workspace()<CR>', { noremap = true, silent = true })
-map('n', '<Leader>fb', '<Cmd>lua require(\'telescope.builtin\').buffers()<CR>', { noremap = true, silent = true })
+map('n', '<Leader>fb', '<Cmd>lua require(\'telescope\').extensions.file_browser.file_browser()<CR>', { noremap = true, silent = true })
 map('n', '<Leader>fg', '<Cmd>lua require(\'telescope.builtin\').live_grep()<CR>', { noremap = true, silent = true })
 map('n', '<Leader>fh', '<Cmd>lua require(\'telescope.builtin\').help_tags()<CR>', { noremap = true, silent = true })
 -- Navigate by wrapped lines by default
@@ -54,7 +54,7 @@ map('x', 'j', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'j\' : \'gj\'
 map('x', 'k', 'v:count ? (v:count > 5 ? "m\'" . v:count : \'\') . \'k\' : \'gk\'', { noremap = true, silent = true, expr = true })
 -- Universal comments with <C-/>
 map('n', '<C-/>', 'gcc', {})
-map('x', '<C-/>', 'gb', {})
+map('x', '<C-/>', 'gbgv', {})
 -- Allow for repeating commands in visual mode
 map('x', '.', ':normal.<CR>', { noremap = true, silent = true })
 -- Better deletion of visual selections
