@@ -1,5 +1,6 @@
 vim.cmd([[
-    augroup packerUserConfig autocmd!
+augroup packerUserConfig
+    autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 augroup end
 ]])
@@ -10,59 +11,63 @@ return require('packer').startup(function()
     -- Telescope nonsense
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} }
+        requires = {
+            'nvim-lua/popup.nvim',
+            'nvim-lua/plenary.nvim',
+        },
     }
-    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use { 'nvim-telescope/telescope-file-browser.nvim' }
+    use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make',
+    }
+    use 'nvim-telescope/telescope-file-browser.nvim'
     -- Status line and bufferline
     use {
         'NTBBloodbath/galaxyline.nvim',
-        -- 'glepnir/galaxyline.nvim',
-        --[[ config = function()
-          require('galaxyline.themes.eviline')
-        end, ]]
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+            opt = true,
+        },
     }
     use 'akinsho/nvim-bufferline.lua'
     -- File explorer
-    use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons' }
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+    }
     -- Colour scheme
     use 'eddyekofo94/gruvbox-flat.nvim'
-    -- Treesitter for better syntax highlighting
+    -- Treesitter for better syntax highlighting and other features
     use {
-      'nvim-treesitter/nvim-treesitter',
-      branch = '0.5-compat',
-      run = ':TSUpdate',
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
     }
-    use {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      branch = '0.5-compat',
-    }
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'nvim-treesitter/playground'
     -- Universal way to add comments
     use 'numToStr/Comment.nvim'
     -- Surround stuff with delimiters
     use 'tpope/vim-surround'
     -- LaTeX integration
-    use {
-      'lervag/vimtex',
-      commit = "fbe94cd3eaed89d6c1236af486466b1fcc3b82c9"
-    }   
+    use 'lervag/vimtex'
     -- Snippets
     use 'sirver/ultisnips'
     -- Get good
     use 'ThePrimeagen/vim-be-good'
     -- Discord integration
-    use 'andweeb/presence.nvim' 
+    use 'andweeb/presence.nvim'
     -- Highlight hex codes
     use 'norcalli/nvim-colorizer.lua'
     -- Automatically insert pairs (for delimiters)
     use 'windwp/nvim-autopairs'
     -- Git integration
     use 'tpope/vim-fugitive'
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use {
+        'TimUntersberger/neogit',
+        requires = 'nvim-lua/plenary.nvim',
+    }
     -- Markdown viewing
-    use { 'iamcco/markdown-preview.nvim' }
+    use 'iamcco/markdown-preview.nvim'
     -- Startup analyser
     use 'tweekmonster/startuptime.vim'
     -- LSP Stuff
@@ -76,6 +81,5 @@ return require('packer').startup(function()
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
-    -- For UltiSnips users
     use 'quangnguyen30192/cmp-nvim-ultisnips'
 end)
