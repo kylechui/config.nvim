@@ -1,8 +1,5 @@
--- I'm lazy
-local opt = vim.opt
-
-opt.spell = true
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
-opt.textwidth = 80
+vim.wo.spell = true
+vim.bo.tabstop = 2
+vim.bo.softtabstop = 2
+vim.bo.shiftwidth = 2
+vim.bo.textwidth = 80
