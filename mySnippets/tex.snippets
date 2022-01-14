@@ -210,7 +210,7 @@ endsnippet
 
 priority 20
 context "math()"
-snippet "([a-zA-Z]|\\[a-zA-Z]+)(bar|hat|vec)" "postfix snippets" wrA
+snippet "([a-zA-Z]|\\[a-zA-Z]+)(bar|(?<![d])dot|hat|vec)" "postfix snippets" wrA
 \\`!p snip.rv = match.group(2)`{`!p snip.rv = match.group(1)`}$0
 endsnippet
 
