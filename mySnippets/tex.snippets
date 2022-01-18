@@ -3,7 +3,7 @@ def env(name):
   [x,y] = vim.eval('vimtex#env#is_inside("' + str(name) + '")')
   return x != '0' and y != '0'
 def text():
-  return vim.eval('vimtex#syntax#in_mathzone()') != '1' and not env('lstlisting') and not comment()
+  return vim.eval('vimtex#syntax#in_mathzone()') != '1' and not env('minted') and not comment()
 def math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 def comment(): 
@@ -480,4 +480,14 @@ endglobal
 pre_expand "create_matrix(snip)"
 context "math()"
 snippet "[abBpvV]?mat\d\d" "matrices" brA
+endsnippet
+
+context "env('minted')"
+snippet ' "single quote" iA
+'$0'
+endsnippet
+
+context "env('minted')"
+snippet " "double quote" iA
+"$0"
 endsnippet
