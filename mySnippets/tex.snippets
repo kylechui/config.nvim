@@ -62,13 +62,8 @@ snippet "(?<!\\)\_" "text subscript" wrA
 endsnippet
 
 context "text()"
-snippet "(?<= )(([b-zB-HJ-Z]|\\[CFRMNQRZ])('?))([?!.,;\- ])" "single variables" wrA
+snippet "(?<= )(([b-zB-HJ-Z]|\\[A-Z])('?))([?!.,;\- ])" "single variables" wrA
 $`!p snip.rv = match.group(1)`$`!p snip.rv = match.group(4)`$0
-endsnippet
-
-context "text()"
-snippet "(?<=[ ])(-?\d+(\.\d+)?)([?!,; ])" "digit conversion" wrA
-$`!p snip.rv = match.group(1)`$`!p snip.rv = match.group(3)`$0
 endsnippet
 
 context "text()"
@@ -132,18 +127,35 @@ endsnippet
 
 priority 1000
 context "math()"
+snippet "^.*\}/" "complex fraction" wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+# Basically finds the index of the matching brace to the one before the forward slash
+for i in range(len(stripped) - 1, -1, -1):
+	if stripped[i] == '}': depth += 1
+	if stripped[i] == '{': depth -= 1
+	if depth == 0 and stripped[i] == '\\':
+		break;
+if depth == 0:
+	snip.rv = stripped[0:i] + "\\frac{" + stripped[i:] + "}"
+`{$1}$0
+endsnippet
+
+priority 1000
+context "math()"
 snippet "^.*\)/" "complex fraction" wrA
 `!p
 stripped = match.string[:-1]
 depth = 0
-i = len(stripped) - 1
 # Basically finds the index of the matching parenthesis to the one before the forward slash
-while True:
+for i in range(len(stripped) - 1, -1, -1):
 	if stripped[i] == ')': depth += 1
 	if stripped[i] == '(': depth -= 1
-	if depth == 0: break;
-	i -= 1
-snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+	if depth == 0:
+		break;
+if depth == 0:
+	snip.rv = stripped[0:i] + "\\frac{" + stripped[i + 1:-1] + "}"
 `{$1}$0
 endsnippet
 
