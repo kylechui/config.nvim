@@ -8,7 +8,6 @@ dofile(config..'keybinds.lua')
 -- I use dofile instead of require so I can reload my settings without closing
 -- and reopening NeoVim
 dofile(config..'plugins.lua')
--- dofile(config..'pluginSettings/formatter.lua')
 dofile(config..'pluginSettings/comment.lua')
 dofile(config..'pluginSettings/galaxyline.lua')
 dofile(config..'pluginSettings/gruvbox-flat.lua')

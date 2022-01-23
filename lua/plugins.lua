@@ -73,8 +73,6 @@ return require('packer').startup(function()
     -- LSP Stuff
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
-    -- Code formatter
-    use 'mhartington/formatter.nvim'
     -- Autocomplete engine
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
