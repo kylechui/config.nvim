@@ -6,6 +6,38 @@ types = {
 	'll': 'long long',
 	's': 'string',
 }
+
+def getParams(s):
+	cur = ""
+	depth = 0
+	valid = True
+	params = []
+	for c in s:
+		if (c == '<'):
+			depth += 1
+		elif (c == '>'):
+			depth -= 1
+		elif (c == ' '):
+			cur = ""
+		elif c == ',' and depth == 0:
+			params.append(cur)
+			cur = ""
+		else:
+			cur += c
+	if cur and valid:
+		params.append(cur)
+	return params
+
+def getDocstring(snip):
+	anonSnippetBody = ""
+	parameters = getParams(snip.buffer[snip.line].strip())
+	for p in parameters:
+		anonSnippetBody += p + "\n"
+	snip.expand_anon(f"$4 $5 $6")
+	# for i in range(len(parameters)):
+	# 	anonSnippetBody += "    @param " + parameters[i] + ": ${" + str(i + 4) + "}\n"
+	# anonSnippetBody += "    @return " + "${" + str(len(parameters) + 1) + ":Return description}"
+	# snip.expand_anon(anonSnippetBody)
 endglobal
 
 snippet inc "include" b
@@ -80,15 +112,21 @@ snippet "stk " "general stack" wrA
 stack<${1:type}>$0
 endsnippet
 
-snippet "fn([bcis]|ll) " "function" brA
-`!p snip.rv = types[match.group(1)]` ${1:functionName}($2) {
-	$0
-}
-endsnippet
+# snippet "fn([bcis]|ll) " "function" brA
+# `!p snip.rv = types[match.group(1)]` ${1:functionName}($2) {
+# 	$0
+# }
+# endsnippet
 
+# /**
+# 	${4:General description}
+# */
+#`!p snip.rv = t[3]`
+post_jump "if snip.tabstop == 4: getDocstring(snip)"
 snippet "fn " "general function" brA
 ${1:int} ${2:main}($3) {
-	$0
+	`!p snip.rv = "int x, string y, vector<pair<int, int>> vp"`
+	$4
 }
 endsnippet
 

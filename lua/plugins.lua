@@ -70,6 +70,8 @@ return require('packer').startup(function()
     use 'iamcco/markdown-preview.nvim'
     -- Startup analyser
     use 'tweekmonster/startuptime.vim'
+    -- Formatter
+    use 'mhartington/formatter.nvim'
     -- LSP Stuff
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'

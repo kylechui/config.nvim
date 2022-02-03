@@ -4,7 +4,7 @@ map('n', '<Space>', '<NOP>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
 -- Keybinds for editing and reloading init files
 map('n', '<Leader>s', '<Cmd>lua require(\'pluginSettings.telescope\').search_dotfiles()<CR>', { noremap = true, silent = true })
-map('n', '<Leader>r', '<Cmd>luafile $MYVIMRC<CR>', { noremap = true })
+-- map('n', '<Leader>r', '<Cmd>luafile $MYVIMRC<CR>', { noremap = true })
 -- Edit snippets
 map('n', '<Leader>u', '<Cmd>UltiSnipsEdit<CR>', { noremap = true, silent = true })
 -- Saving files with <C-s>
