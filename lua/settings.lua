@@ -1,5 +1,7 @@
 -- I'm lazy
 local opt = vim.opt
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
 -- Define workspace path
 vim.env.WORKSPACE = '~/Documents/github/'
@@ -38,22 +40,16 @@ opt.lazyredraw = true
 opt.hlsearch = false
 opt.incsearch = true
 opt.splitright = true
-opt.completeopt='menu,menuone,noselect'
+opt.completeopt = 'menu,menuone,noselect'
 -- Neovide-specific cursor settings
 vim.g.neovide_cursor_animation_length = 0.05
 vim.g.neovide_cursor_animate_in_insert_mode = 0
 -- Highlight yanked text
-vim.cmd([[
-augroup highlightYank
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup = 'Visual', timeout = 300}
-augroup END
-]])
+local highlightYank = augroup('highlightYank', {})
+autocmd('TextYankPost', { callback = function()
+    vim.highlight.on_yank{ higroup = 'Visual', timeout = 300 }
+end, group = highlightYank })
 -- Save/restore code folds
-vim.cmd([[
-augroup saveFolds
-    autocmd!
-    autocmd BufWinLeave ?* mkview
-    autocmd BufWinEnter ?* silent! loadview
-augroup END
-]])
+local saveFolds = augroup('saveFolds', {})
+autocmd('BufWinLeave', { pattern = '?*', command = 'mkview', group = saveFolds })
+autocmd('BufWinEnter', { pattern = '?*', command = 'loadview', group = saveFolds })
