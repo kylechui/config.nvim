@@ -67,7 +67,7 @@ $`!p snip.rv = match.group(1)`$`!p snip.rv = match.group(4)`$0
 endsnippet
 
 context "text()"
-snippet "(?<=\d)(st|nd|rd|th)" "ordinal indicators" wrA
+snippet "(?<=[\d$])(st|nd|rd|th)" "ordinal indicators" wrA
 \\tsup{`!p snip.rv = match.group(1)`}$0
 endsnippet
 #
@@ -99,7 +99,7 @@ snippet tt "text" iA
 endsnippet
 
 context "math()"
-snippet "(?<!Unifo)rm" "romanized math" irA
+snippet "(?<!Unifo)(?<!pe)rm" "romanized math" irA
 \mathrm{$1}$0
 endsnippet
 
@@ -135,7 +135,7 @@ depth = 0
 for i in range(len(stripped) - 1, -1, -1):
 	if stripped[i] == '}': depth += 1
 	if stripped[i] == '{': depth -= 1
-	if depth == 0 and stripped[i] == '\\':
+	if depth == 0 and (stripped[i] == ' ' or stripped[i] == '\\'):
 		break;
 if depth == 0:
 	snip.rv = stripped[0:i] + "\\frac{" + stripped[i:] + "}"
@@ -178,8 +178,8 @@ if (match.group(1) == "r"): snip.rv += "^+"
 endsnippet
 
 context "math()"
-snippet "(?<!\\)sum" "summation" wrA
-\sum_{${1:i}=${2:0}}^{${3:\infty}}$0
+snippet "(?<!\\)(sum|prod)" "summation and product" wrA
+\\`!p snip.rv = match.group(1)`_{${1:i}=${2:0}}^{${3:\infty}}$0
 endsnippet
 
 context "math()"
@@ -222,12 +222,12 @@ endsnippet
 
 priority 20
 context "math()"
-snippet "([a-zA-Z]|\\[a-zA-Z]+)(bar|(?<![d])dot|hat|vec)" "postfix snippets" wrA
+snippet "([a-zA-Z]|\\[a-zA-Z]+)(bar|(?<![dv])dot|hat|vec)" "postfix snippets" wrA
 \\`!p snip.rv = match.group(2)`{`!p snip.rv = match.group(1)`}$0
 endsnippet
 
 context "math()"
-snippet "(?<!\\)(col|deg|det|dim|(?<![lst])im|ker|rank|(?<![r])row|(?<![a])tr)" "linear algebra snippets" wrA
+snippet "(?<!\\)(col|deg|det|dim|(?<![lst])im|ker|rank|(?<![r])row|(?<![ae])tr)" "linear algebra snippets" wrA
 \\`!p snip.rv = match.group(1)`($1)$0
 endsnippet
 
