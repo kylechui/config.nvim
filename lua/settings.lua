@@ -15,7 +15,6 @@ vim.cmd([[
     colorscheme gruvbox-flat
 ]])
 -- vim.g.colors_name = "gruvbox-flat"
-
 opt.guifont = "JetBrains Mono:h12"
 opt.termguicolors = true
 opt.mouse = "a"

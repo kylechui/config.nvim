@@ -51,7 +51,7 @@ return require("packer").startup(function()
     -- LaTeX integration
     use "lervag/vimtex"
     -- Snippets
-    use "sirver/ultisnips"
+    -- use "sirver/ultisnips"
     use "L3MON4D3/LuaSnip"
     -- Get good
     use "ThePrimeagen/vim-be-good"
@@ -83,5 +83,6 @@ return require("packer").startup(function()
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
     use "hrsh7th/nvim-cmp"
-    use "quangnguyen30192/cmp-nvim-ultisnips"
+    use "saadparwaiz1/cmp_luasnip"
+    -- use "quangnguyen30192/cmp-nvim-ultisnips"
 end)
