@@ -34,6 +34,7 @@ opt.viewoptions = "folds,cursor"
 opt.ignorecase = true
 opt.smartcase = true
 opt.colorcolumn = "80"
+opt.laststatus = 3
 
 opt.lazyredraw = true
 opt.hlsearch = false

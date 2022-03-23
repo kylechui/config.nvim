@@ -50,11 +50,7 @@ gls.left[2] = {
             local alias = aliases[vim.fn.mode():byte()]
             local mode
             if alias ~= nil then
-                if utils.has_width_gt(35) then
-                    mode = alias
-                else
-                    mode = alias:sub(1, 1)
-                end
+                mode = alias
             else
                 mode = vim.fn.mode():byte()
             end

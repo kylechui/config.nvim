@@ -5,11 +5,6 @@ function M.is_buffer_empty()
     return vim.fn.empty(vim.fn.expand("%:t")) == 1
 end
 
-function M.has_width_gt(cols)
-    -- Check if the windows width is greater than a given number of columns
-    return vim.fn.winwidth(0) / 2 > cols
-end
-
 function M.adjust_font_size(delta)
     local gf = vim.inspect(vim.opt.guifont:get())
     local font_size = gf:match(":h(%d+)")
