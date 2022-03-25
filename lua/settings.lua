@@ -1,4 +1,4 @@
--- I"m lazy
+-- I'm lazy
 local opt = vim.opt
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
@@ -46,10 +46,35 @@ vim.g.neovide_cursor_animation_length = 0.05
 vim.g.neovide_cursor_animate_in_insert_mode = 0
 -- Highlight yanked text
 local highlightYank = augroup("highlightYank", {})
-autocmd("TextYankPost", { callback = function()
-    vim.highlight.on_yank{ higroup = "Visual", timeout = 300 }
-end, group = highlightYank })
+autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
+	end,
+	group = highlightYank,
+})
 -- Save/restore code folds
 local saveFolds = augroup("saveFolds", {})
-autocmd("BufWinLeave", { pattern = "?*", command = "mkview", group = saveFolds })
-autocmd("BufWinEnter", { pattern = "?*", command = "loadview", group = saveFolds })
+autocmd("BufWinLeave", {
+	pattern = "?*",
+	command = "mkview",
+	group = saveFolds,
+})
+autocmd("BufWinEnter", {
+	pattern = "?*",
+	command = "loadview",
+	group = saveFolds,
+})
+-- Format code on save for certain file types
+local formatCode = augroup("formatCode", {})
+autocmd("BufWritePost", {
+	pattern = {
+		"*.cpp",
+		"*.js",
+		"*.js",
+		"*.lua",
+		"*.md",
+		"*.ts",
+	},
+	callback = vim.lsp.buf.formatting_sync,
+	group = formatCode,
+})

@@ -1,4 +1,3 @@
--- I"m lazy
 local map = vim.api.nvim_buf_set_keymap
 
 map(0, "n", "<C-\">", "<Cmd>term time python3 %<CR>", { noremap = true, silent = true })

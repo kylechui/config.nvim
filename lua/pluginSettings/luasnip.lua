@@ -45,8 +45,8 @@ ls.snippets = {
             fmt(
                 [[
                     /**
-                    * {}
-                    */
+                     * {}
+                     */
                     {} {}({}) {{
                         {}
                     }}
@@ -63,7 +63,7 @@ ls.snippets = {
                         -- Add lines for each parameter in the function
                         for param in params do
                             param = param:sub(1, -2)
-                            table.insert(nodes, t({"", ""}))
+                            table.insert(nodes, t({"", " "}))
                             table.insert(nodes, sn(pos, fmt(
                                 [[
                                     * @param {} {}
@@ -77,14 +77,13 @@ ls.snippets = {
                         end
                         -- Add a node if there is a return type
                         if (returnValue ~= "void") then
-                            table.insert(nodes, t({"", ""}))
+                            table.insert(nodes, t({"", " "}))
                             table.insert(nodes, sn(pos, fmt(
                                 [[
-                                    * @return {} {}
+                                    * @return {}
                                 ]],
                                 {
-                                    i(1, "returnValue"),
-                                    i(2),
+                                    i(1),
                                 }
                             )))
                             pos = pos + 1
@@ -103,6 +102,36 @@ ls.snippets = {
                 }
             )
         ),
+        -- C++: Include guards
+        s(
+            "include",
+            fmt(
+                [[
+                    #include {}
+                ]],
+                {
+                    c(1, {
+                        fmt(
+                            [[
+                                <{}>
+                            ]],
+                            {
+                                i(1, "bits/stdc++.h")
+                            }
+                        ),
+                        fmt(
+                            [[
+                                "{}.h"
+                            ]],
+                            {
+                                i(1, "HeaderFile")
+                            }
+                        )
+                    })
+                }
+            )
+        ),
+        -- C++: Choice for loops
         s(
             "for",
             fmt(
