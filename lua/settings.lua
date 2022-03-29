@@ -47,34 +47,33 @@ vim.g.neovide_cursor_animate_in_insert_mode = 0
 -- Highlight yanked text
 local highlightYank = augroup("highlightYank", {})
 autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
-	end,
-	group = highlightYank,
+    callback = function()
+        vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
+    end,
+    group = highlightYank,
 })
 -- Save/restore code folds
 local saveFolds = augroup("saveFolds", {})
 autocmd("BufWinLeave", {
-	pattern = "?*",
-	command = "mkview",
-	group = saveFolds,
+    pattern = "?*",
+    command = "mkview",
+    group = saveFolds,
 })
 autocmd("BufWinEnter", {
-	pattern = "?*",
-	command = "loadview",
-	group = saveFolds,
+    pattern = "?*",
+    command = "loadview",
+    group = saveFolds,
 })
 -- Format code on save for certain file types
 local formatCode = augroup("formatCode", {})
 autocmd("BufWritePost", {
-	pattern = {
-		"*.cpp",
-		"*.js",
-		"*.js",
-		"*.lua",
-		"*.md",
-		"*.ts",
-	},
-	callback = vim.lsp.buf.formatting_sync,
-	group = formatCode,
+    pattern = {
+        "*.cpp",
+        "*.js",
+        "*.lua",
+        "*.md",
+        "*.ts",
+    },
+    callback = vim.lsp.buf.formatting_sync,
+    group = formatCode,
 })
