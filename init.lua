@@ -1,26 +1,26 @@
--- Get path to my lua config files
-local config = vim.fn["stdpath"]("config") .. "/lua/"
-
-dofile(config .. "settings.lua")
-dofile(config .. "keybinds.lua")
+require("settings")
+require("keybinds")
 
 -- Plugin Shenanigans
--- I use dofile instead of require so I can reload my settings without closing
--- and reopening NeoVim
-dofile(config .. "plugins.lua")
-dofile(config .. "pluginSettings/comment.lua")
-dofile(config .. "pluginSettings/null-ls.lua")
-dofile(config .. "pluginSettings/galaxyline.lua")
-dofile(config .. "pluginSettings/gruvbox-flat.lua")
-dofile(config .. "pluginSettings/luasnip.lua")
-dofile(config .. "pluginSettings/nvim-autopairs.lua")
-dofile(config .. "pluginSettings/nvim-bufferline.lua")
-dofile(config .. "pluginSettings/nvim-cmp.lua")
-dofile(config .. "pluginSettings/nvim-colorizer.lua")
-dofile(config .. "pluginSettings/nvim-lspconfig.lua")
-dofile(config .. "pluginSettings/nvim-tree.lua")
-dofile(config .. "pluginSettings/nvim-treesitter.lua")
-dofile(config .. "pluginSettings/presence.lua")
-dofile(config .. "pluginSettings/telescope.lua")
--- dofile(config.."pluginSettings/ultisnips.lua")
-dofile(config .. "pluginSettings/vimtex.lua")
+require("plugins")
+require("pluginSettings/comment")
+require("pluginSettings/null-ls")
+require("pluginSettings/galaxyline")
+require("pluginSettings/gruvbox-flat")
+require("pluginSettings/luasnip")
+require("pluginSettings/nvim-autopairs")
+require("pluginSettings/nvim-bufferline")
+require("pluginSettings/nvim-cmp")
+require("pluginSettings/nvim-colorizer")
+require("pluginSettings/nvim-lspconfig")
+require("pluginSettings/nvim-tree")
+require("pluginSettings/nvim-treesitter")
+require("pluginSettings/presence")
+require("pluginSettings/telescope")
+-- require("pluginSettings/ultisnips")
+require("pluginSettings/vimtex")
+
+-- Loads in snippets
+require("luasnip.loaders.from_lua").load({
+    paths = vim.fn["stdpath"]("config") .. "/luasnippets/"
+})
