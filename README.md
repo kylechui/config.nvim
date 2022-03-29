@@ -20,14 +20,12 @@ doing homework in LaTeX, as well as programming in C++.
 
 ## Dependencies
 
-  - Requires [Neovim 0.7+](https://github.com/neovim/neovim/releases/tag/v0.6.0)
+- Requires [Neovim 0.7+](https://github.com/neovim/neovim/releases)
   for Lua integration
 - Requires a PDF reader if you want to view compiled LaTeX documents:
   - Linux: [Zathura](https://pwmt.org/projects/zathura/)
   - Windows:
     [SumatraPDF](https://www.sumatrapdfreader.org/download-free-pdf-viewer)
-- Requires Python 3 (and pynvim) for
-  [UltiSnips](https://github.com/sirver/UltiSnips)
 - [Optional] Requires Node.js and yarn for [live previewing markdown
   files](https://github.com/iamcco/markdown-preview.nvim)
   of choice
@@ -47,7 +45,7 @@ lua
 ├── utils.lua
 └── pluginSettings
     └── ...
-└── mySnippets
+└── luasnippets
     └── ...
 ```
 
@@ -56,18 +54,14 @@ lua
 - `plugins.lua` -- Defines which plugins will be installed
 - `settings.lua` -- General settings and options
 - `utils.lua` -- Some helper functions
-- `pluginSettings` -- A folder full of the configurations needed for each
+- `pluginSettings/` -- A folder full of the configurations needed for each
   individual plugin, stored in the form `pluginSettings/[pluginName].lua`
-- `mySnippets.lua` -- My snippets configuration for each language I use, stored
-  in the form `mySnippets/[fileType].snippets`
+- `luasnippets/` -- My snippets configuration for each language I use, stored
+  in the form `luasnippets/[fileType].snippets`
 
 ## Todo
 
+- Refactor code to make it cleaner
+- Fix the jank that exists in some of the new API
+- Add more snippets!
 - Improve cross-compatibility with Windows
-
-#### Why UltiSnips?
-
-To my knowledge, it is the only snippet manager out there that has convenient
-regexp-based snippets _and_ auto-expanding snippets. If there is another
-snippet manager out there written in Lua or something that has both of the
-aforementioned features, I'll consider switching to that.
