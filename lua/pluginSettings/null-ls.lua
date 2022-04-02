@@ -5,6 +5,8 @@ nl.setup({
         nl.builtins.formatting.clang_format.with({
             extra_args = { "--style", "{BasedOnStyle: Google, IndentWidth: 4}" }
         }),
-        nl.builtins.formatting.prettier,
+        nl.builtins.formatting.remark.with({
+            extra_args = { "-s", "'listItemIndent': 'one'" }
+        }),
     },
 })
