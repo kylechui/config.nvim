@@ -9,6 +9,16 @@ local s = ls.s
 local sn = ls.sn
 local t = ls.text_node
 
+local standard = function(type)
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    for _, line in ipairs(lines) do
+        if line:match("using namespace std;") then
+            return sn(nil, i(1, type))
+        end
+    end
+    return sn(nil, i(1, "std::" .. type))
+end
+
 return {
     -- C++: Basic coding environment template
     s(
@@ -106,7 +116,9 @@ return {
                 c(1, {
                     i(nil, "void"),
                     i(nil, "int"),
-                    i(nil, "string"),
+                    d(nil, function()
+                        return standard("string")
+                    end),
                     i(nil, "bool"),
                 }),
                 i(2, "functionName"),
@@ -182,4 +194,16 @@ return {
             }
         )
     ),
+    -- C++: Vector
+    s("vec", {
+        t("vector<"),
+        c(1, {
+            i(1, "int"),
+            d(1, function()
+                return standard("string")
+            end),
+            i(1, "bool"),
+        }),
+        t(">"),
+    }),
 }, nil

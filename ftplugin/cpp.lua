@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 map(
     "n",
-    '<C-">',
+    "<C-'>",
     "<Cmd>!g++ -Wall -std=c++17 -o '%:r.out' '%'<CR><Cmd>term time './%:r.out'<CR>",
     { silent = true, buffer = 0 }
 )
