@@ -7,7 +7,7 @@ local rep = require("luasnip.extras").rep
 local i = ls.insert_node
 local s = ls.s
 -- local sn = ls.sn
--- local t = ls.text_node
+local t = ls.text_node
 
 return {
     -- Markdown: Definition comment tag
@@ -23,4 +23,21 @@ return {
             i(0),
         }
     )),
-}, nil
+}, {
+    -- Markdown: Left arrow
+    s("<-", t("&larr;")),
+    -- Markdown: Right arrow
+    s("->", t("&rarr;")),
+    -- Markdown: Bold
+    s("", {
+        t("**"),
+        i(1),
+        t("**"),
+    }),
+    -- TODO: Markdown: Italics
+    s("<C-I>", {
+        t("*"),
+        i(1),
+        t("*"),
+    }),
+}

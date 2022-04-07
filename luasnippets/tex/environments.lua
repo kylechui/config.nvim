@@ -42,7 +42,7 @@ return nil, {
             i(0),
             rep(1),
         }
-    ), { condition = in_text }),
+    )),
     -- LaTeX: Proof environment
     s("pf", get_env("proof"), { condition = in_text }),
     -- LaTeX: Align environment
@@ -53,7 +53,7 @@ return nil, {
         i(1),
         t({ "}", "\t" }),
         i(0),
-        t({ "", "\\begin{problem}" }),
+        t({ "", "\\end{problem}" }),
     }, { condition = in_text }),
     -- LaTeX: Enumerate environment
     s("enum", {

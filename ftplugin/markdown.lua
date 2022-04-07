@@ -6,4 +6,5 @@ vim.bo.textwidth = 80
 
 -- Rudimentary ways to comment
 vim.keymap.set("i", "<C-I>", "**<Esc>i", { buffer = 0 })
-vim.keymap.set("i", "<C-B>", "****<Esc>hi", { buffer = 0 })
+-- vim.keymap.set("i", "<C-B>", "****<Esc>hi", { buffer = 0 })
+vim.keymap.set("n", "\\ll", "<Cmd>MarkdownPreview<CR>", { buffer = 0 })

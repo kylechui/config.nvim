@@ -39,7 +39,7 @@ map("n", "<Leader>fg", require("telescope.builtin").live_grep, { silent = true }
 map("n", "<Leader>fh", require("telescope.builtin").help_tags, { silent = true })
 -- Navigate by wrapped lines by default
 map({ "n", "x" }, "j", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "j" : "gj"', { silent = true, expr = true })
-map({"n", "x"}, "k", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "k" : "gk"', { silent = true, expr = true })
+map({ "n", "x" }, "k", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "k" : "gk"', { silent = true, expr = true })
 -- Universal comments with <C-/> (written as <C-_> to work in terminal)
 map("n", "<C-/>", require("Comment.api").toggle_current_linewise)
 map("x", "<C-/>", "<Cmd>norm gbgv<CR>")

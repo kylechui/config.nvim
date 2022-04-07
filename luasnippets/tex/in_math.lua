@@ -28,7 +28,6 @@ greek_vars["o"] = "omega"
 greek_vars["s"] = "sigma"
 greek_vars["t"] = "tau"
 
-
 return nil, {
     -- LaTeX: Greek variables
     s({ trig = ";(%l)", regTrig = true },
@@ -45,7 +44,7 @@ return nil, {
         end, {}), { condition = in_mathzone }
     ),
     -- LaTeX: Single-digit subscripts
-    s({ trig = "(%a)(%d)", regTrig = true },
+    s({ trig = "(%a)(%d)", regTrig = true, wordTrig = false },
         f(function(_, snip)
             return snip.captures[1] .. "_" .. snip.captures[2]
         end), { condition = in_mathzone }
@@ -59,6 +58,12 @@ return nil, {
     -- LaTeX: Math superscripts
     s({ trig = "^^", wordTrig = false }, {
         t("^{"),
+        i(1),
+        t("}"),
+    }, { condition = in_mathzone }),
+    -- LaTeX: Math exponents
+    s({ trig = "^-", wordTrig = false }, {
+        t("^{-"),
         i(1),
         t("}"),
     }, { condition = in_mathzone }),
@@ -154,11 +159,54 @@ return nil, {
         i(1),
         t("}"),
     }, { condition = in_mathzone }),
+    -- LaTeX: Vector norm
+    s("norm", {
+        t("\\norm{"),
+        i(1),
+        t("}"),
+    }, { condition = in_mathzone }),
+    -- LaTeX: Absolute Value
+    s("abs", {
+        t("\\abs{"),
+        i(1),
+        t("}"),
+    }, { condition = in_mathzone }),
     -- LaTeX: Auto-aligned equals
     s({ trig = "([^&])=", regTrig = true, wordTrig = false },
         f(function(_, snip)
             return snip.captures[1] .. "&="
         end),
         { condition = in_align }
+    ),
+    -- LaTeX: Summations
+    s({ trig = "([^\\])sum", regTrig = true },
+        d(1, function(_, snip)
+            return sn(1, fmt(
+                [[
+                    {}\sum_{{{}={}}}^{{{}}}
+                ]],
+                {
+                    t(snip.captures[1]),
+                    i(1, "i"),
+                    i(2, "1"),
+                    i(3, "\\infty"),
+                }
+            ))
+        end)
+    ),
+    -- LaTeX: Limits
+    s({ trig = "([^\\])lim", regTrig = true },
+        d(1, function(_, snip)
+            return sn(1, fmt(
+                [[
+                    {}\lim_{{{}\to {}}}
+                ]],
+                {
+                    t(snip.captures[1]),
+                    i(1, "n"),
+                    i(2, "\\infty"),
+                }
+            ))
+        end)
     ),
 }
