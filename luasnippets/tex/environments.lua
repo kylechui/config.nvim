@@ -1,13 +1,4 @@
-local ls = require("luasnip")
-local fmt = require("luasnip.extras.fmt").fmt
-local rep = require("luasnip.extras").rep
-local c = ls.choice_node
--- local d = ls.dynamic_node
--- local f = ls.function_node
-local i = ls.insert_node
-local s = ls.s
--- local sn = ls.sn
-local t = ls.text_node
+---@diagnostic disable: undefined-global
 
 local in_comment = function()
     return vim.fn["vimtex#syntax#in_comment"]() == 1
@@ -19,6 +10,13 @@ end
 
 local in_text = function()
     return not in_mathzone() and not in_comment()
+end
+
+local begins_line = function()
+    local cur_line = vim.api.nvim_get_current_line()
+    -- Checks if the current line consists of whitespace and then the snippet
+    -- TODO: Fix limitation that the snippet cannot contain whitespace itself
+    return #cur_line == #string.match(cur_line, "%s+[^%s]+")
 end
 
 local get_env = function(name)
@@ -44,9 +42,9 @@ return nil, {
         }
     )),
     -- LaTeX: Proof environment
-    s("pf", get_env("proof"), { condition = in_text }),
+    s("pf", get_env("proof"), { condition = in_text and begins_line }),
     -- LaTeX: Align environment
-    s("ali", get_env("align*"), { condition = in_text }),
+    s("ali", get_env("align*"), { condition = in_text and begins_line }),
     -- LaTeX: Problem environment
     s("pb", {
         t("\\begin{problem}{"),
@@ -54,7 +52,7 @@ return nil, {
         t({ "}", "\t" }),
         i(0),
         t({ "", "\\end{problem}" }),
-    }, { condition = in_text }),
+    }, { condition = in_text and begins_line }),
     -- LaTeX: Enumerate environment
     s("enum", {
         c(1, {
@@ -66,11 +64,24 @@ return nil, {
         t({ "", "\t\\item " }),
         i(0),
         t({ "", "\\end{enumerate}" }),
-    }, { condition = in_text }),
+    }, { condition = in_text and begins_line }),
     -- LaTeX: Itemize environment
     s("iem", {
         t({ "\\begin{itemize}", "\t\\item " }),
         i(0),
         t({ "", "\\end{itemize}" }),
-    }, { condition = in_text }),
+    }, { condition = in_text and begins_line }),
+    -- LaTeX: Algorithm environment
+    s("algo", {
+        t({
+            "\\begin{algorithm}",
+            "\t\\DontPrintSemicolon",
+            "\t\\caption{",
+        }),
+        i(1),
+        t({ "}", "\t" }),
+        i(0),
+        t({ "", "\\end{algorithm}" }),
+    }, { condition = in_text and begins_line }),
+
 }

@@ -1,3 +1,5 @@
+---@diagnostic disable: undefined-global
+
 vim.cmd([[
 augroup packerUserConfig
     autocmd!

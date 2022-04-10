@@ -77,3 +77,10 @@ autocmd("BufWritePost", {
     callback = vim.lsp.buf.formatting_sync,
     group = formatCode,
 })
+
+-- Adds a new command to reload snippets
+vim.api.nvim_add_user_command("ReloadSnippets", [[
+    lua require("luasnip.loaders.from_lua").load({
+        paths = vim.fn["stdpath"]("config") .. "/luasnippets/"
+    })
+]], {})

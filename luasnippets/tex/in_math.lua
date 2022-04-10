@@ -1,13 +1,4 @@
-local ls = require("luasnip")
-local fmt = require("luasnip.extras.fmt").fmt
--- local rep = require("luasnip.extras").rep
-local c = ls.choice_node
-local d = ls.dynamic_node
-local f = ls.function_node
-local i = ls.insert_node
-local s = ls.s
-local sn = ls.sn
-local t = ls.text_node
+---@diagnostic disable: undefined-global
 
 local in_mathzone = function()
     return vim.fn["vimtex#syntax#in_mathzone"]() == 1
@@ -93,7 +84,8 @@ return nil, {
     -- LaTeX: Math script
     s("mscr", fmt([[\mathscr{{{}}}]], i(1)), { condition = in_mathzone }),
     -- LaTeX: Math text
-    s("tt", fmt([[\text{{{}}}]], i(1)), { condition = in_mathzone }),
+    s({ trig = "tt", wordTrig = false },
+        fmt([[\text{{{}}}]], i(1)), { condition = in_mathzone }),
     -- LaTeX: Parenthesis-delimited fractions
     s({ trig = "(%b())/", regTrig = true, wordTrig = false }, {
         d(1, function(_, snip)
@@ -153,6 +145,24 @@ return nil, {
     s(".b", t("\\dotsb"), { condition = in_mathzone }),
     -- LaTeX: Comma-separating dots
     s(".c", t("\\dotsc"), { condition = in_mathzone }),
+    -- LaTeX: Square root
+    s("sqrt", {
+        t("\\sqrt{"),
+        i(1),
+        t("}"),
+    }, { condition = in_mathzone }),
+    -- LaTeX: Parentheses
+    s("paren", {
+        t("\\paren{"),
+        i(1),
+        t("}"),
+    }, { condition = in_mathzone }),
+    -- LaTeX: Vector
+    s("vec", {
+        t("\\vec{"),
+        i(1),
+        t("}"),
+    }, { condition = in_mathzone }),
     -- LaTeX: Set notation
     s("set", {
         t("\\set{"),
@@ -175,8 +185,7 @@ return nil, {
     s({ trig = "([^&])=", regTrig = true, wordTrig = false },
         f(function(_, snip)
             return snip.captures[1] .. "&="
-        end),
-        { condition = in_align }
+        end), { condition = in_align }
     ),
     -- LaTeX: Summations
     s({ trig = "([^\\])sum", regTrig = true },
@@ -192,7 +201,7 @@ return nil, {
                     i(3, "\\infty"),
                 }
             ))
-        end)
+        end), { condition = in_mathzone }
     ),
     -- LaTeX: Limits
     s({ trig = "([^\\])lim", regTrig = true },
@@ -207,6 +216,23 @@ return nil, {
                     i(2, "\\infty"),
                 }
             ))
-        end)
+        end), { condition = in_mathzone }
     ),
+    -- LaTeX: Ordinal nth
+    s({ trig = "([%d$])th", regTrig = true, wordTrig = false }, {
+        f(function(_, snip)
+            return snip.captures[1] .. "\\tsup{th}"
+        end),
+    }, { condition = in_mathzone }),
+    -- LaTeX: Functions
+    s({ trig = "(%a):", regTrig = true, wordTrig = false }, {
+        d(1, function(_, snip)
+            return sn(1, {
+                t(snip.captures[1] .. "\\colon "),
+                i(1, "\\R"),
+                t("\\to "),
+                i(2, "\\R"),
+            })
+        end)
+    }, { condition = in_mathzone }),
 }

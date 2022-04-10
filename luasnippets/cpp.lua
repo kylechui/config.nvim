@@ -1,22 +1,13 @@
-local ls = require("luasnip")
-local fmt = require("luasnip.extras.fmt").fmt
-local rep = require("luasnip.extras").rep
-local c = ls.choice_node
-local d = ls.dynamic_node
--- local f = ls.function_node
-local i = ls.insert_node
-local s = ls.s
-local sn = ls.sn
-local t = ls.text_node
+---@diagnostic disable: undefined-global
 
 local standard = function(type)
     local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
     for _, line in ipairs(lines) do
         if line:match("using namespace std;") then
-            return sn(nil, i(1, type))
+            return type
         end
     end
-    return sn(nil, i(1, "std::" .. type))
+    return "std::" .. type
 end
 
 return {
@@ -117,7 +108,7 @@ return {
                     i(nil, "void"),
                     i(nil, "int"),
                     d(nil, function()
-                        return standard("string")
+                        return sn(1, i(1, standard("string")))
                     end),
                     i(nil, "bool"),
                 }),
@@ -196,11 +187,31 @@ return {
     ),
     -- C++: Vector
     s("vec", {
-        t("vector<"),
+        t(standard("vector<")),
         c(1, {
             i(1, "int"),
             d(1, function()
-                return standard("string")
+                return sn(1, i(1, standard("string")))
+            end),
+            i(1, "bool"),
+        }),
+        t(">"),
+    }),
+    -- C++: Unordered map
+    s("umap", {
+        t(standard("unordered_map<")),
+        c(1, {
+            i(1, "int"),
+            d(1, function()
+                return sn(1, i(1, standard("string")))
+            end),
+            i(1, "bool"),
+        }),
+        t(", "),
+        c(2, {
+            i(1, "int"),
+            d(1, function()
+                return sn(1, i(1, standard("string")))
             end),
             i(1, "bool"),
         }),

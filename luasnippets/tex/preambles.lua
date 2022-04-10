@@ -1,13 +1,4 @@
-local ls = require("luasnip")
-local fmt = require("luasnip.extras.fmt").fmt
-local rep = require("luasnip.extras").rep
-local c = ls.choice_node
--- local d = ls.dynamic_node
-local f = ls.function_node
-local i = ls.insert_node
-local s = ls.s
--- local sn = ls.sn
-local t = ls.text_node
+---@diagnostic disable: undefined-global
 
 return {
     -- LaTeX: Assignment preamble

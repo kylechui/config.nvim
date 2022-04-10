@@ -6,8 +6,6 @@ require("nvim-treesitter.configs").setup({
         custom_captures = {
             -- ["punctuation.delimiter"] = "TSInclude",
             -- ["punctuation.special"] = "TSInclude",
-            ["text.math"] = "TSFunction",
-            ["text.title"] = "TSParameter",
         },
     },
     textobjects = {
