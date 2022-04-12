@@ -74,11 +74,12 @@ return require("packer").startup(function()
     -- Startup analyser
     use("tweekmonster/startuptime.vim")
     -- Formatter
-    -- use "mhartington/formatter.nvim"
     use({
         "jose-elias-alvarez/null-ls.nvim",
         requires = "nvim-lua/plenary.nvim",
     })
+    -- Reverse join lines
+    use("~/nvim-trevJ.lua")
     -- LSP Stuff
     use("neovim/nvim-lspconfig")
     use("williamboman/nvim-lsp-installer")
@@ -91,5 +92,4 @@ return require("packer").startup(function()
     use("hrsh7th/nvim-cmp")
     use("uga-rosa/cmp-dictionary")
     use("saadparwaiz1/cmp_luasnip")
-    -- use "quangnguyen30192/cmp-nvim-ultisnips"
 end)

@@ -19,6 +19,10 @@ return {
     s("<-", t("&larr;")),
     -- Markdown: Right arrow
     s("->", t("&rarr;")),
+    -- Markdown: Less than or equal to
+    s("<=", t("&leq;")),
+    -- Markdown: Greater than or equal to
+    s(">=", t("&geq;")),
     -- Markdown: Bold
     s("", {
         t("**"),

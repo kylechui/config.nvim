@@ -73,6 +73,8 @@ map("t", "<Esc>", "<C-\\><C-n>", { silent = true })
 vim.api.nvim_set_keymap("c", "<C-j>", "<C-n>", { silent = true })
 vim.api.nvim_set_keymap("c", "<C-k>", "<C-p>", { silent = true })
 
+vim.keymap.set("n", "gJ", require("trevj").format_at_cursor, { silent = true })
+
 local ls = require("luasnip")
 map({ "i", "s" }, "<Tab>", function()
     if ls.expand_or_jumpable() then
