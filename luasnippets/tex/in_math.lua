@@ -8,32 +8,31 @@ local in_align = function()
     return vim.fn["vimtex#env#is_inside"]("align")[1] ~= 0
 end
 
-local greek_vars = {}
-greek_vars["a"] = "alpha"
-greek_vars["b"] = "beta"
-greek_vars["d"] = "delta"
-greek_vars["e"] = "eps"
-greek_vars["g"] = "gamma"
-greek_vars["l"] = "lam"
-greek_vars["o"] = "omega"
-greek_vars["s"] = "sigma"
-greek_vars["t"] = "tau"
+local greek_letters = {}
+greek_letters["a"] = "alpha"
+greek_letters["b"] = "beta"
+greek_letters["d"] = "delta"
+greek_letters["e"] = "eps"
+greek_letters["g"] = "gamma"
+greek_letters["l"] = "lam"
+greek_letters["o"] = "omega"
+greek_letters["s"] = "sigma"
+greek_letters["t"] = "tau"
 
 return nil, {
-    -- LaTeX: Greek variables
-    s({ trig = ";(%l)", regTrig = true },
-        d(1, function(_, snip)
-            if greek_vars[snip.captures[1]] ~= nil then
-                return sn(nil, {
-                    c(1, {
-                        t("\\" .. greek_vars[snip.captures[1]]),
-                        t("\\" .. greek_vars[snip.captures[1]]:gsub("^%l", string.upper)),
-                    })
-                })
-            end
-            return sn(nil, {})
-        end, {}), { condition = in_mathzone }
-    ),
+    -- LaTeX: Lowercase greek letters
+    s({ trig = ";(%l)", regTrig = true }, {
+        f(function(_, snip)
+            return "\\" .. greek_letters[snip.captures[1]]
+        end)
+    }, { condition = in_mathzone }),
+    -- LaTeX: Uppercase greek letters
+    s({ trig = ";(%u)", regTrig = true }, {
+        f(function(_, snip)
+            local greek_letter = greek_letters[string.lower(snip.captures[1])]
+            return "\\" .. greek_letter:gsub("^%l", string.upper)
+        end)
+    }, { condition = in_mathzone }),
     -- LaTeX: Single-digit subscripts
     s({ trig = "(%a)(%d)", regTrig = true, wordTrig = false },
         f(function(_, snip)
@@ -218,12 +217,6 @@ return nil, {
             ))
         end), { condition = in_mathzone }
     ),
-    -- LaTeX: Ordinal nth
-    s({ trig = "([%d$])th", regTrig = true, wordTrig = false }, {
-        f(function(_, snip)
-            return snip.captures[1] .. "\\tsup{th}"
-        end),
-    }, { condition = in_mathzone }),
     -- LaTeX: Functions
     s({ trig = "(%a):", regTrig = true, wordTrig = false }, {
         d(1, function(_, snip)

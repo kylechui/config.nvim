@@ -63,4 +63,10 @@ return {
     s("bf", fmt([[\textbf{{{}}}]], i(1)), { condition = in_text }),
     -- LaTeX: Teletype
     s("tt", fmt([[\texttt{{{}}}]], i(1)), { condition = in_text }),
+    -- LaTeX: Ordinal nth
+    s({ trig = "([%d$])th", regTrig = true, wordTrig = false }, {
+        f(function(_, snip)
+            return snip.captures[1] .. "\\tsup{th}"
+        end),
+    }, { condition = in_text }),
 }
