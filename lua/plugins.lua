@@ -79,7 +79,7 @@ return require("packer").startup(function()
         requires = "nvim-lua/plenary.nvim",
     })
     -- Reverse join lines
-    use("~/nvim-trevJ.lua")
+    use("AckslD/nvim-trevJ.lua")
     -- LSP Stuff
     use("neovim/nvim-lspconfig")
     use("williamboman/nvim-lsp-installer")
