@@ -18,7 +18,6 @@ require("pluginSettings/nvim-treesitter")
 require("pluginSettings/presence")
 require("pluginSettings/telescope")
 require("pluginSettings/nvim-trevJ")
--- require("pluginSettings/ultisnips")
 require("pluginSettings/vimtex")
 
 -- Loads in snippets

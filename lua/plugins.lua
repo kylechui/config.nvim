@@ -53,7 +53,6 @@ return require("packer").startup(function()
     -- LaTeX integration
     use("lervag/vimtex")
     -- Snippets
-    -- use "sirver/ultisnips"
     use("L3MON4D3/LuaSnip")
     -- Get good
     use("ThePrimeagen/vim-be-good")
