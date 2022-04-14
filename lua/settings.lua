@@ -84,3 +84,12 @@ vim.api.nvim_add_user_command("ReloadSnippets", [[
         paths = vim.fn["stdpath"]("config") .. "/luasnippets/"
     })
 ]], {})
+
+local openPDF = augroup("openPDF", {})
+autocmd("BufReadPost", {
+    pattern = {
+        "*.pdf",
+    },
+    command = [[call jobstart('zathura "' . expand('%') . '"') | bd]],
+    group = openPDF,
+})
