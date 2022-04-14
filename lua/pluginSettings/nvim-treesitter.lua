@@ -8,6 +8,9 @@ require("nvim-treesitter.configs").setup({
             -- ["punctuation.special"] = "TSInclude",
         },
     },
+    playground = {
+        enable = true,
+    },
     textobjects = {
         swap = {
             enable = true,
