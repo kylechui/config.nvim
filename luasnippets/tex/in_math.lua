@@ -166,6 +166,19 @@ return nil, {
             })
         end, {})
     }, { condition = in_mathzone }),
+    -- LaTeX: Visual fractions
+    s("/", {
+        d(1, function(_, snip)
+            if snip.env.TM_SELECTED_TEXT[1] then
+                return sn(1, {
+                    t("\\frac{" .. snip.env.TM_SELECTED_TEXT[1] .. "}{"),
+                    i(1),
+                    t("}"),
+                })
+            end
+            return sn(nil, t("/"))
+        end)
+    }, { condition = in_mathzone }),
     -- LaTeX: Binary operator dots
     s(".b", t("\\dotsb"), { condition = in_mathzone }),
     -- LaTeX: Comma-separating dots
