@@ -18,7 +18,6 @@ cmp.setup({
             { "i", "c" }
         ),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
         ["<CR>"] = cmp.config.disable,
     }),
     sources = cmp.config.sources({
@@ -26,8 +25,8 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "path" },
-        { name = "buffer", keyword_length = 5 },
-        { name = "dictionary", keyword_length = 5 },
+        { name = "buffer", keyword_length = 4 },
+        { name = "dictionary", keyword_length = 4, },
     }),
 })
 
@@ -51,8 +50,9 @@ cmp.setup.cmdline(":", {
 
 require("cmp_dictionary").setup({
     dic = {
-        ["*"] = { "/usr/share/dict/words" }
-    }
+        ["*"] = { "~/.config/nvim/spell/en.utf-8.add", "/usr/share/dict/words" }
+    },
+    first_case_insensitive = true,
 })
 
 -- Setup lspconfig
