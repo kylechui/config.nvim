@@ -1,5 +1,17 @@
 ---@diagnostic disable: undefined-global
 
+local ts_utils = require("nvim-treesitter.ts_utils")
+
+-- TODO: Fix jank
+-- There probably is a better way to get the root node of the node at the cursor
+local in_html = function()
+    local cur = ts_utils.get_node_at_cursor()
+    while cur:parent() ~= nil do
+        cur = cur:parent()
+    end
+    return cur and cur:type() == "fragment"
+end
+
 return {
     -- Markdown: Definition comment tag
     s("defn", fmt(
@@ -25,14 +37,31 @@ return {
     s(">=", t("&geq;")),
     -- Markdown: Bold
     s("", {
+        t("<b>"),
+        i(1),
+        t("</b>"),
+    }, { condition = in_html }),
+    s("", {
         t("**"),
         i(1),
         t("**"),
-    }),
+    }, { condition = not in_html }),
+    -- Markdown: Bold
+    s("`", {
+        t("<code>"),
+        i(1),
+        t("</code>"),
+    }, { condition = in_html }),
     -- TODO: Markdown: Italics
     s("<C-I>", {
         t("*"),
         i(1),
         t("*"),
+    }),
+    -- Markdown: Headers
+    s({ trig = "^h(%d)", regTrig = true }, {
+        f(function(_, snip)
+            return string.rep("#", snip.captures[1])
+        end),
     }),
 }

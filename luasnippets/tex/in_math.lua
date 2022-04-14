@@ -1,8 +1,22 @@
 ---@diagnostic disable: undefined-global
 
+
 local in_mathzone = function()
     return vim.fn["vimtex#syntax#in_mathzone"]() == 1
 end
+--[[
+-- TS can't handle align environment easily, and the tree doesn't update often
+local ts_utils = require("nvim-treesitter.ts_utils")
+local in_math = function()
+    local cur = ts_utils.get_node_at_cursor()
+    while cur do
+        if cur:type() == "inline_formula" or cur:type() == "displayed_equation" then
+            return true
+        end
+        cur = cur:parent()
+    end
+    return false
+end ]]
 
 local in_align = function()
     return vim.fn["vimtex#env#is_inside"]("align")[1] ~= 0
@@ -23,14 +37,20 @@ return nil, {
     -- LaTeX: Lowercase greek letters
     s({ trig = ";(%l)", regTrig = true }, {
         f(function(_, snip)
-            return "\\" .. greek_letters[snip.captures[1]]
+            if greek_letters[snip.captures[1]] then
+                return "\\" .. greek_letters[snip.captures[1]]
+            end
+            return ""
         end)
-    }, { condition = in_mathzone }),
+    }, { condition = in_math }),
     -- LaTeX: Uppercase greek letters
     s({ trig = ";(%u)", regTrig = true }, {
         f(function(_, snip)
             local greek_letter = greek_letters[string.lower(snip.captures[1])]
-            return "\\" .. greek_letter:gsub("^%l", string.upper)
+            if greek_letter then
+                return "\\" .. greek_letter:gsub("^%l", string.upper)
+            end
+            return ""
         end)
     }, { condition = in_mathzone }),
     -- LaTeX: Single-digit subscripts
@@ -84,7 +104,8 @@ return nil, {
     s("mscr", fmt([[\mathscr{{{}}}]], i(1)), { condition = in_mathzone }),
     -- LaTeX: Math text
     s({ trig = "tt", wordTrig = false },
-        fmt([[\text{{{}}}]], i(1)), { condition = in_mathzone }),
+        fmt([[\text{{{}}}]], i(1)), { condition = in_mathzone }
+    ),
     -- LaTeX: Parenthesis-delimited fractions
     s({ trig = "(%b())/", regTrig = true, wordTrig = false }, {
         d(1, function(_, snip)
