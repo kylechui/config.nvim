@@ -1,16 +1,28 @@
 ---@diagnostic disable: undefined-global
 
+local GREEK_LETTERS = {}
+GREEK_LETTERS["a"] = "alpha"
+GREEK_LETTERS["b"] = "beta"
+GREEK_LETTERS["d"] = "delta"
+GREEK_LETTERS["e"] = "eps"
+GREEK_LETTERS["g"] = "gamma"
+GREEK_LETTERS["l"] = "lam"
+GREEK_LETTERS["o"] = "omega"
+GREEK_LETTERS["s"] = "sigma"
+GREEK_LETTERS["t"] = "tau"
 
-local in_mathzone = function()
-    return vim.fn["vimtex#syntax#in_mathzone"]() == 1
-end
---[[
--- TS can't handle align environment easily, and the tree doesn't update often
+--[[ local MATH_MODES = {
+    displayed_equation = true,
+    inline_formula = true,
+    math_environment = true,
+}
+
+-- TS isn't updating the syntax tree on edit
 local ts_utils = require("nvim-treesitter.ts_utils")
 local in_math = function()
     local cur = ts_utils.get_node_at_cursor()
     while cur do
-        if cur:type() == "inline_formula" or cur:type() == "displayed_equation" then
+        if MATH_MODES[cur:type()] then
             return true
         end
         cur = cur:parent()
@@ -18,35 +30,28 @@ local in_math = function()
     return false
 end ]]
 
+local in_mathzone = function()
+    return vim.fn["vimtex#syntax#in_mathzone"]() == 1
+end
+
 local in_align = function()
     return vim.fn["vimtex#env#is_inside"]("align")[1] ~= 0
 end
-
-local greek_letters = {}
-greek_letters["a"] = "alpha"
-greek_letters["b"] = "beta"
-greek_letters["d"] = "delta"
-greek_letters["e"] = "eps"
-greek_letters["g"] = "gamma"
-greek_letters["l"] = "lam"
-greek_letters["o"] = "omega"
-greek_letters["s"] = "sigma"
-greek_letters["t"] = "tau"
 
 return nil, {
     -- LaTeX: Lowercase greek letters
     s({ trig = ";(%l)", regTrig = true }, {
         f(function(_, snip)
-            if greek_letters[snip.captures[1]] then
-                return "\\" .. greek_letters[snip.captures[1]]
+            if GREEK_LETTERS[snip.captures[1]] then
+                return "\\" .. GREEK_LETTERS[snip.captures[1]]
             end
             return ""
         end)
-    }, { condition = in_math }),
+    }, { condition = in_mathzone }),
     -- LaTeX: Uppercase greek letters
     s({ trig = ";(%u)", regTrig = true }, {
         f(function(_, snip)
-            local greek_letter = greek_letters[string.lower(snip.captures[1])]
+            local greek_letter = GREEK_LETTERS[string.lower(snip.captures[1])]
             if greek_letter then
                 return "\\" .. greek_letter:gsub("^%l", string.upper)
             end
