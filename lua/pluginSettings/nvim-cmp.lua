@@ -8,9 +8,7 @@ cmp.setup({
             require("luasnip").lsp_expand(args.body)
         end,
     },
-    mapping = {
-        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+    mapping = cmp.mapping.preset.insert({
         ["<C-j>"] = cmp.mapping.select_next_item(
             { behavior = cmp.SelectBehavior.Insert },
             { "i", "c" }
@@ -20,28 +18,22 @@ cmp.setup({
             { "i", "c" }
         ),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<Tab>"] = cmp.mapping.confirm(),
-        ["<C-e>"] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-        }),
-        -- Accept currently selected item. If none selected, `select` first item
-        -- Set `select` to `false` to only confirm explicitly selected items
+        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
         ["<CR>"] = cmp.config.disable,
-        -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    },
-    sources = {
+    }),
+    sources = cmp.config.sources({
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "path" },
         { name = "buffer", keyword_length = 5 },
         { name = "dictionary", keyword_length = 5 },
-    },
+    }),
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won"t work anymore)
 cmp.setup.cmdline("/", {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = "buffer" },
     },
@@ -49,6 +41,7 @@ cmp.setup.cmdline("/", {
 
 -- Use cmdline & path source for ":" (if you enabled `native_menu`, this won"t work anymore)
 cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
         { name = "path" },
     }, {
