@@ -59,7 +59,7 @@ return {
         t("*"),
     }),
     -- Markdown: Headers
-    s({ trig = "^h(%d)", regTrig = true }, {
+    s({ trig = "^%s*h(%d)", regTrig = true }, {
         f(function(_, snip)
             return string.rep("#", snip.captures[1])
         end),
