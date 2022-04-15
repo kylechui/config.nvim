@@ -79,6 +79,8 @@ return require("packer").startup(function()
     })
     -- Reverse join lines
     use("AckslD/nvim-trevJ.lua")
+    -- Indent blanklines
+    use("lukas-reineke/indent-blankline.nvim")
     -- LSP Stuff
     use("neovim/nvim-lspconfig")
     use("williamboman/nvim-lsp-installer")
