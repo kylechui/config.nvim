@@ -20,8 +20,3 @@ require("pluginSettings/nvim-trevJ")
 require("pluginSettings/presence")
 require("pluginSettings/telescope")
 require("pluginSettings/vimtex")
-
--- Loads in snippets
-require("luasnip.loaders.from_lua").load({
-    paths = vim.fn["stdpath"]("config") .. "/luasnippets/"
-})
