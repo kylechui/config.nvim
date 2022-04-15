@@ -56,6 +56,7 @@ require("lspconfig").sumneko_lua.setup({
                 defaultConfig = {
                     indent_style = "space",
                     indent_size = "4",
+                    quote_style = "double",
                 },
             },
             telemetry = {
