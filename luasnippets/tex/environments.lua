@@ -104,5 +104,5 @@ return nil, {
             table.insert(nodes, t({ "", "\\end{bmatrix}" }))
             return sn(1, nodes)
         end),
-    }, { condition = in_mathzone and begins_line })
+    }, { condition = in_mathzone })
 }

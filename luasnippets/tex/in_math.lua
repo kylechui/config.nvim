@@ -40,7 +40,7 @@ end
 
 return nil, {
     -- LaTeX: Lowercase greek letters
-    s({ trig = ";(%l)", regTrig = true }, {
+    s({ trig = ";(%l)", regTrig = true, wordTrig = false }, {
         f(function(_, snip)
             if GREEK_LETTERS[snip.captures[1]] then
                 return "\\" .. GREEK_LETTERS[snip.captures[1]]
@@ -49,7 +49,7 @@ return nil, {
         end)
     }, { condition = in_mathzone }),
     -- LaTeX: Uppercase greek letters
-    s({ trig = ";(%u)", regTrig = true }, {
+    s({ trig = ";(%u)", regTrig = true, wordTrig = false }, {
         f(function(_, snip)
             local greek_letter = GREEK_LETTERS[string.lower(snip.captures[1])]
             if greek_letter then
