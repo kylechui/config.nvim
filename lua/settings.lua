@@ -44,6 +44,10 @@ opt.completeopt = "menu,menuone,noselect"
 -- Neovide-specific cursor settings
 vim.g.neovide_cursor_animation_length = 0.05
 vim.g.neovide_cursor_animate_in_insert_mode = 0
+-- Use filetype.lua instead of filetype.vim (faster startup)
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
+
 -- Highlight yanked text
 local highlightYank = augroup("highlightYank", {})
 autocmd("TextYankPost", {
@@ -78,13 +82,6 @@ autocmd("BufWritePost", {
     group = formatCode,
 })
 
--- Adds a new command to reload snippets
-vim.api.nvim_create_user_command("ReloadSnippets", [[
-    lua require("luasnip.loaders.from_lua").load({
-        paths = vim.fn["stdpath"]("config") .. "/luasnippets/"
-    })
-]], {})
-
 local openPDF = augroup("openPDF", {})
 autocmd("BufReadPost", {
     pattern = {
@@ -93,3 +90,11 @@ autocmd("BufReadPost", {
     command = [[call jobstart('zathura "' . expand('%') . '"') | bd]],
     group = openPDF,
 })
+
+-- Adds a new command to reload snippets
+vim.api.nvim_create_user_command("ReloadSnippets", [[
+    lua require("luasnip.loaders.from_lua").load({
+        paths = vim.fn["stdpath"]("config") .. "/luasnippets/"
+    })
+]], {})
+
