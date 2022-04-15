@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-global
 
-local standard = function(type)
+local standardize = function(type)
     local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
     for _, line in ipairs(lines) do
         if line:match("using namespace std;") then
@@ -108,7 +108,7 @@ return {
                     i(nil, "void"),
                     i(nil, "int"),
                     d(nil, function()
-                        return sn(1, i(1, standard("string")))
+                        return sn(1, i(1, standardize("string")))
                     end),
                     i(nil, "bool"),
                 }),
@@ -187,11 +187,13 @@ return {
     ),
     -- C++: Vector
     s("vec", {
-        t(standard("vector<")),
+        f(function()
+            return standardize("vector<")
+        end),
         c(1, {
             i(1, "int"),
             d(1, function()
-                return sn(1, i(1, standard("string")))
+                return sn(1, i(1, standardize("string")))
             end),
             i(1, "bool"),
         }),
@@ -199,11 +201,13 @@ return {
     }),
     -- C++: Unordered map
     s("umap", {
-        t(standard("unordered_map<")),
+        f(function()
+            return standardize("unordered_map<")
+        end),
         c(1, {
             i(1, "int"),
             d(1, function()
-                return sn(1, i(1, standard("string")))
+                return sn(1, i(1, standardize("string")))
             end),
             i(1, "bool"),
         }),
@@ -211,7 +215,7 @@ return {
         c(2, {
             i(1, "int"),
             d(1, function()
-                return sn(1, i(1, standard("string")))
+                return sn(1, i(1, standardize("string")))
             end),
             i(1, "bool"),
         }),
