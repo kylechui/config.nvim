@@ -6,10 +6,6 @@ require("nvim-treesitter.configs").setup({
         enable = true,
         disable = { "latex" },
         additional_vim_regex_highlighting = { "latex" },
-        custom_captures = {
-            -- ["punctuation.delimiter"] = "TSInclude",
-            -- ["punctuation.special"] = "TSInclude",
-        },
     },
     playground = {
         enable = true,

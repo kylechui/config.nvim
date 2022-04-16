@@ -46,18 +46,23 @@ return {
         i(1),
         t("**"),
     }, { condition = not in_html }),
-    -- Markdown: Bold
+    -- TODO: Markdown: Italics
+    s("<C-i>", {
+        t("<i>"),
+        i(1),
+        t("</i>"),
+    }, { condition = in_html }),
+    s("<C-i>", {
+        t("*"),
+        i(1),
+        t("*"),
+    }, { condition = not in_html }),
+    -- Markdown: Code
     s("`", {
         t("<code>"),
         i(1),
         t("</code>"),
     }, { condition = in_html }),
-    -- TODO: Markdown: Italics
-    s("<C-I>", {
-        t("*"),
-        i(1),
-        t("*"),
-    }),
     -- Markdown: Headers
     s({ trig = "^%s*h(%d)", regTrig = true }, {
         f(function(_, snip)

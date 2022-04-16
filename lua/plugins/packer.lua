@@ -1,5 +1,17 @@
 ---@diagnostic disable: undefined-global
 
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
+local packerUserConfig = augroup("packerUserConfig", {})
+autocmd("BufWritePost", {
+    pattern = {
+        "plugins.lua",
+    },
+    command = "source <afile> | PackerCompile",
+    group = packerUserConfig,
+})
+
 vim.cmd([[
 augroup packerUserConfig
     autocmd!
@@ -25,7 +37,7 @@ return require("packer").startup(function()
     use("nvim-telescope/telescope-file-browser.nvim")
     -- Status line and bufferline
     use({
-        "NTBBloodbath/galaxyline.nvim",
+        "nvim-lualine/lualine.nvim",
         requires = {
             "kyazdani42/nvim-web-devicons",
             opt = true,
@@ -37,8 +49,8 @@ return require("packer").startup(function()
         "kyazdani42/nvim-tree.lua",
         requires = "kyazdani42/nvim-web-devicons",
     })
-    -- Colour scheme
-    use("eddyekofo94/gruvbox-flat.nvim")
+    -- Color scheme
+    use("rebelot/kanagawa.nvim")
     -- Treesitter for better syntax highlighting and other features
     use({
         "nvim-treesitter/nvim-treesitter",
@@ -65,14 +77,8 @@ return require("packer").startup(function()
     use("windwp/nvim-autopairs")
     -- Git integration
     use("tpope/vim-fugitive")
-    use({
-        "TimUntersberger/neogit",
-        requires = "nvim-lua/plenary.nvim",
-    })
     -- Markdown viewing
     use("iamcco/markdown-preview.nvim")
-    -- Startup analyser
-    use("tweekmonster/startuptime.vim")
     -- Formatter
     use({
         "jose-elias-alvarez/null-ls.nvim",

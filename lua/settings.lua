@@ -10,11 +10,8 @@ opt.clipboard = "unnamedplus"
 opt.modelines = 0
 opt.maxmempattern = 2500
 -- GUI stuff
-vim.g.gruvbox_flat_style = "dark"
-vim.cmd([[
-    colorscheme gruvbox-flat
-]])
--- vim.g.colors_name = "gruvbox-flat"
+vim.cmd("colorscheme kanagawa")
+
 opt.guifont = "JetBrains Mono:h12"
 opt.termguicolors = true
 opt.mouse = "a"
@@ -97,4 +94,3 @@ vim.api.nvim_create_user_command("ReloadSnippets", [[
         paths = vim.fn["stdpath"]("config") .. "/luasnippets/"
     })
 ]], {})
-

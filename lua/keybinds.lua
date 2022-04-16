@@ -3,7 +3,7 @@ local map = vim.keymap.set
 map("n", "<Space>", "<NOP>", { silent = true })
 vim.g.mapleader = " "
 -- Keybinds for editing init files
-map("n", "<Leader>s", require("pluginSettings.telescope").search_dotfiles, { silent = true })
+map("n", "<Leader>s", require("plugins.telescope").search_dotfiles, { silent = true })
 -- Saving files with <C-s>
 map("n", "<C-s>", "<Cmd>up!<CR>", { silent = true })
 map({ "i", "x" }, "<C-s>", "<Esc><Cmd>up!<CR>", { silent = true })
@@ -34,7 +34,7 @@ map("n", "<A-h>", "<Cmd>BufferLineMovePrev<CR>", { silent = true })
 map("n", "<A-l>", "<Cmd>BufferLineMoveNext<CR>", { silent = true })
 -- Telescope fuzzy find stuff
 map("n", "<Leader>f.", require("telescope.builtin").find_files, { silent = true })
-map("n", "<Leader>ff", require("pluginSettings.telescope").search_workspace, { silent = true })
+map("n", "<Leader>ff", require("plugins.telescope").search_workspace, { silent = true })
 map("n", "<Leader>fg", require("telescope.builtin").live_grep, { silent = true })
 map("n", "<Leader>fh", require("telescope.builtin").help_tags, { silent = true })
 -- Navigate by wrapped lines by default
@@ -69,9 +69,8 @@ map("n", "Q", "<NOP>", { silent = true })
 -- Map esc to go to normal mode for terminal
 map("t", "<Esc>", "<C-\\><C-n>", { silent = true })
 -- Map <C-j> and <C-k> to scroll up and down autocompletion list in command mode
--- TODO: I don't know why but this doesn't work with the new API yet
-vim.api.nvim_set_keymap("c", "<C-j>", "<C-n>", { silent = true })
-vim.api.nvim_set_keymap("c", "<C-k>", "<C-p>", { silent = true })
+map("c", "<C-j>", "<C-n>", { remap = true, silent = true })
+map("c", "<C-k>", "<C-p>", { remap = true, silent = true })
 
 vim.keymap.set("n", "gJ", require("trevj").format_at_cursor, { silent = true })
 

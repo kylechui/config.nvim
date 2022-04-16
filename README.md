@@ -11,8 +11,9 @@ doing homework in LaTeX, as well as programming in C++.
   Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/Ligatures)
   (can be changed in
   [settings](https://github.com/kylechui/config.nvim/blob/f8ed82242dd8b55271ea2f3b453d15b9be8d5df9/lua/settings.lua#L13))
-* Colorscheme: Tweaked version of
-  [gruvbox-flat](https://github.com/eddyekofo94/gruvbox-flat.nvim)
+
+* Colorscheme: [kanagawa](https://github.com/rebelot/kanagawa.nvim)
+
 * GUI: I use [Neovide](https://github.com/neovide/neovide) as my interface of
   choice
 
@@ -26,7 +27,7 @@ doing homework in LaTeX, as well as programming in C++.
   * Linux: [Zathura](https://pwmt.org/projects/zathura/)
   * Windows:
     [SumatraPDF](https://www.sumatrapdfreader.org/download-free-pdf-viewer)
-* [Optional] Requires Node.js and yarn for [live previewing markdown
+* \[Optional] Requires Node.js and yarn for [live previewing markdown
   files](https://github.com/iamcco/markdown-preview.nvim)
   of choice
 
@@ -39,21 +40,19 @@ my packages. The general hierarchy for how things are configured is as follows:
     └── ...
     lua
     ├── keybinds.lua
-    ├── plugins.lua
     ├── settings.lua
     ├── utils.lua
-    └── pluginSettings
+    └── plugins
         └── ...
     └── luasnippets
         └── ...
 
 * `ftplugin/` -- Stores various settings for specific file types
 * `keybinds.lua` -- Stores various key maps
-* `plugins.lua` -- Defines which plugins will be installed
 * `settings.lua` -- General settings and options
 * `utils.lua` -- Some helper functions
-* `pluginSettings/` -- A folder full of the configurations needed for each
-  individual plugin, stored in the form `pluginSettings/[pluginName].lua`
+* `plugins/` -- A folder full of the configurations needed for each
+  individual plugin, stored in the form `plugins/[pluginName].lua`
 * `luasnippets/` -- My snippets configuration for each language I use, stored
   in the form `luasnippets/[fileType].lua`
 
