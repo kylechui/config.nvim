@@ -12,13 +12,6 @@ autocmd("BufWritePost", {
     group = packerUserConfig,
 })
 
-vim.cmd([[
-augroup packerUserConfig
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-augroup end
-]])
-
 return require("packer").startup(function()
     -- Packer can manage itself
     use("wbthomason/packer.nvim")
