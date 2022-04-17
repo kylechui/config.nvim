@@ -1,4 +1,5 @@
 -- Plugin Shenanigans
+require("plugins/bufferline")
 require("plugins/comment")
 require("plugins/indent-blankline")
 require("plugins/kanagawa")
@@ -6,7 +7,6 @@ require("plugins/lualine")
 require("plugins/luasnip")
 require("plugins/null-ls")
 require("plugins/nvim-autopairs")
-require("plugins/nvim-bufferline")
 require("plugins/nvim-cmp")
 require("plugins/nvim-colorizer")
 require("plugins/nvim-lspconfig")

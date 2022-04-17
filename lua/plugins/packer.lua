@@ -36,7 +36,7 @@ return require("packer").startup(function()
             opt = true,
         },
     })
-    use("akinsho/nvim-bufferline.lua")
+    use("akinsho/bufferline.nvim")
     -- File explorer
     use({
         "kyazdani42/nvim-tree.lua",
