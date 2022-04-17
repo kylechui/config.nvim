@@ -8,22 +8,49 @@ end
 
 require("lualine").setup({
     options = {
-        component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
+        component_separators = { left = "|", right = "|" },
         globalstatus = true,
     },
     sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = { "filename" },
-        lualine_x = {
+        lualine_b = {
+            "branch",
             {
-                word_count,
-                color = nil,
+                "diff",
+                symbols = {
+                    added = " ",
+                    modified = " ",
+                    removed = " ",
+                },
             },
+            {
+                "diagnostics",
+                symbols = {
+                    error = " ",
+                    warn = " ",
+                    info = " ",
+                    hint = " ",
+                },
+            }
         },
+        lualine_c = {
+            {
+                "filetype",
+                icon_only = true,
+                padding = {
+                    left = 1,
+                    right = 0,
+                },
+                separator = {
+                    right = "",
+                },
+            },
+            "filename",
+        },
+        lualine_x = { word_count },
         lualine_y = { "progress" },
-        lualine_z = { "location" }
+        lualine_z = { "location" },
     },
     extensions = {
         "nvim-tree",
