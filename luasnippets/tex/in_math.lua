@@ -184,37 +184,37 @@ return nil, {
     -- LaTeX: Comma-separating dots
     s(".c", t("\\dotsc"), { condition = in_mathzone }),
     -- LaTeX: Square root
-    s("sqrt", {
+    s({ trig = "sqrt", wordTrig = false }, {
         t("\\sqrt{"),
         i(1),
         t("}"),
     }, { condition = in_mathzone }),
     -- LaTeX: Parentheses
-    s("paren", {
+    s({ trig = "paren", wordTrig = false }, {
         t("\\paren{"),
         i(1),
         t("}"),
     }, { condition = in_mathzone }),
     -- LaTeX: Vector
-    s("vec", {
+    s({ trig = "vec", wordTrig = false }, {
         t("\\vec{"),
         i(1),
         t("}"),
     }, { condition = in_mathzone }),
     -- LaTeX: Set notation
-    s("set", {
+    s({ trig = "set", wordTrig = false }, {
         t("\\set{"),
         i(1),
         t("}"),
     }, { condition = in_mathzone }),
     -- LaTeX: Vector norm
-    s("norm", {
+    s({ trig = "norm", wordTrig = false }, {
         t("\\norm{"),
         i(1),
         t("}"),
     }, { condition = in_mathzone }),
     -- LaTeX: Absolute Value
-    s("abs", {
+    s({ trig = "abs", wordTrig = false }, {
         t("\\abs{"),
         i(1),
         t("}"),
