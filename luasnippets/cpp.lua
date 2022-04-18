@@ -18,6 +18,8 @@ return {
             [[
                 #include <bits/stdc++.h>
                 using namespace std;
+                using ll = long long;
+                using ld = long double;
 
                 int main() {{
                     {}{}
@@ -185,6 +187,16 @@ return {
             }
         )
     ),
+    -- C++: Printing
+    s("cout", {
+        f(function()
+            return standardize("cout") .. " << "
+        end),
+        i(1),
+        f(function()
+            return " << " .. standardize("endl;")
+        end),
+    }),
     -- C++: Vector
     s("vec", {
         f(function()
