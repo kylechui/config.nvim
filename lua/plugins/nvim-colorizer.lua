@@ -1,1 +1,5 @@
-require("colorizer").setup()
+require("colorizer").setup({
+    default_options = {
+        names = false,
+    }
+})
