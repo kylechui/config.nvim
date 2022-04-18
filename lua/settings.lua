@@ -1,7 +1,5 @@
 -- I'm lazy
 local opt = vim.opt
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
 
 -- Define workspace path
 vim.env.WORKSPACE = "~/Documents/github/"
@@ -35,7 +33,6 @@ opt.laststatus = 3
 
 opt.lazyredraw = true
 opt.hlsearch = false
-opt.incsearch = true
 opt.splitright = true
 opt.completeopt = "menu,menuone,noselect"
 -- Neovide-specific cursor settings
@@ -44,49 +41,6 @@ vim.g.neovide_cursor_animate_in_insert_mode = 0
 -- Use filetype.lua instead of filetype.vim (faster startup)
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
-
--- Highlight yanked text
-local highlightYank = augroup("highlightYank", {})
-autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
-    end,
-    group = highlightYank,
-})
--- Save/restore code folds
-local saveFolds = augroup("saveFolds", {})
-autocmd("BufWinLeave", {
-    pattern = "?*",
-    command = "mkview",
-    group = saveFolds,
-})
-autocmd("BufWinEnter", {
-    pattern = "?*",
-    command = "loadview",
-    group = saveFolds,
-})
--- Format code on save for certain file types
-local formatCode = augroup("formatCode", {})
-autocmd("BufWritePost", {
-    pattern = {
-        "*.cpp",
-        "*.js",
-        "*.lua",
-        "*.md",
-        "*.ts",
-    },
-    callback = vim.lsp.buf.formatting_sync,
-    group = formatCode,
-})
-
-local openPDF = augroup("openPDF", {})
-autocmd("BufReadPost", {
-    pattern = {
-        "*.pdf",
-    },
-    command = [[call jobstart('zathura "' . expand('%') . '"') | bd]],
-    group = openPDF,
-})
 
 -- Adds a new command to reload snippets
 vim.api.nvim_create_user_command("ReloadSnippets", [[

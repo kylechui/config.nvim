@@ -1,4 +1,8 @@
--- Plugin Shenanigans
+require("autocommands")
+require("keybinds")
+require("settings")
+
+-- Plugin configurations
 require("plugins/bufferline")
 require("plugins/comment")
 require("plugins/indent-blankline")
@@ -17,6 +21,3 @@ require("plugins/packer")
 require("plugins/presence")
 require("plugins/telescope")
 require("plugins/vimtex")
-
-require("settings")
-require("keybinds")
