@@ -6,10 +6,10 @@ function M.is_buffer_empty()
 end
 
 function M.adjust_font_size(delta)
-    local gf = vim.inspect(vim.opt.guifont:get())
-    local font_size = gf:match(":h(%d+)")
-    local updated = string.gsub(gf, ":h(%d+)", ":h" .. (font_size + delta))
-    vim.opt.guifont = updated:sub(4, string.len(updated) - 3)
+    local old_font = vim.opt.guifont["_value"]
+    local font_size = string.match(old_font, ":h(%d+)$")
+    local new_font = string.gsub(old_font, ":h(%d+)$", ":h" .. (font_size + delta))
+    vim.opt.guifont = new_font
 end
 
 function M.get_help(file)
