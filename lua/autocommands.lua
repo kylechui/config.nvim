@@ -10,14 +10,14 @@ autocmd("TextYankPost", {
 })
 -- Save/restore code folds
 local saveFolds = augroup("saveFolds", {})
-autocmd("BufWinLeave", {
-    pattern = "?*",
+autocmd("BufWritePost", {
+    pattern = "*",
     command = "silent mkview",
     group = saveFolds,
 })
-autocmd("BufWinEnter", {
-    pattern = "?*",
-    command = "silent loadview",
+autocmd("BufReadPost", {
+    pattern = "*",
+    command = "silent! loadview",
     group = saveFolds,
 })
 -- Format code on save for certain file types
