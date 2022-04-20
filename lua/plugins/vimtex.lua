@@ -1,13 +1,8 @@
 vim.g.tex_flavor = "latex"
--- Turn off spellcheck for comments
 vim.g.tex_comment_nospell = 1
-vim.cmd([[
-let g:vimtex_compiler_latexmk = {
-\  "options": [
-\      "-shell-escape",
-\  ],
-\}
-]])
+vim.g.vimtex_compiler_latexmk = {
+    ["options"] = { "-shell-escape" }
+}
 
 -- Selects the default PDF viewer when compiling LaTeX files
 -- SumatraPDF for Windows, Zathura for Linux
