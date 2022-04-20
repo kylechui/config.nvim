@@ -1,5 +1,16 @@
 ---@diagnostic disable: undefined-global
 
+local in_text = function()
+    return not in_mathzone() and not in_comment()
+end
+
+local begins_line = function()
+    local cur_line = vim.api.nvim_get_current_line()
+    -- Checks if the current line consists of whitespace and then the snippet
+    -- TODO: Fix limitation that the snippet cannot contain whitespace itself
+    return #cur_line == #string.match(cur_line, "%s*[^%s]+")
+end
+
 return {
     -- LaTeX: Assignment preamble
     s("setup", fmt(
@@ -21,7 +32,7 @@ return {
               \maketitle
               \newpage
               \pagenumbering{{arabic}}
-              {}{}
+              {}
             \end{{document}}
         ]],
         {
@@ -31,14 +42,13 @@ return {
                 return os.date("%Y-%m-%d")
             end),
             rep(2),
-            -- TODO: Fix indentation nonsense
-            c(3, {
-                i(0),
-                t({ "\\tableofcontents", "\t\\newpage", "\t" })
-            }),
             i(0),
         }
-    )),
+    ), { condition = in_text and begins_line }),
+    -- LaTeX: Table of contents
+    s("toc", {
+        t({ "\\tableofcontents", "\\newpage", "" }),
+    }, { condition = in_text and begins_line }),
     -- LaTeX: Notes preamble
     s("notes", fmt(
         [[
@@ -57,5 +67,5 @@ return {
         {
             i(0),
         }
-    ))
+    ), { condition = in_text and begins_line })
 }, nil
