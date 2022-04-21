@@ -11,12 +11,10 @@ autocmd("TextYankPost", {
 -- Save/restore code folds
 local saveFolds = augroup("saveFolds", {})
 autocmd("BufWritePost", {
-    pattern = "*",
     command = "silent mkview",
     group = saveFolds,
 })
 autocmd("BufReadPost", {
-    pattern = "*",
     command = "silent! loadview",
     group = saveFolds,
 })
