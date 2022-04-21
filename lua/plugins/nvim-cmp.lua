@@ -22,15 +22,16 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = "nvim_lua" },
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
         { name = "path" },
         { name = "buffer", keyword_length = 4 },
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "calc" },
         { name = "dictionary", keyword_length = 4, },
     }),
 })
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won"t work anymore)
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore)
 cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
@@ -38,7 +39,7 @@ cmp.setup.cmdline("/", {
     },
 })
 
--- Use cmdline & path source for ":" (if you enabled `native_menu`, this won"t work anymore)
+-- Use cmdline & path source for ":" (if you enabled `native_menu`, this won't work anymore)
 cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
