@@ -6,7 +6,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local packerUserConfig = augroup("packerUserConfig", {})
 autocmd("BufWritePost", {
     pattern = {
-        "plugins.lua",
+        "packer.lua",
     },
     command = "source <afile> | PackerCompile",
     group = packerUserConfig,
@@ -85,12 +85,13 @@ return require("packer").startup(function()
     use("neovim/nvim-lspconfig")
     use("williamboman/nvim-lsp-installer")
     -- Autocomplete engine
-    use("hrsh7th/cmp-nvim-lua")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-path")
-    use("hrsh7th/cmp-cmdline")
     use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-calc")
+    use("hrsh7th/cmp-cmdline")
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-nvim-lua")
+    use("hrsh7th/cmp-path")
     use("uga-rosa/cmp-dictionary")
     use("saadparwaiz1/cmp_luasnip")
 end)
