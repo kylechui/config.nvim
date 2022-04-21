@@ -233,4 +233,18 @@ return {
         }),
         t(">"),
     }),
+    -- C++: Priority Queue
+    s("pq", {
+        f(function()
+            return standardize("priority_queue<int, ") .. standardize("vector<int>")
+        end),
+        c(1, {
+            t(""),
+            sn(nil, {
+                t(", "),
+                i(1, standardize("greater<int>"))
+            }),
+        }),
+        t(">"),
+    }),
 }, nil
