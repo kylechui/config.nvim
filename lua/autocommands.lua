@@ -34,12 +34,16 @@ autocmd("BufWritePre", {
     group = formatCode,
 })
 -- Opens PDF files in Zathura instead of viewing the binary in Neovim
--- TODO: Try to configure it such that Zathura stays open after Neovim closes
 local openPDF = augroup("openPDF", {})
 autocmd("BufReadPost", {
     pattern = {
         "*.pdf",
     },
-    command = [[call jobstart('zathura "' . expand('%') . '"') | bd]],
+    callback = function()
+        vim.fn.jobstart("zathura '" .. vim.fn.expand("%") .. "'", {
+            detach = true,
+        })
+        vim.api.nvim_buf_delete(0, {})
+    end,
     group = openPDF,
 })
