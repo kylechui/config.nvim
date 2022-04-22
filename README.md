@@ -38,6 +38,8 @@ my packages. The general hierarchy for how things are configured is as follows:
 
     ftplugin
     └── ...
+    queries
+    └── ...
     lua
     ├── keybinds.lua
     ├── settings.lua
@@ -48,6 +50,8 @@ my packages. The general hierarchy for how things are configured is as follows:
         └── ...
 
 * `ftplugin/` -- Stores various settings for specific file types
+* `queries/` -- Some scheme files for Tree-sitter parsing that define swappable
+  groups, stored in `[fileType]/textobjects.scm`
 * `keybinds.lua` -- Stores various key maps
 * `settings.lua` -- General settings and options
 * `utils.lua` -- Some helper functions

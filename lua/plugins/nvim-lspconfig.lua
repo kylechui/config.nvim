@@ -1,5 +1,6 @@
 local map = vim.keymap.set
 
+-- Store the path to the LSP binaries given by nvim-lsp-installer
 local server_root = vim.fn["stdpath"]("data") .. "/lsp_servers"
 local server_binaries = {
     clangd = server_root .. "/clangd/clangd/bin/clangd",
@@ -8,6 +9,7 @@ local server_binaries = {
     texlab = server_root .. "/latex/texlab",
 }
 
+-- Whenever our LSP server attaches to a buffer, load these keybinds
 local setup_lsp_keybinds = function()
     map("n", "<Leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
     map("n", "<Leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
