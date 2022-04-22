@@ -63,3 +63,13 @@ require("lspconfig").clangd.setup({
         server_root .. "/clangd/clangd/bin/clangd"
     },
 })
+
+require("lspconfig").pyright.setup({
+    on_attach = function()
+        setup_lsp_keybinds()
+    end,
+    cmd = {
+        server_root .. "/python/node_modules/.bin/pyright-langserver",
+        "--stdio",
+    },
+})
