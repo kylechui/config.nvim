@@ -56,8 +56,8 @@ vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
 -- Adds a new command to reload snippets
-vim.api.nvim_create_user_command("ReloadSnippets", [[
-    lua require("luasnip.loaders.from_lua").load({
+vim.api.nvim_create_user_command("ReloadSnippets", function()
+    require("luasnip.loaders.from_lua").load({
         paths = vim.fn["stdpath"]("config") .. "/luasnippets/"
     })
-]], {})
+end, {})
