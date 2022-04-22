@@ -1,12 +1,10 @@
 local map = vim.keymap.set
 
 local server_root = vim.fn["stdpath"]("data") .. "/lsp_servers"
-local sumneko_root = server_root .. "/sumneko_lua/extension/server"
-
 local server_binaries = {
     clangd = server_root .. "/clangd/clangd/bin/clangd",
     pyright = server_root .. "/python/node_modules/.bin/pyright-langserver",
-    sumneko_lua = sumneko_root .. "/bin/lua-language-server",
+    sumneko_lua = server_root .. "/sumneko_lua/extension/server/bin/lua-language-server",
     texlab = server_root .. "/latex/texlab",
 }
 
@@ -48,9 +46,6 @@ require("lspconfig").sumneko_lua.setup({
     end,
     cmd = {
         server_binaries["sumneko_lua"],
-        "--preview",
-        "-E",
-        sumneko_root .. "/main.lua",
     },
     settings = {
         Lua = {
