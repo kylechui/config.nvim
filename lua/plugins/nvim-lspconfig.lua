@@ -1,5 +1,15 @@
 local map = vim.keymap.set
 
+local server_root = vim.fn["stdpath"]("data") .. "/lsp_servers"
+local sumneko_root = server_root .. "/sumneko_lua/extension/server"
+
+local server_binaries = {
+    clangd = server_root .. "/clangd/clangd/bin/clangd",
+    pyright = server_root .. "/python/node_modules/.bin/pyright-langserver",
+    sumneko_lua = sumneko_root .. "/bin/lua-language-server",
+    texlab = server_root .. "/latex/texlab",
+}
+
 local setup_lsp_keybinds = function()
     map("n", "<Leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
     map("n", "<Leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
@@ -8,15 +18,36 @@ local setup_lsp_keybinds = function()
     map("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = 0 })
 end
 
-local server_root = vim.fn["stdpath"]("data") .. "/lsp_servers"
-local sumneko_root = server_root .. "/sumneko_lua/extension/server"
+require("lspconfig").clangd.setup({
+    on_attach = function(client)
+        setup_lsp_keybinds()
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        --[[ -- Preparing for when nvim-lspconfig updates to 0.7 APIs
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false ]]
+    end,
+    cmd = {
+        server_binaries["clangd"],
+    },
+})
+
+require("lspconfig").pyright.setup({
+    on_attach = function()
+        setup_lsp_keybinds()
+    end,
+    cmd = {
+        server_binaries["pyright"],
+        "--stdio",
+    },
+})
 
 require("lspconfig").sumneko_lua.setup({
     on_attach = function()
         setup_lsp_keybinds()
     end,
     cmd = {
-        sumneko_root .. "/bin/lua-language-server",
+        server_binaries["sumneko_lua"],
         "--preview",
         "-E",
         sumneko_root .. "/main.lua",
@@ -50,26 +81,11 @@ require("lspconfig").sumneko_lua.setup({
     },
 })
 
-require("lspconfig").clangd.setup({
-    on_attach = function(client)
-        setup_lsp_keybinds()
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        --[[ -- Preparing for when nvim-lspconfig updates to 0.7 APIs
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false ]]
-    end,
-    cmd = {
-        server_root .. "/clangd/clangd/bin/clangd"
-    },
-})
-
-require("lspconfig").pyright.setup({
+require("lspconfig").texlab.setup({
     on_attach = function()
         setup_lsp_keybinds()
     end,
     cmd = {
-        server_root .. "/python/node_modules/.bin/pyright-langserver",
-        "--stdio",
+        server_binaries["texlab"],
     },
 })
