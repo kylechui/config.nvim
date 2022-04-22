@@ -25,6 +25,8 @@ opt.wrap = true
 opt.cursorline = true
 opt.breakindent = true
 opt.linebreak = true
+-- Always show the sign column
+opt.signcolumn = "yes"
 -- Add a color column at 80 characters
 opt.colorcolumn = "80"
 -- Always show 8 lines of "context" above and below the cursor
