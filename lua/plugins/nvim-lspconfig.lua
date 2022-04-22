@@ -8,18 +8,8 @@ local setup_lsp_keybinds = function()
     map("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = 0 })
 end
 
-require("lspconfig").clangd.setup({
-    on_attach = function(client)
-        setup_lsp_keybinds()
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        --[[ -- Preparing for when nvim-lspconfig updates to 0.7 APIs
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false ]]
-    end,
-})
-
-local sumneko_root = os.getenv("HOME") .. "/lua-language-server"
+local server_root = vim.fn["stdpath"]("data") .. "/lsp_servers"
+local sumneko_root = server_root .. "/sumneko_lua/extension/server"
 
 require("lspconfig").sumneko_lua.setup({
     on_attach = function()
@@ -33,7 +23,10 @@ require("lspconfig").sumneko_lua.setup({
     },
     settings = {
         Lua = {
-            runtime = { version = "LuaJIT", path = vim.split(package.path, ";") },
+            runtime = {
+                version = "LuaJIT",
+                path = vim.split(package.path, ";"),
+            },
             diagnostics = {
                 globals = {
                     "vim",
@@ -54,5 +47,19 @@ require("lspconfig").sumneko_lua.setup({
                 enable = false,
             },
         },
+    },
+})
+
+require("lspconfig").clangd.setup({
+    on_attach = function(client)
+        setup_lsp_keybinds()
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        --[[ -- Preparing for when nvim-lspconfig updates to 0.7 APIs
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false ]]
+    end,
+    cmd = {
+        server_root .. "/clangd/clangd/bin/clangd"
     },
 })
