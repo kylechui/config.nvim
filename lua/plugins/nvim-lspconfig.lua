@@ -1,4 +1,15 @@
 local map = vim.keymap.set
+-- Whenever our LSP server attaches to a buffer, load these keybinds
+local setup_lsp_keybinds = function()
+    map("n", "<Leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
+    map("n", "<Leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
+    map("n", "<Leader>dl", require("telescope.builtin").diagnostics, { buffer = 0 })
+    map("n", "<Leader>r", require("utils").rename_var, { buffer = 0 })
+    map("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = 0 })
+end
+
+-- Automagically install the below LSP servers
+local lsp_installer = require("nvim-lsp-installer")
 
 -- Store the path to the LSP binaries given by nvim-lsp-installer
 local server_root = vim.fn["stdpath"]("data") .. "/lsp_servers"
@@ -9,13 +20,12 @@ local server_binaries = {
     texlab = server_root .. "/latex/texlab",
 }
 
--- Whenever our LSP server attaches to a buffer, load these keybinds
-local setup_lsp_keybinds = function()
-    map("n", "<Leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
-    map("n", "<Leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
-    map("n", "<Leader>dl", require("telescope.builtin").diagnostics, { buffer = 0 })
-    map("n", "<Leader>r", require("utils").rename_var, { buffer = 0 })
-    map("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = 0 })
+-- Install the specified servers if they aren't already installed
+for name, _ in pairs(server_binaries) do
+    local server_is_found, server = lsp_installer.get_server(name)
+    if server_is_found and not server:is_installed() then
+        server:install()
+    end
 end
 
 require("lspconfig").clangd.setup({
