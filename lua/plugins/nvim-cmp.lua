@@ -26,7 +26,6 @@ cmp.setup({
         { name = "buffer", keyword_length = 4 },
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "calc" },
         { name = "dictionary", keyword_length = 4, },
     }),
 })
