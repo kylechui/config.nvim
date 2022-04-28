@@ -1,11 +1,11 @@
 local map = vim.keymap.set
 -- Whenever our LSP server attaches to a buffer, load these keybinds
 local setup_lsp_keybinds = function()
-    map("n", "<Leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
-    map("n", "<Leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
-    map("n", "<Leader>dl", require("telescope.builtin").diagnostics, { buffer = 0 })
-    map("n", "<Leader>r", require("utils").rename_var, { buffer = 0 })
-    map("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = 0 })
+    map("n", "<Leader>dj", vim.diagnostic.goto_next, { buffer = true })
+    map("n", "<Leader>dk", vim.diagnostic.goto_prev, { buffer = true })
+    map("n", "<Leader>dl", require("telescope.builtin").diagnostics, { buffer = true })
+    map("n", "<Leader>r", require("utils").rename_var, { buffer = true })
+    map("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = true })
 end
 
 -- Automagically install the below LSP servers
@@ -80,6 +80,10 @@ require("lspconfig").sumneko_lua.setup({
                     indent_size = "4",
                     quote_style = "double",
                 },
+            },
+            -- Make the server aware of Neovim runtime files
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
             },
             telemetry = {
                 enable = false,

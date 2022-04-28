@@ -38,7 +38,7 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.shiftround = true
 -- Only save information about the cursor and folds on exit
-opt.viewoptions = "cursor,folds"
+opt.viewoptions = { "cursor", "folds" }
 -- Setup smarter search settings
 opt.ignorecase = true
 opt.smartcase = true
@@ -49,7 +49,7 @@ opt.laststatus = 3
 opt.lazyredraw = true
 -- Force vertical splits to always open on the right
 opt.splitright = true
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = { "menu", "menuone", "noselect" }
 -- Neovide-specific cursor settings
 vim.g.neovide_cursor_animation_length = 0.05
 vim.g.neovide_cursor_animate_in_insert_mode = 0

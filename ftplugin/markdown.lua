@@ -4,4 +4,4 @@ vim.bo.softtabstop = 2
 vim.bo.shiftwidth = 2
 vim.bo.textwidth = 80
 
-vim.keymap.set("n", "<C-CR>", "<Cmd>MarkdownPreview<CR>", { buffer = 0 })
+vim.keymap.set("n", "<C-CR>", "<Cmd>MarkdownPreview<CR>", { buffer = true })

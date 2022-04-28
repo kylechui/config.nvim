@@ -119,9 +119,9 @@ return nil, {
                     \frac{{{}}}{{{}}}
                 ]],
                 {
-                    t(string.sub(snip.captures[1], 2, #snip.captures[1] - 1)),
-                    i(1),
-                }
+                t(string.sub(snip.captures[1], 2, #snip.captures[1] - 1)),
+                i(1),
+            }
             ))
         end, {})
     }, { condition = in_mathzone }),
@@ -134,9 +134,9 @@ return nil, {
                     \frac{{{}}}{{{}}}
                 ]],
                 {
-                    t(snip.captures[1]),
-                    i(1),
-                }
+                t(snip.captures[1]),
+                i(1),
+            }
             ))
         end, {})
     }, { condition = in_mathzone }),
@@ -148,9 +148,9 @@ return nil, {
                     \frac{{{}}}{{{}}}
                 ]],
                 {
-                    t(snip.captures[1]),
-                    i(1),
-                }
+                t(snip.captures[1]),
+                i(1),
+            }
             ))
         end, {})
     }, { condition = in_mathzone }),
@@ -233,11 +233,11 @@ return nil, {
                     {}\sum_{{{}={}}}^{{{}}}
                 ]],
                 {
-                    t(snip.captures[1]),
-                    i(1, "i"),
-                    i(2, "1"),
-                    i(3, "\\infty"),
-                }
+                t(snip.captures[1]),
+                i(1, "i"),
+                i(2, "1"),
+                i(3, "\\infty"),
+            }
             ))
         end), { condition = in_mathzone }
     ),
@@ -249,10 +249,10 @@ return nil, {
                     {}\lim_{{{}\to {}}}
                 ]],
                 {
-                    t(snip.captures[1]),
-                    i(1, "n"),
-                    i(2, "\\infty"),
-                }
+                t(snip.captures[1]),
+                i(1, "n"),
+                i(2, "\\infty"),
+            }
             ))
         end), { condition = in_mathzone }
     ),

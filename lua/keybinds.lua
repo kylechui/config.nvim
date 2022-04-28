@@ -10,8 +10,10 @@ map({ "i", "x" }, "<C-s>", "<Esc><Cmd>up!<CR>", { silent = true })
 -- Deleting words with <C-BS>
 map({ "c", "i" }, "", "<C-w>", { remap = true, silent = true })
 map({ "c", "i" }, "<C-BS>", "<C-w>", { remap = true, silent = true })
--- Open/close file explorer
-map("n", "<C-\\>", require("nvim-tree").toggle, { silent = true })
+-- Toggle file explorer and focus on the open file
+map("n", "<C-\\>", function()
+    require("nvim-tree").toggle(true)
+end, { silent = true })
 -- Move towards the beginning/end of a line
 map({ "n", "x" }, "H", "g^", { silent = true })
 map({ "n", "x" }, "L", "g$", { silent = true })
