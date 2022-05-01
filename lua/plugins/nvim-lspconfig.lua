@@ -8,9 +8,6 @@ local setup_lsp_keybinds = function()
     map("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = true })
 end
 
--- Automagically install the below LSP servers
-local lsp_installer = require("nvim-lsp-installer")
-
 -- Store the path to the LSP binaries given by nvim-lsp-installer
 local server_root = vim.fn["stdpath"]("data") .. "/lsp_servers"
 local server_binaries = {
@@ -20,13 +17,17 @@ local server_binaries = {
     texlab = server_root .. "/latex/texlab",
 }
 
--- Install the specified servers if they aren't already installed
-for name, _ in pairs(server_binaries) do
-    local server_is_found, server = lsp_installer.get_server(name)
-    if server_is_found and not server:is_installed() then
-        server:install()
-    end
-end
+local lsp_installer = require("nvim-lsp-installer")
+
+lsp_installer.setup({
+    ensure_installed = {
+        "clangd",
+        "pyright",
+        "sumneko_lua",
+        "texlab",
+    },
+    automatic_installation = true,
+})
 
 require("lspconfig").clangd.setup({
     on_attach = function(client)
