@@ -21,20 +21,30 @@ return {
             > **{}:** {}
         ]],
         {
-            i(1),
-            rep(1),
-            i(0),
-        }
+        i(1),
+        rep(1),
+        i(0),
+    }
     )),
-}, {
+    -- Markdown: Embed image
+    s("img", {
+        t("![](./"),
+        i(0),
+        t(")")
+    }),
     -- Markdown: Left arrow
-    s("<-", t("&larr;")),
+    s("<-", t("←")),
     -- Markdown: Right arrow
-    s("->", t("&rarr;")),
+    s("->", t("→")),
+    -- Markdown: Left double arrow
+    s("<=", t("⇐")),
+    -- Markdown: Right double arrow
+    s("=>", t("⇒")),
     -- Markdown: Less than or equal to
-    s("<=", t("&leq;")),
+    s("<=", t("≤")),
     -- Markdown: Greater than or equal to
-    s(">=", t("&geq;")),
+    s(">=", t("≥")),
+}, {
     -- Markdown: Bold
     s("", {
         t("<b>"),
