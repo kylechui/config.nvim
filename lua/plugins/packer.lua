@@ -53,8 +53,6 @@ return require("packer").startup(function()
     use("JoosepAlviste/nvim-ts-context-commentstring")
     -- Universal way to add comments
     use("numToStr/Comment.nvim")
-    -- Surround stuff with delimiters
-    use("tpope/vim-surround")
     -- LaTeX integration
     use("lervag/vimtex")
     -- Snippets
@@ -92,4 +90,27 @@ return require("packer").startup(function()
     use("hrsh7th/cmp-path")
     use("uga-rosa/cmp-dictionary")
     use("saadparwaiz1/cmp_luasnip")
+    -- Surround stuff with delimiters
+    -- use("tpope/vim-surround")
+    -- use("/home/kylec/Documents/github/nvim-targets/main")
+    use {
+        -- "/home/kylec/Documents/github/nvim-surround/main",
+        "kylechui/nvim-surround",
+        config = function()
+            -- Test own plugin
+            vim.keymap.set("n", "ys", require("nvim-surround").insert_surround, { silent = true })
+            vim.keymap.set("x", "S", require("nvim-surround").insert_surround, { silent = true })
+            vim.keymap.set("n", "ds", require("nvim-surround").delete_surround, { silent = true })
+            vim.keymap.set("n", "cs", require("nvim-surround").change_surround, { silent = true })
+        end
+    }
+    --[[ use {
+        "ur4ltz/surround.nvim",
+        config = function()
+            require("surround").setup({
+                mappings_style = "sandwich",
+            })
+        end
+    } ]]
+    -- use("wellle/targets.vim")
 end)
