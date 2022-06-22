@@ -12,9 +12,9 @@ end
 local server_root = vim.fn["stdpath"]("data") .. "/lsp_servers"
 local server_binaries = {
     clangd = server_root .. "/clangd/clangd/bin/clangd",
-    pyright = server_root .. "/python/node_modules/.bin/pyright-langserver",
+    pyright = server_root .. "/pyright/node_modules/.bin/pyright-langserver",
     sumneko_lua = server_root .. "/sumneko_lua/extension/server/bin/lua-language-server",
-    texlab = server_root .. "/latex/texlab",
+    texlab = server_root .. "/texlab/texlab",
 }
 
 local lsp_installer = require("nvim-lsp-installer")
