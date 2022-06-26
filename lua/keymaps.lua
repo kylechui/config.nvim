@@ -11,7 +11,7 @@ map({ "i", "x" }, "<C-s>", "<Esc><Cmd>up!<CR>", { silent = true })
 map({ "c", "i" }, "", "<C-w>", { remap = true, silent = true })
 map({ "c", "i" }, "<C-BS>", "<C-w>", { remap = true, silent = true })
 -- Toggle file explorer and focus on the open file
-map("n", "<C-\\>", function()
+map("n", "<C-Bslash>", function()
     require("nvim-tree").toggle(true)
 end, { silent = true })
 -- Move towards the beginning/end of a line
@@ -48,11 +48,9 @@ map("n", "<Leader>fh", require("telescope.builtin").help_tags, { silent = true }
 -- Navigate by wrapped lines by default
 map({ "n", "x" }, "j", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "j" : "gj"', { silent = true, expr = true })
 map({ "n", "x" }, "k", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "k" : "gk"', { silent = true, expr = true })
--- Universal comments with <C-/> (written as <C-_> to work in terminal)
+-- Universal comments with <C-/>
 map("n", "<C-/>", require("Comment.api").toggle_current_linewise)
 map("x", "<C-/>", "<Cmd>norm gbgv<CR>")
-map("n", "<C-_>", require("Comment.api").toggle_current_linewise)
-map("x", "<C-_>", "<Cmd>norm gbgv<CR>")
 -- Allow for repeating commands in visual mode
 map("x", ".", ":normal.<CR>", { silent = true })
 -- Better deletion of visual selections
