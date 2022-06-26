@@ -1,5 +1,5 @@
 require("autocommands")
-require("keybinds")
+require("keymaps")
 require("settings")
 
 -- Plugin configurations
