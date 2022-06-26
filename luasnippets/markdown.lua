@@ -21,10 +21,10 @@ return {
             > **{}:** {}
         ]],
         {
-        i(1),
-        rep(1),
-        i(0),
-    }
+            i(1),
+            rep(1),
+            i(0),
+        }
     )),
     -- Markdown: Embed image
     s("img", {
@@ -44,7 +44,7 @@ return {
     s("<=", t("≤")),
     -- Markdown: Greater than or equal to
     s(">=", t("≥")),
-}, {
+}, nil --[[ {
     -- Markdown: Bold
     s("", {
         t("<b>"),
@@ -79,4 +79,4 @@ return {
             return string.rep("#", snip.captures[1])
         end),
     }),
-}
+} ]]

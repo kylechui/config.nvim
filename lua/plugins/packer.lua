@@ -68,7 +68,10 @@ return require("packer").startup(function()
     -- Git integration
     use("tpope/vim-fugitive")
     -- Markdown viewing
-    use("iamcco/markdown-preview.nvim")
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
     -- Formatter
     use({
         "jose-elias-alvarez/null-ls.nvim",
@@ -94,15 +97,8 @@ return require("packer").startup(function()
     -- use("tpope/vim-surround")
     -- use("/home/kylec/Documents/github/nvim-targets/main")
     use {
-        -- "/home/kylec/Documents/github/nvim-surround/main",
-        "kylechui/nvim-surround",
-        config = function()
-            -- Test own plugin
-            vim.keymap.set("n", "ys", require("nvim-surround").insert_surround, { silent = true })
-            vim.keymap.set("x", "S", require("nvim-surround").insert_surround, { silent = true })
-            vim.keymap.set("n", "ds", require("nvim-surround").delete_surround, { silent = true })
-            vim.keymap.set("n", "cs", require("nvim-surround").change_surround, { silent = true })
-        end
+        "/home/kylec/Documents/github/nvim-surround/main",
+        -- "kylechui/nvim-surround",
     }
     --[[ use {
         "ur4ltz/surround.nvim",
