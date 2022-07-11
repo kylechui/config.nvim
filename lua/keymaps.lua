@@ -110,3 +110,9 @@ map({ "i", "s" }, "<C-k>", function()
         ls.change_choice(-1)
     end
 end, { silent = true })
+
+-- Custom operator-mode mappings for easier surrounds
+map("o", "ar", "a[")
+map("o", "ir", "i[")
+map("o", "aa", "a<")
+map("o", "ia", "i<")
