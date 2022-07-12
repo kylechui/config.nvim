@@ -8,10 +8,13 @@ map("n", "<Leader>t", function()
 
     if cur_path then
         cur_path = cur_path .. "/tests"
-        local file_name = vim.fn.systemlist("ls " .. cur_path)[1]
-        require("plenary.test_harness").test_directory(vim.fn.findfile(
-            file_name,
-            cur_path)
+        local ls = vim.fn.systemlist("ls " .. cur_path)
+        if #ls == 0 then
+            print("No test file found.")
+            return
+        end
+        require("plenary.test_harness").test_directory(
+            cur_path .. "/" .. ls[1]
         )
     end
 end, {
