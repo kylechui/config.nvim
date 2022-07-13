@@ -13,7 +13,12 @@ local query = vim.treesitter.query
 require("nvim-surround").buffer_setup({
     delimiters = {
         pairs = {
-            ["l"] = { "[](", ")" },
+            ["l"] = function()
+                return {
+                    "[",
+                    "](" .. vim.fn.getreg("*") .. ")",
+                }
+            end,
             ["f"] = function()
                 local cur = ts_utils.get_node_at_cursor(0, true)
                 while cur and cur:type() ~= "fenced_code_block" do
