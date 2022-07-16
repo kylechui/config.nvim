@@ -54,8 +54,10 @@ require("lspconfig").pyright.setup({
 })
 
 require("lspconfig").sumneko_lua.setup({
-    on_attach = function()
+    on_attach = function(client)
         setup_lsp_keybinds()
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
     end,
     cmd = {
         server_binaries["sumneko_lua"],
@@ -72,14 +74,6 @@ require("lspconfig").sumneko_lua.setup({
                 },
                 neededFileStatus = {
                     ["codestyle-check"] = "Any",
-                },
-            },
-            format = {
-                enable = true,
-                defaultConfig = {
-                    indent_style = "space",
-                    indent_size = "4",
-                    quote_style = "double",
                 },
             },
             -- Make the server aware of Neovim runtime files
