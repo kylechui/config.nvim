@@ -8,3 +8,18 @@ map("n", "<C-CR>", "<Cmd>term time python3 %<input.txt<CR><Cmd>term time ./%:r.o
     silent = true,
     buffer = true,
 })
+
+require("nvim-surround").buffer_setup({
+    delimiters = {
+        pairs = {
+            ["F"] = function()
+                return {
+                    "def " .. require("nvim-surround.utils").get_input(
+                        "Enter the function name: "
+                    ) .. "(",
+                    { "):", "   return None" }
+                }
+            end,
+        }
+    }
+})

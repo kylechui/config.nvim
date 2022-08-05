@@ -81,8 +81,16 @@ map("t", "<Esc>", "<C-\\><C-n>", { silent = true })
 -- Map <C-j> and <C-k> to scroll up and down autocompletion list in command mode
 map("c", "<C-j>", "<C-n>", { remap = true, silent = true })
 map("c", "<C-k>", "<C-p>", { remap = true, silent = true })
-
-vim.keymap.set("n", "gJ", require("trevj").format_at_cursor, { silent = true })
+-- Reverse join lines
+map("n", "gJ", require("trevj").format_at_cursor, { silent = true })
+-- Smart delete lines; don't clutter clipboard with whitespace lines
+map("n", "dd", function()
+    local line = vim.api.nvim_get_current_line()
+    if line:match("^%s*$") then
+        return '"_dd'
+    end
+    return "dd"
+end, { expr = true, silent = true })
 
 local ls = require("luasnip")
 map({ "i", "s" }, "<Tab>", function()

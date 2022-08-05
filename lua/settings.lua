@@ -1,5 +1,6 @@
 -- I'm lazy
 local opt = vim.opt
+local g = vim.g
 
 -- Define workspace path
 vim.env.WORKSPACE = "~/Documents/github/"
@@ -10,7 +11,7 @@ opt.clipboard = "unnamedplus"
 opt.modelines = 0
 opt.maxmempattern = 2500
 -- Setup colorscheme
-vim.g.colors_name = "kanagawa"
+g.colors_name = "kanagawa"
 opt.background = "dark"
 opt.termguicolors = true
 -- Set font for GUIs (I use Neovide)
@@ -38,7 +39,7 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.shiftround = true
 -- Only save information about the cursor and folds on exit
-opt.viewoptions = { "cursor", "folds" }
+opt.viewoptions = "cursor,folds"
 -- Setup smarter search settings
 opt.ignorecase = true
 opt.smartcase = true
@@ -49,17 +50,16 @@ opt.laststatus = 3
 opt.lazyredraw = true
 -- Force vertical splits to always open on the right
 opt.splitright = true
-opt.completeopt = { "menu", "menuone", "noselect" }
+opt.completeopt = "menu,menuone,noselect"
 -- Neovide-specific cursor settings
-vim.g.neovide_cursor_animation_length = 0.05
-vim.g.neovide_cursor_animate_in_insert_mode = 0
--- Use filetype.lua instead of filetype.vim (faster startup)
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
+g.neovide_cursor_animation_length = 0.05
+g.neovide_cursor_animate_in_insert_mode = 0
 
 -- Adds a new command to reload snippets
 vim.api.nvim_create_user_command("ReloadSnippets", function()
     require("luasnip.loaders.from_lua").load({
-        paths = vim.fn["stdpath"]("config") .. "/luasnippets/"
+        paths = vim.fn["stdpath"]("config") .. "/luasnippets/",
     })
 end, {})
+
+vim.cmd([[hi! default link NvimSurroundHighlightTextObject Todo]])

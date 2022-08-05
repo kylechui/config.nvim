@@ -15,8 +15,10 @@ require("nvim-treesitter.configs").setup({
         select = {
             enable = true,
             keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
+                ["aF"] = "@function.outer",
+                ["iF"] = "@function.inner",
+                ["af"] = "@call.outer",
+                ["if"] = "@call.inner",
                 ["al"] = "@loop.outer",
                 ["il"] = "@loop.inner",
             },

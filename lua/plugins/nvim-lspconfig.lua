@@ -9,34 +9,17 @@ local setup_lsp_keybinds = function()
 end
 
 -- Store the path to the LSP binaries given by nvim-lsp-installer
-local server_root = vim.fn["stdpath"]("data") .. "/lsp_servers"
+local server_root = vim.fn.stdpath("data") .. "/mason/bin/"
 local server_binaries = {
-    clangd = server_root .. "/clangd/clangd/bin/clangd",
-    pyright = server_root .. "/pyright/node_modules/.bin/pyright-langserver",
-    sumneko_lua = server_root .. "/sumneko_lua/extension/server/bin/lua-language-server",
-    texlab = server_root .. "/texlab/texlab",
+    clangd = server_root .. "clangd",
+    pyright = server_root .. "pyright-langserver",
+    sumneko_lua = server_root .. "lua-language-server",
+    texlab = server_root .. "texlab",
 }
 
-local lsp_installer = require("nvim-lsp-installer")
-
-lsp_installer.setup({
-    ensure_installed = {
-        "clangd",
-        "pyright",
-        "sumneko_lua",
-        "texlab",
-    },
-    automatic_installation = true,
-})
-
 require("lspconfig").clangd.setup({
-    on_attach = function(client)
+    on_attach = function()
         setup_lsp_keybinds()
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        --[[ -- Preparing for when nvim-lspconfig updates to 0.7 APIs
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false ]]
     end,
     cmd = {
         server_binaries["clangd"],
@@ -54,10 +37,8 @@ require("lspconfig").pyright.setup({
 })
 
 require("lspconfig").sumneko_lua.setup({
-    on_attach = function(client)
+    on_attach = function()
         setup_lsp_keybinds()
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
     end,
     cmd = {
         server_binaries["sumneko_lua"],
@@ -75,6 +56,9 @@ require("lspconfig").sumneko_lua.setup({
                 neededFileStatus = {
                     ["codestyle-check"] = "Any",
                 },
+            },
+            format = {
+                enable = false,
             },
             -- Make the server aware of Neovim runtime files
             workspace = {

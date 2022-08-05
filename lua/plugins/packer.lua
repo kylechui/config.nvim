@@ -1,7 +1,6 @@
----@diagnostic disable: undefined-global
-
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
+local use = require("packer").use
 
 local packerUserConfig = augroup("packerUserConfig", {})
 autocmd("BufWritePost", {
@@ -18,6 +17,7 @@ return require("packer").startup(function()
     -- Telescope nonsense
     use({
         "nvim-telescope/telescope.nvim",
+        tag = "0.1.0",
         requires = {
             "nvim-lua/plenary.nvim",
         },
@@ -57,8 +57,6 @@ return require("packer").startup(function()
     use("lervag/vimtex")
     -- Snippets
     use("L3MON4D3/LuaSnip")
-    -- Get good
-    use("ThePrimeagen/vim-be-good")
     -- Discord integration
     use("andweeb/presence.nvim")
     -- Highlight hex codes
@@ -70,7 +68,9 @@ return require("packer").startup(function()
     -- Markdown viewing
     use({
         "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
+        run = function()
+            vim.fn["mkdp#util#install"]()
+        end,
     })
     -- Formatter
     use({
@@ -83,7 +83,8 @@ return require("packer").startup(function()
     use("lukas-reineke/indent-blankline.nvim")
     -- LSP Stuff
     use("neovim/nvim-lspconfig")
-    use("williamboman/nvim-lsp-installer")
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
     -- Autocomplete engine
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
@@ -94,19 +95,17 @@ return require("packer").startup(function()
     use("uga-rosa/cmp-dictionary")
     use("saadparwaiz1/cmp_luasnip")
     -- Surround stuff with delimiters
-    -- use("tpope/vim-surround")
-    -- use("/home/kylec/Documents/github/nvim-targets/main")
-    use {
-        "/home/kylec/Documents/github/nvim-surround/main",
-        -- "kylechui/nvim-surround",
-    }
-    --[[ use {
-        "ur4ltz/surround.nvim",
-        config = function()
-            require("surround").setup({
-                mappings_style = "sandwich",
-            })
-        end
-    } ]]
+    use("stevearc/dressing.nvim")
     -- use("wellle/targets.vim")
+    -- use("tpope/vim-surround")
+    ---[=[
+    use({
+        -- "/home/kylec/Documents/github/nvim-surround/main",
+        "/home/kylec/Documents/github/nvim-surround/pattern-matching",
+        -- "kylechui/nvim-surround",
+        config = function()
+            require("nvim-surround").setup()
+        end,
+    })
+    --]=]
 end)

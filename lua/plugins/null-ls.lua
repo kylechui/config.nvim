@@ -1,14 +1,14 @@
-local nl = require("null-ls")
+local null_ls = require("null-ls")
 
-nl.setup({
+null_ls.setup({
     sources = {
-        nl.builtins.formatting.clang_format.with({
+        null_ls.builtins.formatting.clang_format.with({
             extra_args = { "--style", "{BasedOnStyle: Google, IndentWidth: 4}" },
         }),
-        nl.builtins.formatting.remark.with({
+        null_ls.builtins.formatting.remark.with({
             extra_args = { "-s", "'listItemIndent': 'one'" },
         }),
-        nl.builtins.formatting.stylua.with({
+        null_ls.builtins.formatting.stylua.with({
             extra_args = {
                 "--indent-type",
                 "Spaces",

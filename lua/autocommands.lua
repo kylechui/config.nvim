@@ -28,7 +28,14 @@ autocmd("BufWritePre", {
         "*.md",
         "*.ts",
     },
-    callback = vim.lsp.buf.formatting_sync,
+    callback = function()
+        vim.lsp.buf.format({
+            filter = function(client)
+                return client.name == "null-ls"
+            end,
+            bufnr = 0,
+        })
+    end,
     group = formatCode,
 })
 -- Opens PDF files in Zathura instead of viewing the binary in Neovim
