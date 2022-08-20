@@ -8,16 +8,6 @@ autocmd("TextYankPost", {
     end,
     group = highlightYank,
 })
--- Save/restore code folds
-local saveFolds = augroup("saveFolds", {})
-autocmd("BufWritePost", {
-    command = "silent mkview",
-    group = saveFolds,
-})
-autocmd("BufReadPost", {
-    command = "silent! loadview",
-    group = saveFolds,
-})
 -- Format code on save for certain file types
 local formatCode = augroup("formatCode", {})
 autocmd("BufWritePre", {
@@ -51,4 +41,10 @@ autocmd("BufReadPost", {
         vim.api.nvim_buf_delete(0, {})
     end,
     group = openPDF,
+})
+-- Refreshes the status line anytime the cursor has moved
+local updateStatusline = augroup("updateStatusline", {})
+autocmd({ "CursorMoved", "CursorMovedI" }, {
+    callback = require("lualine").refresh,
+    group = updateStatusline,
 })
