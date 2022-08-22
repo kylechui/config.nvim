@@ -48,7 +48,10 @@ return require("packer").startup(function()
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     })
-    use("nvim-treesitter/nvim-treesitter-textobjects")
+    use({
+        "echasnovski/nvim-treesitter-textobjects",
+        branch = "unify-call-inner",
+    })
     use("nvim-treesitter/playground")
     use("JoosepAlviste/nvim-ts-context-commentstring")
     -- Universal way to add comments
@@ -65,7 +68,7 @@ return require("packer").startup(function()
     use("windwp/nvim-autopairs")
     -- Git integration
     use("tpope/vim-fugitive")
-    -- Markdown viewing
+    -- configarkdown viewing
     use({
         "iamcco/markdown-preview.nvim",
         run = function()
@@ -94,18 +97,24 @@ return require("packer").startup(function()
     use("hrsh7th/cmp-path")
     use("uga-rosa/cmp-dictionary")
     use("saadparwaiz1/cmp_luasnip")
-    -- Surround stuff with delimiters
-    use("stevearc/dressing.nvim")
-    -- use("wellle/targets.vim")
+
+    use("folke/lua-dev.nvim")
     -- use("tpope/vim-surround")
     ---[=[
     use({
-        -- "/home/kylec/Documents/github/nvim-surround/main",
-        "/home/kylec/Documents/github/nvim-surround/pattern-matching",
-        -- "kylechui/nvim-surround",
+        "/home/kylec/Documents/github/nvim-surround/main",
         config = function()
             require("nvim-surround").setup()
         end,
     })
     --]=]
+    --[[
+    use({
+        "echasnovski/mini.nvim",
+        branch = "stable",
+        config = function()
+            require("mini.surround").setup()
+        end,
+    })
+    --]]
 end)

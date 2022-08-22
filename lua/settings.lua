@@ -62,4 +62,4 @@ vim.api.nvim_create_user_command("ReloadSnippets", function()
     })
 end, {})
 
-vim.cmd([[hi! default link NvimSurroundHighlightTextObject Todo]])
+vim.cmd([[hi! default link NvimSurroundHighlight Todo]])

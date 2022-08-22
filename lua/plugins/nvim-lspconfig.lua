@@ -36,6 +36,17 @@ require("lspconfig").pyright.setup({
     },
 })
 
+local luadev = require("lua-dev").setup({
+    lspconfig = {
+        on_attach = function()
+            setup_lsp_keybinds()
+        end,
+    },
+})
+require("lspconfig").sumneko_lua.setup(luadev)
+--[[ local sumneko_runtime_path = vim.split(package.path, ";")
+table.insert(sumneko_runtime_path, "?.lua")
+table.insert(sumneko_runtime_path, "?/init.lua")
 require("lspconfig").sumneko_lua.setup({
     on_attach = function()
         setup_lsp_keybinds()
@@ -47,14 +58,11 @@ require("lspconfig").sumneko_lua.setup({
         Lua = {
             runtime = {
                 version = "LuaJIT",
-                path = vim.split(package.path, ";"),
+                path = sumneko_runtime_path,
             },
             diagnostics = {
                 globals = {
                     "vim",
-                },
-                neededFileStatus = {
-                    ["codestyle-check"] = "Any",
                 },
             },
             format = {
@@ -63,13 +71,15 @@ require("lspconfig").sumneko_lua.setup({
             -- Make the server aware of Neovim runtime files
             workspace = {
                 library = vim.api.nvim_get_runtime_file("", true),
+                maxPreload = 1000,
+                preloadFileSize = 150,
             },
             telemetry = {
                 enable = false,
             },
         },
     },
-})
+}) ]]
 
 require("lspconfig").texlab.setup({
     on_attach = function()

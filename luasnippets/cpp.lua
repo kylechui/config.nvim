@@ -242,9 +242,10 @@ return {
             t(""),
             sn(nil, {
                 t(", "),
-                i(1, standardize("greater<int>"))
+                i(1, standardize("greater<int>")),
             }),
         }),
         t(">"),
     }),
-}, nil
+},
+    nil

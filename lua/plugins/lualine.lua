@@ -1,11 +1,13 @@
 -- Gets the number of words in the file, or the number of words in the current
 -- visual selection
 local word_count = function()
-    if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
-        return string.format("%sW", vim.fn.wordcount().visual_words)
+    local count
+    if (vim.fn.mode()):lower() == "v" then
+        count = vim.fn.wordcount().visual_words
     else
-        return string.format("%sW", vim.fn.wordcount().words)
+        count = vim.fn.wordcount().words
     end
+    return ("%sW"):format(count)
 end
 
 require("lualine").setup({
@@ -34,7 +36,7 @@ require("lualine").setup({
                     info = " ",
                     hint = " ",
                 },
-            }
+            },
         },
         lualine_c = {
             {
@@ -56,5 +58,5 @@ require("lualine").setup({
     },
     extensions = {
         "nvim-tree",
-    }
+    },
 })
