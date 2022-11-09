@@ -1,23 +1,26 @@
 local map = vim.keymap.set
 
+local open_term = function(command)
+    vim.cmd("belowright 15split +term | startinsert")
+    local cr = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+    vim.api.nvim_feedkeys(command .. cr, "n", true)
+end
+
 map("n", "<C-'>", function()
     -- Get the file path (without extension)
     local file = vim.api.nvim_buf_get_name(0):match("^(.*)%.cpp")
     local cmd = {
         "g++",
         "-Wall",
-        "-std=c++17",
+        "-std=c++20",
         "-o",
-        file .. ".out",
-        file .. ".cpp",
+        "'" .. file .. ".out'",
+        "'" .. file .. ".cpp'",
         "&&",
         "time",
-        file .. ".out",
+        "'" .. file .. ".out'",
     }
-    return require("utils").compile_and_run({
-        name = "CPP_OUTPUT",
-        cmd = cmd,
-    })
+    open_term(table.concat(cmd, " "))
 end, { silent = true, buffer = true })
 map("n", "<C-CR>", function()
     -- Get the file path (without extension)
@@ -25,7 +28,7 @@ map("n", "<C-CR>", function()
     local cmd = {
         "g++",
         "-Wall",
-        "-std=c++17",
+        "-std=c++20",
         "-o",
         file .. ".out",
         file .. ".cpp",
@@ -45,7 +48,7 @@ require("nvim-surround").buffer_setup({
         ["p"] = {
             add = { "cout << ", " << endl;" },
             find = "cout << .- << endl;",
-            delete = "^(std::cout << )().-( << std::endl;)()$",
+            delete = "^(cout << )().-( << endl;)()$",
         },
     },
 })

@@ -56,4 +56,11 @@ M.search_workspace = function()
     })
 end
 
+M.search_books = function()
+    builtin.find_files({
+        prompt_title = "Books",
+        cwd = vim.env.BOOKS,
+    })
+end
+
 return M

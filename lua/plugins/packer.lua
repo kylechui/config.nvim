@@ -18,9 +18,7 @@ return require("packer").startup(function()
     use({
         "nvim-telescope/telescope.nvim",
         tag = "0.1.0",
-        requires = {
-            "nvim-lua/plenary.nvim",
-        },
+        requires = "nvim-lua/plenary.nvim",
     })
     use({
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -30,16 +28,13 @@ return require("packer").startup(function()
     -- Status line and bufferline
     use({
         "nvim-lualine/lualine.nvim",
-        requires = {
-            "kyazdani42/nvim-web-devicons",
-            opt = true,
-        },
+        requires = "nvim-tree/nvim-web-devicons",
     })
     use("akinsho/bufferline.nvim")
     -- File explorer
     use({
-        "kyazdani42/nvim-tree.lua",
-        requires = "kyazdani42/nvim-web-devicons",
+        "nvim-tree/nvim-tree.lua",
+        requires = "nvim-tree/nvim-web-devicons",
     })
     -- Color scheme
     use("rebelot/kanagawa.nvim")
@@ -48,10 +43,7 @@ return require("packer").startup(function()
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     })
-    use({
-        "echasnovski/nvim-treesitter-textobjects",
-        branch = "unify-call-inner",
-    })
+    use("nvim-treesitter/nvim-treesitter-textobjects")
     use("nvim-treesitter/playground")
     use("JoosepAlviste/nvim-ts-context-commentstring")
     -- Universal way to add comments
@@ -93,28 +85,49 @@ return require("packer").startup(function()
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-cmdline")
     use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-nvim-lua")
     use("hrsh7th/cmp-path")
     use("uga-rosa/cmp-dictionary")
     use("saadparwaiz1/cmp_luasnip")
+    use("onsails/lspkind.nvim")
 
-    use("folke/lua-dev.nvim")
+    use("folke/neodev.nvim")
     -- use("tpope/vim-surround")
     ---[=[
     use({
+        -- "kylechui/nvim-surround",
         "/home/kylec/Documents/github/nvim-surround/main",
+        -- tag = "*",
         config = function()
-            require("nvim-surround").setup()
+            require("nvim-surround").setup({
+                surrounds = {
+                    ["{"] = {
+                        delete = "^(.%s*)().-(%s*.)()$",
+                    },
+                    ["f"] = {
+                        change = {
+                            target = function()
+                                local selection = require("nvim-surround.config").get_selection({
+                                    query = {
+                                        capture = "@function_name",
+                                        type = "nvim-surround",
+                                    },
+                                })
+                                if not selection then
+                                    return nil
+                                end
+                                return {
+                                    left = func_name,
+                                    right = {
+                                        first_pos = { selection.last_pos[1], selection.last_pos[2] + 1 },
+                                        last_pos = selection.last_pos,
+                                    },
+                                }
+                            end,
+                        },
+                    },
+                },
+            })
         end,
     })
     --]=]
-    --[[
-    use({
-        "echasnovski/mini.nvim",
-        branch = "stable",
-        config = function()
-            require("mini.surround").setup()
-        end,
-    })
-    --]]
 end)

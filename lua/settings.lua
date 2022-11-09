@@ -2,7 +2,8 @@
 local opt = vim.opt
 local g = vim.g
 
--- Define workspace path
+-- Define environment variables
+vim.env.BOOKS = "~/Documents/Books/"
 vim.env.WORKSPACE = "~/Documents/github/"
 
 -- Set Neovim to use the system clipboard

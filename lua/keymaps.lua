@@ -42,6 +42,7 @@ map("n", "<A-l>", function()
 end, { silent = true })
 -- Telescope fuzzy find stuff
 map("n", "<Leader>f.", require("telescope.builtin").find_files, { silent = true })
+map("n", "<Leader>fb", require("plugins.telescope").search_books, { silent = true })
 map("n", "<Leader>ff", require("plugins.telescope").search_workspace, { silent = true })
 map("n", "<Leader>fg", require("telescope.builtin").live_grep, { silent = true })
 map("n", "<Leader>fh", require("telescope.builtin").help_tags, { silent = true })
@@ -49,7 +50,7 @@ map("n", "<Leader>fh", require("telescope.builtin").help_tags, { silent = true }
 map({ "n", "x" }, "j", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "j" : "gj"', { silent = true, expr = true })
 map({ "n", "x" }, "k", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "k" : "gk"', { silent = true, expr = true })
 -- Universal comments with <C-/>
-map("n", "<C-/>", require("Comment.api").toggle_current_linewise)
+map("n", "<C-/>", "<Cmd>norm gcc<CR>")
 map("x", "<C-/>", "<Cmd>norm gbgv<CR>")
 -- Allow for repeating commands in visual mode
 map("x", ".", ":normal.<CR>", { silent = true })

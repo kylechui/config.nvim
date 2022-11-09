@@ -23,15 +23,25 @@ require("nvim-surround").buffer_setup({
     surrounds = {
         ["p"] = {
             add = { "vim.pretty_print(", ")" },
-            find = "vim%.pretty_print%b()",
+            find = function()
+                return require("nvim-surround.config").get_selection({
+                    query = { capture = "@pretty_print", type = "function_calls" },
+                })
+            end,
             delete = "^(vim%.pretty_print%()().-(%))()$",
+            change = {
+                target = "^(vim%.pretty_print)()%(.-%)()()$",
+                replacement = function()
+                    return { { "print" }, { "" } }
+                end,
+            },
         },
-        ["F"] = {
+        --[[ ["F"] = {
             add = { "function() ", " end" },
             find = function()
                 return require("nvim-surround.config").get_selection({ node = "function_definition" })
             end,
             delete = "^(function%b())().-(end)()$",
-        },
+        }, ]]
     },
 })

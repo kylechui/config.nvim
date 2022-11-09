@@ -16,6 +16,7 @@ autocmd("BufWritePre", {
         "*.js",
         "*.lua",
         "*.md",
+        "*.py",
         "*.ts",
     },
     callback = function()

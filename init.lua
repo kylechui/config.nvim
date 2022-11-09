@@ -1,4 +1,3 @@
--- require("plugins/packer")
 require("autocommands")
 require("keymaps")
 require("settings")

@@ -247,5 +247,18 @@ return {
         }),
         t(">"),
     }),
+    -- C++: Sorting
+    s(
+        "sort",
+        fmt(
+            [[
+                sort(begin({}), end({}));
+            ]],
+            {
+                i(1),
+                rep(1),
+            }
+        )
+    ),
 },
     nil
