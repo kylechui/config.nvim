@@ -50,6 +50,16 @@ return require("packer").startup(function()
     use("numToStr/Comment.nvim")
     -- LaTeX integration
     use("lervag/vimtex")
+    -- Haskell integration
+    use({
+        "MrcJkb/haskell-tools.nvim",
+        requires = {
+            "neovim/nvim-lspconfig",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        tag = "1.4.0",
+    })
     -- Snippets
     use("L3MON4D3/LuaSnip")
     -- Discord integration
@@ -91,18 +101,15 @@ return require("packer").startup(function()
     use("onsails/lspkind.nvim")
 
     use("folke/neodev.nvim")
-    -- use("tpope/vim-surround")
+
     ---[=[
     use({
-        -- "kylechui/nvim-surround",
+        --[[ "kylechui/nvim-surround",
+        tag = "*", ]]
         "/home/kylec/Documents/github/nvim-surround/main",
-        -- tag = "*",
         config = function()
             require("nvim-surround").setup({
                 surrounds = {
-                    ["{"] = {
-                        delete = "^(.%s*)().-(%s*.)()$",
-                    },
                     ["f"] = {
                         change = {
                             target = function()

@@ -26,6 +26,18 @@ require("lspconfig").clangd.setup({
     },
 })
 
+local ht = require("haskell-tools")
+ht.setup({
+    hls = {
+        on_attach = function()
+            -- haskell-language-server relies heavily on codeLenses,
+            -- so auto-refresh (see advanced configuration) is enabled by default
+            vim.keymap.set("n", "<space>ca", vim.lsp.codelens.run, { buffer = true })
+            vim.keymap.set("n", "<space>hs", ht.hoogle.hoogle_signature, { buffer = true })
+        end,
+    },
+})
+
 require("lspconfig").pyright.setup({
     on_attach = function()
         setup_lsp_keybinds()
@@ -60,6 +72,7 @@ require("lspconfig").sumneko_lua.setup({
             },
             -- Make the server aware of Neovim runtime files
             workspace = {
+                checkThirdParty = false,
                 library = vim.api.nvim_get_runtime_file("", true),
                 --[[ maxPreload = 1000,
                 preloadFileSize = 150, ]]

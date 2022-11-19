@@ -36,7 +36,7 @@ autocmd("BufReadPost", {
         "*.pdf",
     },
     callback = function()
-        vim.fn.jobstart("zathura '" .. vim.fn.expand("%") .. "'", {
+        vim.fn.jobstart('zathura "' .. vim.fn.expand("%") .. '"', {
             detach = true,
         })
         vim.api.nvim_buf_delete(0, {})
