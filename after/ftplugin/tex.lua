@@ -9,6 +9,11 @@ vim.keymap.set("n", "<C-CR>", "<Cmd>VimtexCompile<CR>", { buffer = true })
 local config = require("nvim-surround.config")
 require("nvim-surround").buffer_setup({
     surrounds = {
+        ['"'] = {
+            add = { "``", "''" },
+            find = "``.-''",
+            delete = "^(``)().-('')()$",
+        },
         ["c"] = {
             add = function()
                 local cmd = config.get_input("Enter a command: ")
