@@ -7,15 +7,11 @@ null_ls.setup({
         }),
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.prettierd,
-        --[[ null_ls.builtins.formatting.prettier, ]]
-        --[[ null_ls.builtins.formatting.remark.with({
-            extra_args = { "-s", "'listItemIndent': 'one'" },
-        }), ]]
+        null_ls.builtins.formatting.latexindent.with({
+            extra_args = { "-y", "noAdditionalIndent:document:0,defaultIndent:'  '" },
+        }),
         null_ls.builtins.formatting.stylua.with({
-            extra_args = {
-                "--indent-type",
-                "Spaces",
-            },
+            extra_args = { "--indent-type", "Spaces" },
         }),
     },
 })

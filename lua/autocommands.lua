@@ -13,6 +13,7 @@ local formatCode = augroup("formatCode", {})
 autocmd("BufWritePre", {
     pattern = {
         "*.cpp",
+        "*.tex",
         "*.js",
         "*.lua",
         "*.md",
