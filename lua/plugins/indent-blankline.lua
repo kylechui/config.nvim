@@ -1,6 +1,4 @@
 local opt = vim.opt
-
-opt.list = true
 opt.listchars:append("eol:↲")
 opt.listchars:append("trail:•")
 

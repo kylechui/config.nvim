@@ -13,8 +13,10 @@ end
 
 return {
     -- LaTeX: Assignment preamble
-    s("setup", fmt(
-        [[
+    s(
+        "setup",
+        fmt(
+            [[
             \documentclass{{article}}
             \input{{../../Preamble}}
 
@@ -35,23 +37,27 @@ return {
               {}
             \end{{document}}
         ]],
-        {
-            i(1, "Class Name"),
-            i(2, "Assignment Name"),
-            f(function()
-                return os.date("%Y-%m-%d")
-            end),
-            rep(2),
-            i(0),
-        }
-    ), { condition = in_text and begins_line }),
+            {
+                i(1, "Class Name"),
+                i(2, "Assignment Name"),
+                f(function()
+                    return os.date("%Y-%m-%d")
+                end),
+                rep(2),
+                i(0),
+            }
+        ),
+        { condition = in_text and begins_line }
+    ),
     -- LaTeX: Table of contents
     s("toc", {
         t({ "\\tableofcontents", "\\newpage", "" }),
     }, { condition = in_text and begins_line }),
     -- LaTeX: Notes preamble
-    s("notes", fmt(
-        [[
+    s(
+        "notes",
+        fmt(
+            [[
             \documentclass[class=article, crop=false]{{standalone}}
             \input{{../../Preamble}}
 
@@ -64,8 +70,11 @@ return {
               {}
             \end{{document}}
         ]],
-        {
-            i(0),
-        }
-    ), { condition = in_text and begins_line })
-}, nil
+            {
+                i(0),
+            }
+        ),
+        { condition = in_text and begins_line }
+    ),
+},
+    nil

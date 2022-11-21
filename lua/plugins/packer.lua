@@ -101,6 +101,12 @@ return require("packer").startup(function()
     use("onsails/lspkind.nvim")
 
     use("folke/neodev.nvim")
+    use({
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup()
+        end,
+    })
 
     ---[=[
     use({
@@ -132,6 +138,9 @@ return require("packer").startup(function()
                             end,
                         },
                     },
+                },
+                aliases = {
+                    q = false,
                 },
             })
         end,

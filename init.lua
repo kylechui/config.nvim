@@ -1,3 +1,5 @@
+require("plugins/packer")
+
 require("autocommands")
 require("keymaps")
 require("settings")
@@ -19,7 +21,6 @@ require("plugins/nvim-lspconfig")
 require("plugins/nvim-tree")
 require("plugins/nvim-treesitter")
 require("plugins/nvim-trevJ")
-require("plugins/packer")
 require("plugins/presence")
 require("plugins/telescope")
 require("plugins/vimtex")

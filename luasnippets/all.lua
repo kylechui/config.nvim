@@ -8,4 +8,5 @@ return {
             return os.date("%Y-%m-%d")
         end)
     ),
-}, nil
+},
+    nil

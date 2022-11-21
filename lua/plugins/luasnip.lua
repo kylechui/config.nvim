@@ -3,7 +3,7 @@ local types = require("luasnip.util.types")
 
 -- Loads in snippets
 require("luasnip.loaders.from_lua").load({
-    paths = vim.fn["stdpath"]("config") .. "/luasnippets/"
+    paths = vim.fn["stdpath"]("config") .. "/luasnippets/",
 })
 
 ls.config.set_config({
