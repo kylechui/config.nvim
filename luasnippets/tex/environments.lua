@@ -44,7 +44,7 @@ return nil,
                     rep(1),
                 }
             ),
-            { condition = begins_line }
+            { condition = in_mathzone or begins_line }
         ),
         -- LaTeX: Proof environment
         s("pf", get_env("proof"), { condition = in_text and begins_line }),
