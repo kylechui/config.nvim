@@ -1,3 +1,9 @@
+local ok, lualine = pcall(require, "lualine")
+if not ok then
+    print("Failed to load lualine.nvim")
+    return
+end
+
 -- Gets the number of words in the file, or the number of words in the current
 -- visual selection
 local word_count = function()
@@ -10,7 +16,7 @@ local word_count = function()
     return ("%sW"):format(count)
 end
 
-require("lualine").setup({
+lualine.setup({
     options = {
         section_separators = { left = "", right = "" },
         component_separators = { left = "│", right = "│" },

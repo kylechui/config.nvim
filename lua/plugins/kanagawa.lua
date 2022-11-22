@@ -1,4 +1,10 @@
-require("kanagawa").setup({
+local ok, kanagawa = pcall(require, "kanagawa")
+if not ok then
+    print("Failed to load kanagawa.nvim")
+    return
+end
+
+kanagawa.setup({
     globalStatus = true,
 })
 -- Emphasize window separators

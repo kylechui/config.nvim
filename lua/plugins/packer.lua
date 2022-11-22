@@ -1,17 +1,35 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local use = require("packer").use
 
 local packerUserConfig = augroup("packerUserConfig", {})
 autocmd("BufWritePost", {
-    pattern = {
-        "packer.lua",
-    },
-    command = "source <afile> | PackerCompile",
+    pattern = "packer.lua",
+    callback = function()
+        vim.cmd.source("<afile>")
+        vim.cmd.PackerClean()
+        vim.cmd.PackerInstall()
+    end,
     group = packerUserConfig,
 })
 
-return require("packer").startup(function()
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        vim.cmd.packadd("packer.nvim")
+        return true
+    end
+    return false
+end
+local packer_bootstrap = ensure_packer()
+
+local ok, packer = pcall(require, "packer")
+if not ok then
+    return
+end
+
+return packer.startup(function(use)
     -- Packer can manage itself
     use("wbthomason/packer.nvim")
     -- Telescope nonsense
@@ -146,4 +164,7 @@ return require("packer").startup(function()
         end,
     })
     --]=]
+    if packer_bootstrap then
+        packer.sync()
+    end
 end)

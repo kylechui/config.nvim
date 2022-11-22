@@ -1,4 +1,9 @@
-local ls = require("luasnip")
+local ok, ls = pcall(require, "luasnip")
+if not ok then
+    print("Failed to load LuaSnip")
+    return
+end
+
 local types = require("luasnip.util.types")
 
 -- Loads in snippets

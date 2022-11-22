@@ -1,6 +1,5 @@
 local map = vim.keymap.set
 -- Set up <Space> to be the global leader
-map("n", "<Space>", "<NOP>", { silent = true })
 vim.g.mapleader = " "
 -- Keybinds for editing init files
 map("n", "<Leader>s", require("plugins.telescope").search_dotfiles, { silent = true })
@@ -8,8 +7,8 @@ map("n", "<Leader>s", require("plugins.telescope").search_dotfiles, { silent = t
 map("n", "<C-s>", "<Cmd>up!<CR>", { silent = true })
 map({ "i", "x" }, "<C-s>", "<Esc><Cmd>up!<CR>", { silent = true })
 -- Deleting words with <C-BS>
-map({ "c", "i" }, "", "<C-w>", { remap = true, silent = true })
-map({ "c", "i" }, "<C-BS>", "<C-w>", { remap = true, silent = true })
+map({ "c", "i" }, "", "<C-w>", { silent = true })
+-- map({ "c", "i" }, "<C-BS>", "<C-w>", { silent = true })
 -- Toggle file explorer and focus on the open file
 map("n", "<C-Bslash>", function()
     require("nvim-tree").toggle(true)

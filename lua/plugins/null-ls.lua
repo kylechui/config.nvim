@@ -1,4 +1,8 @@
-local null_ls = require("null-ls")
+local ok, null_ls = pcall(require, "null-ls")
+if not ok then
+    print("Failed to load null-ls.nvim")
+    return
+end
 
 null_ls.setup({
     sources = {

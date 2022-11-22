@@ -1,3 +1,9 @@
+local ok, _ = pcall(require, "nvim-treesitter")
+if not ok then
+    print("Failed to load nvim-treesitter")
+    return
+end
+
 require("nvim-treesitter.configs").setup({
     context_commentstring = {
         enable = true,

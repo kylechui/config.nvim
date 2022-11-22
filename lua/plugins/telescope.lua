@@ -1,4 +1,9 @@
-local telescope = require("telescope")
+local ok, telescope = pcall(require, "telescope")
+if not ok then
+    print("Failed to load telescope.nvim")
+    return
+end
+
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 

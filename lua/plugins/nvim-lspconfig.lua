@@ -1,3 +1,9 @@
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
+    print("Failed to load nvim-lspconfig")
+    return
+end
+
 local map = vim.keymap.set
 -- Whenever our LSP server attaches to a buffer, load these keybinds
 local setup_lsp_keybinds = function()
@@ -8,22 +14,10 @@ local setup_lsp_keybinds = function()
     map("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = true })
 end
 
--- Store the path to the LSP binaries given by nvim-lsp-installer
-local server_root = vim.fn.stdpath("data") .. "/mason/bin/"
-local server_binaries = {
-    clangd = server_root .. "clangd",
-    pyright = server_root .. "pyright-langserver",
-    sumneko_lua = server_root .. "lua-language-server",
-    texlab = server_root .. "texlab",
-}
-
-require("lspconfig").clangd.setup({
+lspconfig.clangd.setup({
     on_attach = function()
         setup_lsp_keybinds()
     end,
-    cmd = {
-        server_binaries["clangd"],
-    },
 })
 
 local ht = require("haskell-tools")
@@ -38,14 +32,10 @@ ht.setup({
     },
 })
 
-require("lspconfig").pyright.setup({
+lspconfig.pyright.setup({
     on_attach = function()
         setup_lsp_keybinds()
     end,
-    cmd = {
-        server_binaries["pyright"],
-        "--stdio",
-    },
 })
 
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
@@ -53,13 +43,10 @@ require("neodev").setup({
     lspconfig = false,
 })
 
-require("lspconfig").sumneko_lua.setup({
+lspconfig.sumneko_lua.setup({
     on_attach = function()
         setup_lsp_keybinds()
     end,
-    cmd = {
-        server_binaries["sumneko_lua"],
-    },
     settings = {
         Lua = {
             diagnostics = {
@@ -84,11 +71,8 @@ require("lspconfig").sumneko_lua.setup({
     },
 })
 
-require("lspconfig").texlab.setup({
+lspconfig.texlab.setup({
     on_attach = function()
         setup_lsp_keybinds()
     end,
-    cmd = {
-        server_binaries["texlab"],
-    },
 })

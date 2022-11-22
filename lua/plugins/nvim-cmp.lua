@@ -1,5 +1,9 @@
--- Setup nvim-cmp
-local cmp = require("cmp")
+local ok, cmp = pcall(require, "cmp")
+if not ok then
+    print("Failed to load nvim-cmp")
+    return
+end
+
 local lspkind = require("lspkind")
 
 cmp.setup({

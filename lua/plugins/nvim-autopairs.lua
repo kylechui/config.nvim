@@ -1,4 +1,8 @@
-local npairs = require("nvim-autopairs")
+local ok, npairs = pcall(require, "nvim-autopairs")
+if not ok then
+    print("Failed to load nvim-autopairs")
+    return
+end
 
 npairs.setup()
 

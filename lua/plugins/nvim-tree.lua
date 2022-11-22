@@ -1,6 +1,12 @@
+local ok, nvim_tree = pcall(require, "nvim-tree")
+if not ok then
+    print("Failed to load nvim-tree")
+    return
+end
+
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
-require("nvim-tree").setup({
+nvim_tree.setup({
     view = {
         width = 36,
         mappings = {
