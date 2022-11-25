@@ -1,13 +1,18 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+local ok, packer = pcall(require, "packer")
+if not ok then
+    return
+end
+
 local packerUserConfig = augroup("packerUserConfig", {})
 autocmd("BufWritePost", {
     pattern = "packer.lua",
     callback = function()
         vim.cmd.source("<afile>")
-        vim.cmd.PackerClean()
-        vim.cmd.PackerInstall()
+        packer.clean()
+        packer.install()
     end,
     group = packerUserConfig,
 })
@@ -23,11 +28,6 @@ local ensure_packer = function()
     return false
 end
 local packer_bootstrap = ensure_packer()
-
-local ok, packer = pcall(require, "packer")
-if not ok then
-    return
-end
 
 return packer.startup(function(use)
     -- Packer can manage itself
@@ -119,12 +119,6 @@ return packer.startup(function(use)
     use("onsails/lspkind.nvim")
 
     use("folke/neodev.nvim")
-    use({
-        "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup()
-        end,
-    })
 
     ---[=[
     use({
