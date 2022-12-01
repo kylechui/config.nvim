@@ -160,7 +160,7 @@ return nil,
             end, {}),
         }, { condition = in_mathzone }),
         -- LaTeX: Regexp fractions
-        s({ trig = "([%a%d^_\\!']+)/", regTrig = true, wordTrig = false }, {
+        s({ trig = "([%a%d^_\\!'.]+)/", regTrig = true, wordTrig = false }, {
             d(1, function(_, snip)
                 return sn(1, {
                     t("\\frac{"),

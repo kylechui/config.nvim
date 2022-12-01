@@ -30,17 +30,14 @@ map("n", "<C-CR>", function()
         "-Wall",
         "-std=c++20",
         "-o",
-        file .. ".out",
-        file .. ".cpp",
+        "'" .. file .. ".out'",
+        "'" .. file .. ".cpp'",
         "&&",
         "time",
-        file .. ".out",
+        "'" .. file .. ".out'",
     }
-    table.insert(cmd, "<input.txt")
-    return require("utils").compile_and_run({
-        name = "CPP_OUTPUT",
-        cmd = cmd,
-    })
+    table.insert(cmd, "<'" .. file:match("^(.*/)[^/]*$") .. "input.txt'")
+    open_term(table.concat(cmd, " "))
 end, { silent = true, buffer = true })
 
 require("nvim-surround").buffer_setup({

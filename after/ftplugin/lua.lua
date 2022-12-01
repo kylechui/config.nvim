@@ -36,12 +36,5 @@ require("nvim-surround").buffer_setup({
                 end,
             },
         },
-        --[[ ["F"] = {
-            add = { "function() ", " end" },
-            find = function()
-                return require("nvim-surround.config").get_selection({ node = "function_definition" })
-            end,
-            delete = "^(function%b())().-(end)()$",
-        }, ]]
     },
 })

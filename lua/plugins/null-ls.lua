@@ -11,7 +11,10 @@ null_ls.setup({
             extra_args = { "--style", "{BasedOnStyle: Google, IndentWidth: 4}" },
         }),
         null_ls.builtins.formatting.latexindent.with({
-            extra_args = { "-y", "noAdditionalIndent:document:0;problem:0,defaultIndent:'  '" },
+            extra_args = {
+                "-y",
+                "noAdditionalIndent:document:0;problem:0,defaultIndent:'  ',verbatimEnvironments:cpp:1;python:1",
+            },
         }),
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.stylua.with({

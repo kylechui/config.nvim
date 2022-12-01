@@ -11,8 +11,8 @@ autocmd("BufWritePost", {
     pattern = "packer.lua",
     callback = function()
         vim.cmd.source("<afile>")
-        packer.clean()
-        packer.install()
+        --[[ packer.clean()
+        packer.install() ]]
     end,
     group = packerUserConfig,
 })
@@ -151,13 +151,19 @@ return packer.startup(function(use)
                         },
                     },
                 },
-                aliases = {
-                    q = false,
-                },
             })
         end,
     })
     --]=]
+    --[[ use({
+        "/home/kylec/ns-textobject.nvim",
+        after = "main",
+        config = function()
+            require("ns-textobject").setup({
+                disable_builtin_mapping = false,
+            })
+        end,
+    }) ]]
     if packer_bootstrap then
         packer.sync()
     end
