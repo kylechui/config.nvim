@@ -6,6 +6,9 @@ local g = vim.g
 vim.env.BOOKS = "~/Documents/Books/"
 vim.env.WORKSPACE = "~/Documents/github/"
 
+-- Allow require calls to find functions in after/
+package.path = package.path .. ";/home/kylec/.config/nvim/after/?.lua"
+
 -- Set Neovim to use the system clipboard
 opt.clipboard = "unnamedplus"
 -- Some execution-related settings
@@ -16,7 +19,7 @@ g.colors_name = "kanagawa"
 opt.background = "dark"
 opt.termguicolors = true
 -- Set font for GUIs (I use Neovide)
-opt.guifont = "JetBrains Mono:h12"
+opt.guifont = "JetBrainsMono Nerd Font Mono:h12"
 -- Allow mouse use in all modes
 opt.mouse = "a"
 -- Line number settings

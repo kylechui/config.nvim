@@ -11,8 +11,6 @@ autocmd("BufWritePost", {
     pattern = "packer.lua",
     callback = function()
         vim.cmd.source("<afile>")
-        --[[ packer.clean()
-        packer.install() ]]
     end,
     group = packerUserConfig,
 })
@@ -35,7 +33,7 @@ return packer.startup(function(use)
     -- Telescope nonsense
     use({
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.0",
+        branch = "0.1.x",
         requires = "nvim-lua/plenary.nvim",
     })
     use({
@@ -117,6 +115,7 @@ return packer.startup(function(use)
     use("uga-rosa/cmp-dictionary")
     use("saadparwaiz1/cmp_luasnip")
     use("onsails/lspkind.nvim")
+    use("ray-x/lsp_signature.nvim")
 
     use("folke/neodev.nvim")
 

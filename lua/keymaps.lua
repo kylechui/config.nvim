@@ -2,9 +2,9 @@ local map = vim.keymap.set
 -- Set up <Space> to be the global leader
 vim.g.mapleader = " "
 -- Keybinds for editing init files
-map("n", "<Leader>s", require("plugins.telescope").search_dotfiles, { silent = true })
+map("n", "<Leader>s", require("plugin.telescope").search_dotfiles, { silent = true })
 -- Saving files with <C-s>
-map("n", "<C-s>", "<Cmd>up!<CR>", { silent = true })
+map("n", "<C-s>", vim.cmd.update, { silent = true })
 map({ "i", "x" }, "<C-s>", "<Esc><Cmd>up!<CR>", { silent = true })
 -- Deleting words with <C-BS>
 map({ "c", "i" }, "<C-BS>", "<C-w>", {})
@@ -40,8 +40,8 @@ map("n", "<A-l>", function()
 end, { silent = true })
 -- Telescope fuzzy find stuff
 map("n", "<Leader>f.", require("telescope.builtin").find_files, { silent = true })
-map("n", "<Leader>fb", require("plugins.telescope").search_books, { silent = true })
-map("n", "<Leader>ff", require("plugins.telescope").search_workspace, { silent = true })
+map("n", "<Leader>fb", require("plugin.telescope").search_books, { silent = true })
+map("n", "<Leader>ff", require("plugin.telescope").search_workspace, { silent = true })
 map("n", "<Leader>fg", require("telescope.builtin").live_grep, { silent = true })
 map("n", "<Leader>fh", require("telescope.builtin").help_tags, { silent = true })
 -- Navigate by wrapped lines by default

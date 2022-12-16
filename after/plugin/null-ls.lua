@@ -8,7 +8,10 @@ null_ls.setup({
     sources = {
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.clang_format.with({
-            extra_args = { "--style", "{BasedOnStyle: Google, IndentWidth: 4}" },
+            extra_args = {
+                "--style",
+                "{BasedOnStyle: Google, IndentWidth: 4, BreakBeforeBinaryOperators: NonAssignment, AllowShortFunctionsOnASingleLine: None}",
+            },
         }),
         null_ls.builtins.formatting.latexindent.with({
             extra_args = {

@@ -26,7 +26,7 @@ ht.setup({
         on_attach = function()
             -- haskell-language-server relies heavily on codeLenses,
             -- so auto-refresh (see advanced configuration) is enabled by default
-            vim.keymap.set("n", "<space>ca", vim.lsp.codelens.run, { buffer = true })
+            vim.keymap.set("n", "<space>c", vim.lsp.codelens.run, { buffer = true })
             vim.keymap.set("n", "<space>hs", ht.hoogle.hoogle_signature, { buffer = true })
         end,
     },

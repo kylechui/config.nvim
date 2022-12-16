@@ -10,7 +10,7 @@ map("n", "<C-'>", function()
     -- Get the file path (without extension)
     local file = vim.api.nvim_buf_get_name(0):match("^(.*)%.cpp")
     local cmd = {
-        "g++",
+        "g++-12",
         "-Wall",
         "-std=c++20",
         "-o",
@@ -26,7 +26,7 @@ map("n", "<C-CR>", function()
     -- Get the file path (without extension)
     local file = vim.api.nvim_buf_get_name(0):match("^(.*)%.cpp")
     local cmd = {
-        "g++",
+        "g++-12",
         "-Wall",
         "-std=c++20",
         "-o",

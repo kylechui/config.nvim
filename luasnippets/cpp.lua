@@ -21,26 +21,11 @@ return {
                 using ll = long long;
                 using ld = long double;
 
-                int main() {{
-                    {}{}
+                auto main() -> int {{
+                    {}
                 }}
             ]],
-            {
-                c(1, {
-                    t(""),
-                    -- TODO: Figure out indentation nonsense
-                    t({
-                        "int N;",
-                        "\tcin >> N;",
-                        "\tvector<int> arr(N);",
-                        "\tfor (size_t i = 0; i < N; i++) {",
-                        "\t\tcin >> arr[i];",
-                        "\t}",
-                        "\t",
-                    }),
-                }),
-                i(0),
-            }
+            { i(0) }
         )
     ),
     -- C++: Auto-documenting functions
@@ -162,7 +147,16 @@ return {
                 c(1, {
                     fmt(
                         [[
-                            size_t {} = {}; {} < {}; {}++
+                            const auto& {} : {}
+                        ]],
+                        {
+                            i(1, "e"),
+                            i(2, "arr"),
+                        }
+                    ),
+                    fmt(
+                        [[
+                            size_t {}{{{}}}; {} < {}; {}++
                         ]],
                         {
                             i(1, "i"),
@@ -170,16 +164,6 @@ return {
                             rep(1),
                             i(3, "arr.size()"),
                             rep(1),
-                        }
-                    ),
-                    fmt(
-                        [[
-                            {}& {} : {}
-                        ]],
-                        {
-                            i(1, "auto"),
-                            i(2, "e"),
-                            i(3, "arr"),
                         }
                     ),
                 }),
@@ -192,7 +176,7 @@ return {
         f(function()
             return standardize("cout") .. " << "
         end),
-        i(1),
+        i(0),
         f(function()
             return " << " .. standardize("endl;")
         end),
