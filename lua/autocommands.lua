@@ -50,3 +50,14 @@ autocmd({ "CursorMoved", "CursorMovedI" }, {
     callback = require("lualine").refresh,
     group = updateStatusline,
 })
+-- Sets filetype of exercism samples (in Firefox)
+local setFirefoxFiletype = augroup("setFirefoxFiletype", {})
+autocmd({ "BufReadPost", "CursorMovedI" }, {
+    pattern = {
+        "exercism.*",
+    },
+    callback = function()
+        vim.bo.filetype = "haskell"
+    end,
+    group = setFirefoxFiletype,
+})

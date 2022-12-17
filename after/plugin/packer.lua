@@ -86,7 +86,7 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs")
     -- Git integration
     use("tpope/vim-fugitive")
-    -- configarkdown viewing
+    -- Configure Markdown viewing
     use({
         "iamcco/markdown-preview.nvim",
         run = function()
@@ -124,45 +124,14 @@ return packer.startup(function(use)
         --[[ "kylechui/nvim-surround",
         tag = "*", ]]
         "/home/kylec/Documents/github/nvim-surround/main",
-        config = function()
-            require("nvim-surround").setup({
-                surrounds = {
-                    ["f"] = {
-                        change = {
-                            target = function()
-                                local selection = require("nvim-surround.config").get_selection({
-                                    query = {
-                                        capture = "@function_name",
-                                        type = "nvim-surround",
-                                    },
-                                })
-                                if not selection then
-                                    return nil
-                                end
-                                return {
-                                    left = func_name,
-                                    right = {
-                                        first_pos = { selection.last_pos[1], selection.last_pos[2] + 1 },
-                                        last_pos = selection.last_pos,
-                                    },
-                                }
-                            end,
-                        },
-                    },
-                },
-            })
-        end,
     })
     --]=]
-    --[[ use({
-        "/home/kylec/ns-textobject.nvim",
-        after = "main",
-        config = function()
-            require("ns-textobject").setup({
-                disable_builtin_mapping = false,
-            })
+    use({
+        "glacambre/firenvim",
+        run = function()
+            vim.fn["firenvim#install"](0)
         end,
-    }) ]]
+    })
     if packer_bootstrap then
         packer.sync()
     end
