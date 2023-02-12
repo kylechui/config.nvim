@@ -37,6 +37,7 @@ lspconfig.ocamllsp.setup({
     on_attach = function()
         setup_lsp_keybinds()
     end,
+    single_file_support = true,
 })
 
 lspconfig.pyright.setup({
