@@ -19,6 +19,9 @@ null_ls.setup({
                 "noAdditionalIndent:document:0;problem:0,defaultIndent:'  ',verbatimEnvironments:cpp:1;python:1",
             },
         }),
+        null_ls.builtins.formatting.ocamlformat.with({
+            extra_args = { "--name", "$FILENAME" },
+        }),
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.stylua.with({
             extra_args = { "--indent-type", "Spaces" },

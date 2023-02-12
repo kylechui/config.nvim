@@ -26,10 +26,17 @@ ht.setup({
         on_attach = function()
             -- haskell-language-server relies heavily on codeLenses,
             -- so auto-refresh (see advanced configuration) is enabled by default
-            vim.keymap.set("n", "<space>c", vim.lsp.codelens.run, { buffer = true })
-            vim.keymap.set("n", "<space>hs", ht.hoogle.hoogle_signature, { buffer = true })
+            setup_lsp_keybinds()
+            map("n", "<space>c", vim.lsp.codelens.run, { buffer = true })
+            map("n", "<space>hs", ht.hoogle.hoogle_signature, { buffer = true })
         end,
     },
+})
+
+lspconfig.ocamllsp.setup({
+    on_attach = function()
+        setup_lsp_keybinds()
+    end,
 })
 
 lspconfig.pyright.setup({
@@ -39,9 +46,7 @@ lspconfig.pyright.setup({
 })
 
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require("neodev").setup({
-    lspconfig = false,
-})
+require("neodev").setup()
 
 lspconfig.sumneko_lua.setup({
     on_attach = function()
@@ -49,23 +54,8 @@ lspconfig.sumneko_lua.setup({
     end,
     settings = {
         Lua = {
-            diagnostics = {
-                globals = {
-                    "vim",
-                },
-            },
-            format = {
-                enable = false,
-            },
-            -- Make the server aware of Neovim runtime files
             workspace = {
                 checkThirdParty = false,
-                library = vim.api.nvim_get_runtime_file("", true),
-                --[[ maxPreload = 1000,
-                preloadFileSize = 150, ]]
-            },
-            telemetry = {
-                enable = false,
             },
         },
     },
