@@ -20,7 +20,11 @@ null_ls.setup({
             },
         }),
         null_ls.builtins.formatting.ocamlformat.with({
-            extra_args = { "--name", "$FILENAME" },
+            extra_args = {
+                "--no-comment-check",
+                "--name",
+                "$FILENAME",
+            },
         }),
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.stylua.with({

@@ -34,7 +34,8 @@ ht.setup({
 })
 
 lspconfig.ocamllsp.setup({
-    on_attach = function()
+    on_attach = function(client)
+        require("virtualtypes").on_attach(client)
         setup_lsp_keybinds()
     end,
     single_file_support = true,
