@@ -206,6 +206,24 @@ return nil,
             i(1),
             t("}"),
         }, { condition = in_mathzone }),
+        -- LaTeX: Postfix hat
+        s({ trig = "(\\?[%a%d^_]+)hat", regTrig = true, wordTrig = false }, {
+            f(function(_, snip)
+                return "\\hat{" .. snip.captures[1] .. "}"
+            end),
+        }, { condition = in_mathzone }),
+        -- LaTeX: Hat
+        s({ trig = "hat", wordTrig = false }, {
+            t("\\hat{"),
+            i(1),
+            t("}"),
+        }, { condition = in_mathzone }),
+        -- LaTeX: Postfix bar
+        s({ trig = "(\\?%a+)bar", regTrig = true, wordTrig = false }, {
+            f(function(_, snip)
+                return "\\bar{" .. snip.captures[1] .. "}"
+            end),
+        }, { condition = in_mathzone }),
         -- LaTeX: Set notation
         s({ trig = "set", wordTrig = false }, {
             t("\\set{"),

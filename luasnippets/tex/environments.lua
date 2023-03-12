@@ -94,6 +94,14 @@ return nil,
             i(0),
             t({ "", "\\end{problem}" }),
         }, { condition = in_text and begins_line }),
+        -- LaTeX: Lemma environment
+        s("lem", {
+            t("\\begin{lemma}{"),
+            i(1),
+            t({ "}", "\t" }),
+            i(0),
+            t({ "", "\\end{lemma}" }),
+        }, { condition = in_text and begins_line }),
         -- LaTeX: Enumerate environment
         s("enum", {
             t("\\begin{enumerate}"),

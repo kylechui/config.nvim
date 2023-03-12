@@ -30,6 +30,7 @@ local packer_bootstrap = ensure_packer()
 return packer.startup(function(use)
     -- Packer can manage itself
     use("wbthomason/packer.nvim")
+
     -- Telescope nonsense
     use({
         "nvim-telescope/telescope.nvim",
@@ -106,6 +107,8 @@ return packer.startup(function(use)
     use("neovim/nvim-lspconfig")
     use("williamboman/mason.nvim")
     use("williamboman/mason-lspconfig.nvim")
+    use("onsails/lspkind.nvim")
+    use("ray-x/lsp_signature.nvim")
     -- Autocomplete engine
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
@@ -114,8 +117,6 @@ return packer.startup(function(use)
     use("hrsh7th/cmp-path")
     use("uga-rosa/cmp-dictionary")
     use("saadparwaiz1/cmp_luasnip")
-    use("onsails/lspkind.nvim")
-    use("ray-x/lsp_signature.nvim")
 
     use("folke/neodev.nvim")
 
@@ -124,6 +125,7 @@ return packer.startup(function(use)
         --[[ "kylechui/nvim-surround",
         tag = "*", ]]
         "/home/kylec/Documents/github/nvim-surround/main",
+        -- "kylechui/nvim-surround",
     })
     --]=]
     use({
@@ -131,7 +133,18 @@ return packer.startup(function(use)
         run = function()
             vim.fn["firenvim#install"](0)
         end,
+        config = function()
+            vim.g.firenvim_config = {
+                localSettings = {
+                    [".*"] = {
+                        takeover = "never",
+                    },
+                },
+            }
+        end,
     })
+    -- Automatic parenthesis balancing for lispy languages
+    use("eraserhd/parinfer-rust")
     if packer_bootstrap then
         packer.sync()
     end

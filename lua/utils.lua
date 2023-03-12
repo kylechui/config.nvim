@@ -10,18 +10,11 @@ end
 
 -- Custom rename function to start with empty prompt
 M.rename_var = function()
-    local position_params = vim.lsp.util.make_position_params()
-    local new_name = vim.fn.input("New name: ")
-
+    local new_name = vim.fn.input({ prompt = "New name: " })
     if #new_name == 0 then
         return
     end
-
-    position_params.newName = new_name
-
-    vim.lsp.buf_request(0, "textDocument/rename", position_params, function(err, method, result, ...)
-        vim.lsp.handlers["textDocument/rename"](err, method, result, ...)
-    end)
+    vim.lsp.buf.rename(new_name)
 end
 
 return M

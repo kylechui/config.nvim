@@ -13,11 +13,12 @@ local formatCode = augroup("formatCode", {})
 autocmd("BufWritePre", {
     pattern = {
         "*.cpp",
-        "*.tex",
         "*.js",
         "*.lua",
         "*.md",
+        "*.ml",
         "*.py",
+        "*.tex",
         "*.ts",
     },
     callback = function()
@@ -57,7 +58,7 @@ autocmd({ "BufReadPost", "CursorMovedI" }, {
         "exercism.*",
     },
     callback = function()
-        vim.bo.filetype = "haskell"
+        vim.bo.filetype = "ocaml"
     end,
     group = setFirefoxFiletype,
 })

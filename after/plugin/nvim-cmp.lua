@@ -20,7 +20,7 @@ cmp.setup({
         ["<CR>"] = cmp.config.disable,
     }),
     sources = cmp.config.sources({
-        --[[ { name = "nvim_lua" }, ]]
+        -- { name = "nvim_lua" },
         { name = "path" },
         { name = "nvim_lsp" },
         { name = "buffer", keyword_length = 4 },
@@ -60,9 +60,7 @@ cmp.setup.cmdline(":", {
     }),
 })
 
+vim.opt_global.dictionary = { "~/.config/nvim/spell/en.utf-8.add", "/usr/share/dict/words" }
 require("cmp_dictionary").setup({
-    dic = {
-        ["*"] = { "~/.config/nvim/spell/en.utf-8.add", "/usr/share/dict/words" },
-    },
     first_case_insensitive = true,
 })

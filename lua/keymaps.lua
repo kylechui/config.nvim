@@ -2,7 +2,13 @@ local map = vim.keymap.set
 -- Set up <Space> to be the global leader
 vim.g.mapleader = " "
 -- Keybinds for editing init files
-map("n", "<Leader>s", require("plugin.telescope").search_dotfiles, { silent = true })
+map("n", "<Leader>s", function()
+    require("telescope.builtin").find_files({
+        prompt_title = "Configuration files",
+        cwd = vim.fn["stdpath"]("config"),
+        file_ignore_patterns = { ".png" },
+    })
+end, { silent = true })
 -- Saving files with <C-s>
 map("n", "<C-s>", vim.cmd.update, { silent = true })
 map({ "i", "x" }, "<C-s>", "<Esc><Cmd>up!<CR>", { silent = true })
@@ -40,8 +46,42 @@ map("n", "<A-l>", function()
 end, { silent = true })
 -- Telescope fuzzy find stuff
 map("n", "<Leader>f.", require("telescope.builtin").find_files, { silent = true })
-map("n", "<Leader>fb", require("plugin.telescope").search_books, { silent = true })
-map("n", "<Leader>ff", require("plugin.telescope").search_workspace, { silent = true })
+map("n", "<Leader>fb", function()
+    require("telescope.builtin").find_files({
+        prompt_title = "Books",
+        cwd = vim.env.BOOKS,
+    })
+end, { silent = true })
+map("n", "<Leader>ff", function()
+    require("telescope.builtin").find_files({
+        prompt_title = "Workspace files",
+        cwd = vim.env.WORKSPACE,
+        file_ignore_patterns = {
+            -- TeX temporary files
+            "%.aux",
+            "%.fdb_latexmk",
+            "%.fls",
+            "%.log",
+            "%.pdf_tex",
+            "%.synctex.gz",
+            "%.ttf",
+            "%.xdv",
+            -- C++ temporary files
+            "%.o",
+            "%.out",
+            -- Git related files and directories
+            "description",
+            "packed%-refs",
+            "HEAD",
+            "hooks/",
+            "objects/",
+            "refs/",
+            "info/",
+            "logs/",
+            "worktrees/",
+        },
+    })
+end, { silent = true })
 map("n", "<Leader>fg", require("telescope.builtin").live_grep, { silent = true })
 map("n", "<Leader>fh", require("telescope.builtin").help_tags, { silent = true })
 -- Navigate by wrapped lines by default
@@ -119,7 +159,7 @@ map({ "i", "s" }, "<C-k>", function()
 end, { silent = true })
 
 -- Custom operator-mode mappings for easier surrounds
-map("o", "ar", "a[")
-map("o", "ir", "i[")
-map("o", "aa", "a<")
-map("o", "ia", "i<")
+map({ "o", "x" }, "ar", "a[")
+map({ "o", "x" }, "ir", "i[")
+map({ "o", "x" }, "aa", "a<")
+map({ "o", "x" }, "ia", "i<")

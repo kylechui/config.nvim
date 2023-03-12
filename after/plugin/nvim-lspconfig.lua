@@ -65,7 +65,7 @@ lspconfig.pyright.setup({
 })
 
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require("neodev").setup()
+require("neodev").setup({})
 
 lspconfig.lua_ls.setup({
     on_attach = function()
@@ -76,8 +76,19 @@ lspconfig.lua_ls.setup({
             workspace = {
                 checkThirdParty = false,
             },
+            diagnostics = {
+                globals = { "it", "describe", "before_each" }, -- Plenary test suite variables
+            },
         },
     },
+})
+
+lspconfig.rust_analyzer.setup({
+    on_attach = function(client)
+        create_codelens_autocmd(client)
+        setup_lsp_keybinds()
+    end,
+    single_file_support = true,
 })
 
 lspconfig.texlab.setup({

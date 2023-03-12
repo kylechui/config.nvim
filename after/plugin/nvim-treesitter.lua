@@ -18,6 +18,7 @@ require("nvim-treesitter.configs").setup({
         "lua",
         "markdown",
         "markdown_inline",
+        "ocaml",
         "python",
         "query",
         "vim",
@@ -39,6 +40,7 @@ require("nvim-treesitter.configs").setup({
         select = {
             enable = true,
             keymaps = {
+                ["ac"] = "@comment.outer",
                 ["aF"] = "@function.outer",
                 ["iF"] = "@function.inner",
                 ["af"] = "@call.outer",

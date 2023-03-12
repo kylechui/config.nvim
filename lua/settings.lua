@@ -6,9 +6,6 @@ local g = vim.g
 vim.env.BOOKS = "~/Documents/Books/"
 vim.env.WORKSPACE = "~/Documents/github/"
 
--- Allow require calls to find functions in after/
-package.path = package.path .. ";/home/kylec/.config/nvim/after/?.lua"
-
 -- Set Neovim to use the system clipboard
 opt.clipboard = "unnamedplus"
 -- Some execution-related settings
@@ -18,8 +15,6 @@ opt.maxmempattern = 2500
 g.colors_name = "kanagawa"
 opt.background = "dark"
 opt.termguicolors = true
--- Set font for GUIs (I use Neovide)
-opt.guifont = "JetBrainsMono Nerd Font Mono:h12"
 -- Allow mouse use in all modes
 opt.mouse = "a"
 -- Line number settings
@@ -42,8 +37,6 @@ opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 opt.shiftround = true
--- Only save information about the cursor and folds on exit
-opt.viewoptions = "cursor,folds"
 -- Setup smarter search settings
 opt.ignorecase = true
 opt.smartcase = true
@@ -54,7 +47,7 @@ opt.laststatus = 3
 opt.lazyredraw = true
 -- Force vertical splits to always open on the right
 opt.splitright = true
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = { "menu", "menuone", "noselect" }
 -- Neovide-specific cursor settings
 g.neovide_cursor_animation_length = 0.05
 g.neovide_cursor_animate_in_insert_mode = 0
@@ -66,7 +59,7 @@ vim.api.nvim_create_user_command("ReloadSnippets", function()
     })
 end, {})
 
-vim.cmd([[hi! default link NvimSurroundHighlight Todo]])
+vim.cmd.highlight("default link NvimSurroundHighlight Todo")
 
 local notify = vim.notify
 vim.notify = function(msg, ...)
