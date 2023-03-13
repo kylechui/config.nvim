@@ -34,7 +34,7 @@ return packer.startup(function(use)
     -- Telescope nonsense
     use({
         "nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
+        tag = "0.1.1",
         requires = "nvim-lua/plenary.nvim",
     })
     use({

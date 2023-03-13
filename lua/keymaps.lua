@@ -16,7 +16,7 @@ map({ "i", "x" }, "<C-s>", "<Esc><Cmd>up!<CR>", { silent = true })
 map({ "c", "i" }, "<C-BS>", "<C-w>", {})
 -- Toggle file explorer and focus on the open file
 map("n", "<C-Bslash>", function()
-    require("nvim-tree").toggle(true)
+    require("nvim-tree.api").tree.toggle(true)
 end, { silent = true })
 -- Move towards the beginning/end of a line
 map({ "n", "x" }, "H", "g^", { silent = true })

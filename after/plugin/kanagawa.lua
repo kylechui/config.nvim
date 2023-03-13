@@ -12,7 +12,7 @@ local hl = vim.api.nvim_set_hl
 hl(0, "WinSeparator", { fg = "NONE" })
 
 -- Telescope theming
-local colors = require("kanagawa.colors").setup()
+local colors = require("kanagawa.colors").setup().palette
 hl(0, "TelescopeBorder", { fg = colors.sumiInk0, bg = colors.sumiInk0 })
 hl(0, "TelescopeNormal", { fg = colors.fujiWhite, bg = colors.sumiInk0 })
 hl(0, "TelescopePromptBorder", { fg = colors.sumiInk2, bg = colors.sumiInk2 })
