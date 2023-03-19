@@ -8,7 +8,37 @@ return {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-path",
             "uga-rosa/cmp-dictionary",
-            "saadparwaiz1/cmp_luasnip",
+            {
+                "saadparwaiz1/cmp_luasnip",
+                config = function()
+                    local ls = require("luasnip")
+                    vim.keymap.set({ "i", "s" }, "<Tab>", function()
+                        if ls.expand_or_jumpable() then
+                            return "<Plug>luasnip-expand-or-jump"
+                        else
+                            return "<Tab>"
+                        end
+                    end, { expr = true })
+
+                    vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+                        if ls.jumpable(-1) then
+                            ls.jump(-1)
+                        end
+                    end, { silent = true })
+
+                    vim.keymap.set({ "i", "s" }, "<C-j>", function()
+                        if ls.choice_active() then
+                            ls.change_choice(1)
+                        end
+                    end, { silent = true })
+
+                    vim.keymap.set({ "i", "s" }, "<C-k>", function()
+                        if ls.choice_active() then
+                            ls.change_choice(-1)
+                        end
+                    end, { silent = true })
+                end,
+            },
         },
         config = function()
             local cmp = require("cmp")
@@ -71,37 +101,6 @@ return {
             require("cmp_dictionary").setup({
                 first_case_insensitive = true,
             })
-        end,
-    },
-    {
-        "saadparwaiz1/cmp_luasnip",
-        config = function()
-            local ls = require("luasnip")
-            vim.keymap.set({ "i", "s" }, "<Tab>", function()
-                if ls.expand_or_jumpable() then
-                    return "<Plug>luasnip-expand-or-jump"
-                else
-                    return "<Tab>"
-                end
-            end, { expr = true })
-
-            vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
-                if ls.jumpable(-1) then
-                    ls.jump(-1)
-                end
-            end, { silent = true })
-
-            vim.keymap.set({ "i", "s" }, "<C-j>", function()
-                if ls.choice_active() then
-                    ls.change_choice(1)
-                end
-            end, { silent = true })
-
-            vim.keymap.set({ "i", "s" }, "<C-k>", function()
-                if ls.choice_active() then
-                    ls.change_choice(-1)
-                end
-            end, { silent = true })
         end,
     },
 }

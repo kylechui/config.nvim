@@ -8,6 +8,12 @@ return {
         require("luasnip.loaders.from_lua").load({
             paths = vim.fn["stdpath"]("config") .. "/luasnippets/",
         })
+        -- Adds a new command to reload snippets
+        vim.api.nvim_create_user_command("ReloadSnippets", function()
+            require("luasnip.loaders.from_lua").load({
+                paths = vim.fn["stdpath"]("config") .. "/luasnippets/",
+            })
+        end, {})
 
         require("luasnip").config.set_config({
             update_events = "TextChanged,TextChangedI",

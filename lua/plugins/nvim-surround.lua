@@ -12,5 +12,8 @@ return {
         { "<C-g>s", mode = "i" },
         { "<C-g>S", mode = "i" },
     },
-    config = true,
+    config = function()
+        vim.cmd.highlight("default link NvimSurroundHighlight Todo")
+        require("nvim-surround").setup()
+    end,
 }

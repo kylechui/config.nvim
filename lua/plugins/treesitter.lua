@@ -6,7 +6,15 @@ return {
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
             "nvim-treesitter/playground",
-            "Wansmer/treesj",
+            {
+                "Wansmer/treesj",
+                keys = {
+                    { "gJ", "<Cmd>TSJToggle<CR>" },
+                },
+                opts = {
+                    use_default_keymaps = false,
+                },
+            },
         },
         config = function()
             require("nvim-treesitter.configs").setup({

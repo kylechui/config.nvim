@@ -46,15 +46,6 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 g.neovide_cursor_animation_length = 0.05
 g.neovide_cursor_animate_in_insert_mode = 0
 
--- Adds a new command to reload snippets
-vim.api.nvim_create_user_command("ReloadSnippets", function()
-    require("luasnip.loaders.from_lua").load({
-        paths = vim.fn["stdpath"]("config") .. "/luasnippets/",
-    })
-end, {})
-
-vim.cmd.highlight("default link NvimSurroundHighlight Todo")
-
 local notify = vim.notify
 vim.notify = function(msg, ...)
     if msg:match("warning: multiple different client offset_encodings") then
