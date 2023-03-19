@@ -1,6 +1,7 @@
 return {
     "lervag/vimtex",
     ft = "tex",
+    version = "*",
     config = function()
         vim.g.tex_flavor = "latex"
         vim.g.tex_comment_nospell = 1

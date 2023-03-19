@@ -26,7 +26,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "5a871409199d585b52b69952532e3fb435e64566" },
   "nvim-tree.lua": { "branch": "master", "commit": "1d79a64a88af47ddbb55f4805ab537d11d5b908e" },
   "nvim-treesitter": { "branch": "master", "commit": "4536156f32b8ab0aab264e3cd7819fc8e3daede4" },
-  "nvim-treesitter-textobjects": { "branch": "master", "commit": "5b2bcb9ca8315879181f468b37a897100d631005" },
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "ba443419c5584969546684c228dda08ca8e394c4" },
   "nvim-web-devicons": { "branch": "master", "commit": "585dbc29315ca60be67d18ae6175771c3fb6791e" },
   "parinfer-rust": { "branch": "master", "commit": "4d4f4c6c0d3b44c8443f3102bfadfb67dfb385f7" },
   "playground": { "branch": "master", "commit": "4044b53c4d4fcd7a78eae20b8627f78ce7dc6f56" },
@@ -36,5 +36,5 @@
   "telescope.nvim": { "branch": "master", "commit": "c1a2af0af69e80e14e6b226d3957a064cd080805" },
   "treesj": { "branch": "main", "commit": "90248883bdb2d559ff4ba7f0148eb0145d3f0908" },
   "vim-fugitive": { "branch": "master", "commit": "5b52a0f395065d6cb7b65a00a5e17eaf9ebd64d5" },
-  "vimtex": { "branch": "master", "commit": "7c1bc9b8ad6c6bddc0194aeb27b34bd1107880f2" }
+  "vimtex": { "branch": "master", "commit": "00484c8057d49fffa4524ae5c2c33cda34301666" }
 }
