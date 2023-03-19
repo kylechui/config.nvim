@@ -1,0 +1,3 @@
+return {
+    "eraserhd/parinfer-rust",
+}

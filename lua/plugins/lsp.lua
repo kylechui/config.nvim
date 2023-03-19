@@ -2,6 +2,9 @@ return {
     {
         "neovim/nvim-lspconfig",
         event = "VeryLazy",
+        dependencies = {
+            "folke/neodev.nvim",
+        },
         config = function()
             local map = vim.keymap.set
             -- Whenever our LSP server attaches to a buffer, load these keybinds
