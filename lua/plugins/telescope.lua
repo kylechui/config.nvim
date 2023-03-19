@@ -3,7 +3,10 @@ return {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.1",
         keys = { "<Leader>f", "<Leader>s" },
-        dependencies = "nvim-lua/plenary.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        },
         config = function()
             local actions = require("telescope.actions")
             require("telescope").setup({
@@ -86,6 +89,7 @@ return {
             end, { silent = true })
             vim.keymap.set("n", "<Leader>fg", require("telescope.builtin").live_grep, { silent = true })
             vim.keymap.set("n", "<Leader>fh", require("telescope.builtin").help_tags, { silent = true })
+            require("telescope").load_extension("fzf")
         end,
     },
 }
