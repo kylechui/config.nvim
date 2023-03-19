@@ -10,11 +10,11 @@ return {
             hl(0, "WinSeparator", { fg = "NONE" })
             hl(0, "TelescopeBorder", { fg = palette.sumiInk0, bg = palette.sumiInk0 })
             hl(0, "TelescopeNormal", { fg = palette.fujiWhite, bg = palette.sumiInk0 })
-            hl(0, "TelescopePromptBorder", { fg = palette.sumiInk2, bg = palette.sumiInk2 })
-            hl(0, "TelescopePromptNormal", { fg = palette.fujiWhite, bg = palette.sumiInk2 })
-            hl(0, "TelescopeSelection", { fg = palette.fujiWhite, bg = palette.sumiInk2 })
-            hl(0, "TelescopePreviewTitle", { fg = palette.sumiInk2, bg = palette.oniViolet })
-            hl(0, "TelescopePromptTitle", { fg = palette.sumiInk2, bg = palette.sakuraPink })
+            hl(0, "TelescopePromptBorder", { fg = palette.sumiInk4, bg = palette.sumiInk4 })
+            hl(0, "TelescopePromptNormal", { fg = palette.fujiWhite, bg = palette.sumiInk4 })
+            hl(0, "TelescopeSelection", { fg = palette.fujiWhite, bg = palette.sumiInk4 })
+            hl(0, "TelescopePreviewTitle", { fg = palette.sumiInk4, bg = palette.oniViolet })
+            hl(0, "TelescopePromptTitle", { fg = palette.sumiInk4, bg = palette.sakuraPink })
 
             local actions = require("telescope.actions")
             require("telescope").setup({
@@ -28,8 +28,8 @@ return {
                             ["q"] = require("telescope.actions").close,
                         },
                     },
-                    prompt_prefix = "   ",
-                    selection_caret = "  ",
+                    prompt_prefix = " λ ",
+                    -- selection_caret = " > ",
                     sorting_strategy = "ascending",
                     layout_config = {
                         horizontal = {
