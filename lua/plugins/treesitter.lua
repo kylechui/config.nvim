@@ -6,6 +6,7 @@ return {
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
             "nvim-treesitter/playground",
+            "Wansmer/treesj",
         },
         config = function()
             require("nvim-treesitter.configs").setup({
