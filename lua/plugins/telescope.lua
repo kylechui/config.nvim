@@ -2,7 +2,7 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.1",
-        keys = { "<Leader>f" },
+        keys = { "<Leader>f", "<Leader>s" },
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
             local hl = vim.api.nvim_set_hl
