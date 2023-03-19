@@ -1,6 +1,15 @@
 return {
     {
         "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+        dependencies = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-path",
+            "uga-rosa/cmp-dictionary",
+            "saadparwaiz1/cmp_luasnip",
+        },
         config = function()
             local cmp = require("cmp")
             local lspkind = require("lspkind")
@@ -13,13 +22,12 @@ return {
                     end,
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
-                    ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
+                    ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
                     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
                     ["<CR>"] = cmp.config.disable,
                 }),
                 sources = cmp.config.sources({
-                    -- { name = "nvim_lua" },
                     { name = "path" },
                     { name = "nvim_lsp" },
                     { name = "buffer", keyword_length = 4 },
@@ -96,10 +104,4 @@ return {
             end, { silent = true })
         end,
     },
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-path",
-    "uga-rosa/cmp-dictionary",
 }
