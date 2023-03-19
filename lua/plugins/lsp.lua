@@ -1,9 +1,20 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        event = "LspAttach",
-        dependencies = "folke/neodev.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "folke/neodev.nvim",
+        },
         config = function()
+            -- Setup mason.nvim before LSP servers
+            require("mason").setup()
+            require("mason-lspconfig").setup({
+                automatic_installation = true
+            })
+
+
             local map = vim.keymap.set
             -- Whenever our LSP server attaches to a buffer, load these keybinds
             local setup_lsp_keybinds = function()
@@ -36,14 +47,15 @@ return {
 
             -- IMPORTANT: make sure to setup neodev BEFORE require("lspconfig")
             require("neodev").setup({})
+            local lspconfig = require("lspconfig")
 
-            require("lspconfig").clangd.setup({
+            lspconfig.clangd.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
                 end,
             })
 
-            require("lspconfig").ocamllsp.setup({
+            lspconfig.ocamllsp.setup({
                 on_attach = function(client)
                     create_codelens_autocmd(client)
                     setup_lsp_keybinds()
@@ -51,13 +63,13 @@ return {
                 single_file_support = true,
             })
 
-            require("lspconfig").pyright.setup({
+            lspconfig.pyright.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
                 end,
             })
 
-            require("lspconfig").lua_ls.setup({
+            lspconfig.lua_ls.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
                 end,
@@ -73,7 +85,7 @@ return {
                 },
             })
 
-            require("lspconfig").rust_analyzer.setup({
+            lspconfig.rust_analyzer.setup({
                 on_attach = function(client)
                     create_codelens_autocmd(client)
                     setup_lsp_keybinds()
@@ -81,22 +93,12 @@ return {
                 single_file_support = true,
             })
 
-            require("lspconfig").texlab.setup({
+            lspconfig.texlab.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
                 end,
             })
         end,
-    },
-    {
-        "williamboman/mason.nvim",
-        event = "VeryLazy",
-        config = true,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        event = "VeryLazy",
-        config = true,
     },
     {
         "ray-x/lsp_signature.nvim",
