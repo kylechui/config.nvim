@@ -23,6 +23,7 @@ return {
                         i = {
                             ["<C-j>"] = actions.move_selection_next,
                             ["<C-k>"] = actions.move_selection_previous,
+                            [""] = { "<C-S-w>", type = "command" },
                         },
                         n = {
                             ["q"] = require("telescope.actions").close,

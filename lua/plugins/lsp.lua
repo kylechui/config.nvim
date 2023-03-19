@@ -1,10 +1,8 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        event = "VeryLazy",
-        dependencies = {
-            "folke/neodev.nvim",
-        },
+        event = "LspAttach",
+        dependencies = "folke/neodev.nvim",
         config = function()
             local map = vim.keymap.set
             -- Whenever our LSP server attaches to a buffer, load these keybinds
@@ -36,6 +34,9 @@ return {
                 end
             end
 
+            -- IMPORTANT: make sure to setup neodev BEFORE require("lspconfig")
+            require("neodev").setup({})
+
             require("lspconfig").clangd.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
@@ -55,9 +56,6 @@ return {
                     setup_lsp_keybinds()
                 end,
             })
-
-            -- IMPORTANT: make sure to setup neodev BEFORE require("lspconfig")
-            require("neodev").setup({})
 
             require("lspconfig").lua_ls.setup({
                 on_attach = function()

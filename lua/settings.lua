@@ -11,12 +11,6 @@ opt.clipboard = "unnamedplus"
 -- Some execution-related settings
 opt.modelines = 0
 opt.maxmempattern = 2500
--- Setup colorscheme
-g.colors_name = "kanagawa"
-opt.background = "dark"
-opt.termguicolors = true
--- Allow mouse use in all modes
-opt.mouse = "a"
 -- Line number settings
 opt.number = true
 opt.relativenumber = true

@@ -46,11 +46,11 @@ autocmd("BufReadPost", {
     group = openPDF,
 })
 -- Refreshes the status line anytime the cursor has moved
-local updateStatusline = augroup("updateStatusline", {})
+--[[ local updateStatusline = augroup("updateStatusline", {})
 autocmd({ "CursorMoved", "CursorMovedI" }, {
     callback = require("lualine").refresh,
     group = updateStatusline,
-})
+}) ]]
 -- Sets filetype of exercism samples (in Firefox)
 local setFirefoxFiletype = augroup("setFirefoxFiletype", {})
 autocmd({ "BufReadPost", "CursorMovedI" }, {

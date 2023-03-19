@@ -3,7 +3,8 @@ local map = vim.keymap.set
 map("n", "<C-s>", vim.cmd.update, { silent = true })
 map({ "i", "x" }, "<C-s>", "<Esc><Cmd>up!<CR>", { silent = true })
 -- Deleting words with <C-BS>
-map({ "c", "i" }, "<C-BS>", "<C-w>", {})
+map({ "c", "i" }, "<C-BS>", "<C-w>")
+map({ "c", "i" }, "", "<C-w>")
 -- Move towards the beginning/end of a line
 map({ "n", "x" }, "H", "g^", { silent = true })
 map({ "n", "x" }, "L", "g$", { silent = true })
