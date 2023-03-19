@@ -34,15 +34,11 @@ end)
 map("n", "<C-->", function()
     require("utils").adjust_font_size(-1)
 end)
--- LSP nonsense
-map("n", "gD", vim.lsp.buf.declaration, { silent = true })
-map("n", "gd", vim.lsp.buf.definition, { silent = true })
-map("n", "K", vim.lsp.buf.hover, { silent = true })
 -- Select all
 map("n", "<C-a>", "ggVG", { silent = true })
 map("i", "<C-a>", "<Esc>ggVG", { silent = true })
--- Disable ex mode
-map("n", "Q", "<NOP>", { silent = true })
+-- Repeat last macro
+map("n", "Q", "@@", { silent = true })
 -- Map esc to go to normal mode for terminal
 map("t", "<Esc>", "<C-\\><C-n>", { silent = true })
 -- Map <C-j> and <C-k> to scroll up and down autocompletion list in command mode
@@ -56,7 +52,6 @@ map("n", "dd", function()
     end
     return "dd"
 end, { expr = true, silent = true })
-
 -- Custom operator-mode mappings for easier surrounds
 map({ "o", "x" }, "ar", "a[")
 map({ "o", "x" }, "ir", "i[")

@@ -9,6 +9,9 @@ return {
             local map = vim.keymap.set
             -- Whenever our LSP server attaches to a buffer, load these keybinds
             local setup_lsp_keybinds = function()
+                map("n", "gD", vim.lsp.buf.declaration, { silent = true })
+                map("n", "gd", vim.lsp.buf.definition, { silent = true })
+                map("n", "K", vim.lsp.buf.hover, { silent = true })
                 map("n", "<Leader>dj", vim.diagnostic.goto_next, { buffer = true })
                 map("n", "<Leader>dk", vim.diagnostic.goto_prev, { buffer = true })
                 map("n", "<Leader>dl", require("telescope.builtin").diagnostics, { buffer = true })
