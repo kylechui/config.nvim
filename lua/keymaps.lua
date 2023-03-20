@@ -8,6 +8,13 @@ map({ "c", "i" }, "", "<C-w>")
 -- Move towards the beginning/end of a line
 map({ "n", "x" }, "H", "g^", { silent = true })
 map({ "n", "x" }, "L", "g$", { silent = true })
+-- Open a link in the browser
+map("n", "gx", function()
+    local url = vim.fn.expand("<cfile>")
+    vim.fn.jobstart('firefox --private-window "' .. url .. '"', {
+        detach = true,
+    })
+end, { silent = true })
 -- Better indent/dedent lines and blocks of text
 map("n", ">", ">>", { silent = true })
 map("n", "<", "<<", { silent = true })
