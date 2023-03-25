@@ -1,15 +1,16 @@
 return {
     {
         "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
+        event = { "InsertEnter", "CmdLineEnter" },
         dependencies = {
+            "uga-rosa/cmp-dictionary",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-path",
-            "uga-rosa/cmp-dictionary",
             {
                 "saadparwaiz1/cmp_luasnip",
+                dependencies = "L3MON4D3/LuaSnip",
                 config = function()
                     local ls = require("luasnip")
                     vim.keymap.set({ "i", "s" }, "<Tab>", function()
@@ -101,6 +102,7 @@ return {
             require("cmp_dictionary").setup({
                 first_case_insensitive = true,
             })
+            require("cmp_dictionary").update()
         end,
     },
 }
