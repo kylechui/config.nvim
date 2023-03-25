@@ -63,6 +63,9 @@ return {
                 file_ignore_patterns = {
                     -- TeX temporary files
                     "%.aux",
+                    "%.bbl",
+                    "%.bcf",
+                    "%.blg",
                     "%.fdb_latexmk",
                     "%.fls",
                     "%.log",
@@ -73,6 +76,8 @@ return {
                     -- C++ temporary files
                     "%.o",
                     "%.out",
+                    -- Non-text files
+                    "%.png",
                     -- Git related files and directories
                     "description",
                     "packed%-refs",
