@@ -1,19 +1,21 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            "folke/neodev.nvim",
+            {
+                "folke/neodev.nvim",
+                ft = "lua",
+            },
         },
         config = function()
             -- Setup mason.nvim before LSP servers
             require("mason").setup()
             require("mason-lspconfig").setup({
-                automatic_installation = true
+                automatic_installation = true,
             })
-
 
             local map = vim.keymap.set
             -- Whenever our LSP server attaches to a buffer, load these keybinds
