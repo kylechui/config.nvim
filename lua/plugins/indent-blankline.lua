@@ -1,11 +1,13 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
+    event = "VeryLazy",
     opts = {
         show_end_of_line = true,
         show_current_context = true,
+        show_current_context_start = true,
     },
-    config = function()
+    init = function()
+        vim.opt.list = true
         vim.opt.listchars:append("eol:↲")
         vim.opt.listchars:append("trail:•")
     end,
