@@ -100,6 +100,12 @@ return {
                     setup_lsp_keybinds()
                 end,
             })
+
+            lspconfig.tsserver.setup({
+                on_attach = function()
+                    setup_lsp_keybinds()
+                end,
+            })
         end,
     },
     {

@@ -15,9 +15,16 @@ return {
                     use_default_keymaps = false,
                 },
             },
+            {
+                "windwp/nvim-ts-autotag",
+                ft = { "html", "xml", "javascript", "typescript" },
+            },
         },
         config = function()
             require("nvim-treesitter.configs").setup({
+                autotag = {
+                    enable = true,
+                },
                 context_commentstring = {
                     enable = true,
                     enable_autocmd = false,

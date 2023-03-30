@@ -3,7 +3,12 @@ return {
         "hrsh7th/nvim-cmp",
         event = { "InsertEnter", "CmdLineEnter" },
         dependencies = {
-            "uga-rosa/cmp-dictionary",
+            {
+                "uga-rosa/cmp-dictionary",
+                config = function()
+                    require("cmp_dictionary").update()
+                end,
+            },
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-nvim-lsp",
@@ -98,8 +103,11 @@ return {
                 }),
             })
 
-            vim.opt_global.dictionary = { "~/.config/nvim/spell/en.utf-8.add", "/usr/share/dict/words" }
+            -- vim.opt_global.dictionary = { "~/.config/nvim/spell/en.utf-8.add", "/usr/share/dict/words" }
             require("cmp_dictionary").setup({
+                dic = {
+                    ["*"] = { "~/.config/nvim/spell/en.utf-8.add", "/usr/share/dict/words" },
+                },
                 first_case_insensitive = true,
             })
             require("cmp_dictionary").update()

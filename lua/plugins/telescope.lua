@@ -88,6 +88,8 @@ return {
                     "info/",
                     "logs/",
                     "worktrees/",
+                    -- Web development files
+                    "node_modules/",
                 },
             })
         end, { silent = true })

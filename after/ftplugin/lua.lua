@@ -18,6 +18,7 @@ end, {
     silent = true,
     buffer = true,
 })
+map("n", "<Leader>T", "<Plug>PlenaryTestFile")
 
 require("nvim-surround").buffer_setup({
     surrounds = {
