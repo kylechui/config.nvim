@@ -5,6 +5,33 @@ vim.bo.shiftwidth = 2
 vim.bo.textwidth = 80
 
 vim.keymap.set("n", "<C-CR>", "<Cmd>MarkdownPreview<CR>", { buffer = true })
+vim.keymap.set("n", "<Leader>u", function()
+    require("cmp_dictionary").update()
+end, { buffer = true })
+
+vim.keymap.set("n", "gf", function()
+    if require("obsidian").util.cursor_on_markdown_link() then
+        return "<Cmd>ObsidianFollowLink<CR>"
+    else
+        return "gf"
+    end
+end, { buffer = true, silent = true, noremap = false, expr = true })
+vim.keymap.set("n", "<Localleader>n", function()
+    local title = vim.fn.input("Note title: ")
+    return "<Cmd>ObsidianNew " .. title .. "<CR>"
+end, { buffer = true, silent = true, expr = true })
+vim.keymap.set("n", "<Localleader>o", function()
+    return "<Cmd>ObsidianOpen<CR>"
+end, { buffer = true, silent = true, expr = true })
+vim.keymap.set("x", "<Localleader>ll", function()
+    local title = vim.fn.input("Note title: ")
+    vim.pretty_print(title)
+    return ":ObsidianLink " .. title .. "<CR>"
+end, { buffer = true, silent = true, expr = true })
+vim.keymap.set("x", "<Localleader>ln", function()
+    local title = vim.fn.input("Note title: ")
+    return ":ObsidianLinkNew " .. title .. "<CR>"
+end, { buffer = true, silent = true, expr = true })
 
 require("nvim-surround").buffer_setup({
     surrounds = {

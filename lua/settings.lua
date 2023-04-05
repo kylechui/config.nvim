@@ -5,6 +5,7 @@ local g = vim.g
 -- Define environment variables
 vim.env.BOOKS = "~/Documents/Books/"
 vim.env.WORKSPACE = "~/Documents/github/"
+vim.env.OBSIDIAN_VAULT = "~/Documents/github/obelisk"
 
 -- Set Neovim to use the system clipboard
 opt.clipboard = "unnamedplus"

@@ -95,6 +95,64 @@ return {
         end, { silent = true })
         vim.keymap.set("n", "<Leader>fg", require("telescope.builtin").live_grep, { silent = true })
         vim.keymap.set("n", "<Leader>fh", require("telescope.builtin").help_tags, { silent = true })
+        vim.keymap.set("n", "<Leader>fd", function()
+            local find_directory = function(opts)
+                local pickers = require("telescope.pickers")
+                local finders = require("telescope.finders")
+                local conf = require("telescope.config").values
+                local action_state = require("telescope.actions.state")
+                opts = opts or {}
+                pickers
+                    .new(opts, {
+                        prompt_title = "Find Directory",
+                        finder = finders.new_table({
+                            results = vim.fs.find(function(name, path)
+                                local full_path = path .. "/" .. name
+                                local exclude = {
+                                    "/%.",
+                                    "/_",
+                                    "/objects",
+                                    "/refs",
+                                    "/info",
+                                    "/logs",
+                                    "/worktrees",
+                                    "/node_modules",
+                                    "/__pycache__",
+                                }
+                                for _, pattern in pairs(exclude) do
+                                    if full_path:match(pattern) then
+                                        return false
+                                    end
+                                end
+                                return true
+                            end, {
+                                limit = math.huge,
+                                type = "directory",
+                                path = vim.env.WORKSPACE,
+                            }),
+                        }),
+                        sorter = conf.generic_sorter(opts),
+                        attach_mappings = function(prompt_bufnr, map)
+                            actions.select_default:replace(function()
+                                actions.close(prompt_bufnr)
+                                local selection = action_state.get_selected_entry()
+                                require("nvim-tree.api").tree.toggle({
+                                    path = selection[1]:gsub("~", vim.env.HOME),
+                                })
+                            end)
+                            return true
+                        end,
+                    })
+                    :find()
+            end
+            find_directory(require("telescope.themes").get_dropdown({}))
+        end, { silent = true })
+        vim.keymap.set("n", "<Leader>fo", function()
+            require("telescope.builtin").find_files({
+                prompt_title = "Obsidian Vault",
+                cwd = vim.env.OBSIDIAN_VAULT,
+            })
+        end, { silent = true })
         require("telescope").load_extension("fzf")
     end,
 }
