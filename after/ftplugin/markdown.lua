@@ -18,15 +18,18 @@ vim.keymap.set("n", "gf", function()
 end, { buffer = true, silent = true, noremap = false, expr = true })
 vim.keymap.set("n", "<Localleader>n", function()
     local title = vim.fn.input("Note title: ")
-    return "<Cmd>ObsidianNew " .. title .. "<CR>"
+    if title then
+        return "<Cmd>ObsidianNew " .. title .. "<CR>"
+    end
 end, { buffer = true, silent = true, expr = true })
 vim.keymap.set("n", "<Localleader>o", function()
     return "<Cmd>ObsidianOpen<CR>"
 end, { buffer = true, silent = true, expr = true })
 vim.keymap.set("x", "<Localleader>ll", function()
     local title = vim.fn.input("Note title: ")
-    vim.pretty_print(title)
-    return ":ObsidianLink " .. title .. "<CR>"
+    if title then
+        return ":ObsidianLink " .. title .. "<CR>"
+    end
 end, { buffer = true, silent = true, expr = true })
 vim.keymap.set("x", "<Localleader>ln", function()
     local title = vim.fn.input("Note title: ")
