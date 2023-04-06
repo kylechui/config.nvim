@@ -7,15 +7,6 @@ return {
             "nvim-treesitter/nvim-treesitter-textobjects",
             "nvim-treesitter/playground",
             {
-                "Wansmer/treesj",
-                keys = {
-                    { "gJ", "<Cmd>TSJToggle<CR>" },
-                },
-                opts = {
-                    use_default_keymaps = false,
-                },
-            },
-            {
                 "windwp/nvim-ts-autotag",
                 ft = { "html", "xml", "javascript", "typescript" },
             },
@@ -81,5 +72,14 @@ return {
                 },
             })
         end,
+    },
+    {
+        "Wansmer/treesj",
+        keys = {
+            { "gJ", "<Cmd>TSJToggle<CR>" },
+        },
+        opts = {
+            use_default_keymaps = false,
+        },
     },
 }
