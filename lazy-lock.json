@@ -10,6 +10,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
   "firenvim": { "branch": "master", "commit": "d35d9e61a1ff4bb8b505ae80d3856b72b4ee7d71" },
   "gx.nvim": { "branch": "main", "commit": "3d40e16b721c8f96b746e7ceae78071b474712dd" },
+  "haskell-tools.nvim": { "branch": "1.x.x", "commit": "f5e3e6b1acbedb2f4ff8e880f8ee5253a122cfb9" },
   "indent-blankline.nvim": { "branch": "master", "commit": "018bd04d80c9a73d399c1061fa0c3b14a7614399" },
   "kanagawa.nvim": { "branch": "master", "commit": "5c4037432f0ae2d0b75d3a7b7cfa3022d7054e4d" },
   "lazy.nvim": { "branch": "main", "commit": "57cce98dfdb2f2dd05a0567d89811e6d0505e13b" },
