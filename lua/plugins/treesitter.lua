@@ -26,9 +26,11 @@ return {
                     "cpp",
                     "haskell",
                     "help",
+                    "java",
                     "lua",
                     "markdown",
                     "markdown_inline",
+                    "nix",
                     "ocaml",
                     "python",
                     "query",
@@ -45,15 +47,15 @@ return {
                 query_linter = {
                     enable = true,
                     use_virtual_text = true,
-                    lint_events = { "BufWrite", "CursorHold" },
+                    lint_events = { "bufwrite", "cursorHold" },
                 },
                 textobjects = {
                     select = {
                         enable = true,
                         keymaps = {
                             ["ac"] = "@comment.outer",
-                            ["aF"] = "@function.outer",
-                            ["iF"] = "@function.inner",
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
                             ["af"] = "@call.outer",
                             ["if"] = "@call.inner",
                             ["al"] = "@loop.outer",

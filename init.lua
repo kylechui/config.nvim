@@ -20,6 +20,7 @@ require("lazy").setup("plugins", {
                 "gzip",
                 "matchit",
                 "netrwPlugin",
+                "spellfile",
                 "tarPlugin",
                 "tohtml",
                 "tutor",

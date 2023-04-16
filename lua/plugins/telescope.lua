@@ -49,7 +49,21 @@ return {
             })
         end, { silent = true })
         -- Telescope fuzzy find stuff
-        vim.keymap.set("n", "<Leader>f.", require("telescope.builtin").find_files, { silent = true })
+        vim.keymap.set("n", "<Leader>f.", function()
+            require("telescope.builtin").find_files({
+                file_ignore_patterns = {
+                    "description",
+                    "packed%-refs",
+                    "HEAD",
+                    "hooks/",
+                    "objects/",
+                    "refs/",
+                    "info/",
+                    "logs/",
+                    "worktrees/",
+                },
+            })
+        end, { silent = true })
         vim.keymap.set("n", "<Leader>fb", function()
             require("telescope.builtin").find_files({
                 prompt_title = "Books",

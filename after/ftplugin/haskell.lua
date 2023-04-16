@@ -1,3 +1,7 @@
+vim.bo.tabstop = 2
+vim.bo.softtabstop = 2
+vim.bo.shiftwidth = 2
+
 local ht = require("haskell-tools")
 ht.start_or_attach({
     hls = {

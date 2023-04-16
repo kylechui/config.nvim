@@ -3,20 +3,12 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
             {
                 "folke/neodev.nvim",
                 ft = "lua",
             },
         },
         config = function()
-            -- Setup mason.nvim before LSP servers
-            require("mason").setup()
-            require("mason-lspconfig").setup({
-                automatic_installation = true,
-            })
-
             local map = vim.keymap.set
             -- Whenever our LSP server attaches to a buffer, load these keybinds
             local setup_lsp_keybinds = function()
@@ -63,20 +55,6 @@ return {
                 end,
             })
 
-            lspconfig.ocamllsp.setup({
-                on_attach = function(client)
-                    create_codelens_autocmd(client)
-                    setup_lsp_keybinds()
-                end,
-                single_file_support = true,
-            })
-
-            lspconfig.pyright.setup({
-                on_attach = function()
-                    setup_lsp_keybinds()
-                end,
-            })
-
             lspconfig.lua_ls.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
@@ -91,6 +69,26 @@ return {
                         },
                     },
                 },
+            })
+
+            lspconfig.ocamllsp.setup({
+                on_attach = function(client)
+                    create_codelens_autocmd(client)
+                    setup_lsp_keybinds()
+                end,
+                single_file_support = true,
+            })
+
+            lspconfig.pyright.setup({
+                on_attach = function()
+                    setup_lsp_keybinds()
+                end,
+            })
+
+            lspconfig.rnix.setup({
+                on_attach = function()
+                    setup_lsp_keybinds()
+                end,
             })
 
             lspconfig.rust_analyzer.setup({

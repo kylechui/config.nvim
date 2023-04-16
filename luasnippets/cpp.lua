@@ -21,7 +21,7 @@ return {
                 using ll = long long;
                 using ld = long double;
 
-                auto main() -> int {{
+                int main() {{
                     {}
                 }}
             ]],

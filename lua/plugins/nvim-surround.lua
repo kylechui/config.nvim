@@ -3,7 +3,7 @@ return {
     {
         -- dir = "/home/kylec/Documents/github/nvim-surround/add-tag-query",
         dir = "/home/kylec/Documents/github/nvim-surround/main",
-        -- event = "VeryLazy",
+        event = "VeryLazy",
         config = function()
             vim.cmd.highlight("default link NvimSurroundHighlight Todo")
             require("nvim-surround").setup({

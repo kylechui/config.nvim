@@ -12,12 +12,16 @@ autocmd("TextYankPost", {
 local formatCode = augroup("formatCode", {})
 autocmd("BufWritePre", {
     pattern = {
+        "*.c",
         "*.cpp",
         "*.css",
+        "*.hs",
+        "*.java",
         "*.js",
         "*.lua",
         "*.md",
         "*.ml",
+        "*.nix",
         "*.py",
         "*.tex",
         "*.ts",
