@@ -41,7 +41,7 @@ map("i", "<C-a>", "<Esc>ggVG", { silent = true })
 -- Repeat last macro
 map("n", "Q", "@@", { silent = true })
 -- Map esc to go to normal mode for terminal
-map("t", "<Esc>", "<C-\\><C-n>", { silent = true })
+map("t", "<Esc>", "<C-Bslash><C-n>", { silent = true })
 -- Map <C-j> and <C-k> to scroll up and down autocompletion list in command mode
 map("c", "<C-j>", "<C-n>", { remap = true, silent = true })
 map("c", "<C-k>", "<C-p>", { remap = true, silent = true })
