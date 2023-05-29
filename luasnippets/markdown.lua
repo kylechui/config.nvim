@@ -1,11 +1,19 @@
----@diagnostic disable: undefined-global
-local ts_utils = require("nvim-treesitter.ts_utils")
-
 local in_mathzone = function()
-    local current_node = ts_utils.get_node_at_cursor()
+    local current_node = vim.treesitter.get_node({ ignore_injections = false })
     while current_node do
-        vim.pretty_print(current_node:type())
-        if current_node:type() == "latex_block" then
+        vim.print(current_node:type())
+        if current_node:type() == "source_file" then
+            return true
+        end
+        current_node = current_node:parent()
+    end
+    return false
+end
+
+local in_codeblock = function()
+    local current_node = vim.treesitter.get_node({ ignore_injections = false })
+    while current_node do
+        if current_node:type() == "fenced_code_block" or current_node:type() == "code_span" then
             return true
         end
         current_node = current_node:parent()
@@ -14,7 +22,7 @@ local in_mathzone = function()
 end
 
 local in_text = function()
-    return not in_mathzone()
+    return not in_mathzone() and not in_codeblock()
 end
 
 local GREEK_LETTERS = {}
@@ -80,7 +88,7 @@ return {
     }, { condition = in_text }),
     -- LaTeX: Single-letter variables
     s(
-        { trig = " ([b-zB-HJ-Z])([%p%s])", regTrig = true, wordTrig = false },
+        { trig = " ([b-hj-zB-HJ-Z])([%p%s])", regTrig = true, wordTrig = false },
         f(function(_, snip)
             return " $" .. snip.captures[1] .. "$" .. snip.captures[2]
         end),
@@ -153,6 +161,8 @@ return {
     s("mscr", fmt([[\mathscr{{{}}}]], i(1)), { condition = in_mathzone }),
     -- LaTeX: Math text
     s({ trig = "tt", wordTrig = false }, fmt([[\text{{{}}}]], i(1)), { condition = in_mathzone }),
+    -- LaTeX: Teletype text
+    s({ trig = "TT", wordTrig = false }, fmt([[\texttt{{{}}}]], i(1)), { condition = in_mathzone }),
     -- LaTeX: Parenthesis-delimited fractions
     s({ trig = "(%b())/", regTrig = true, wordTrig = false }, {
         d(1, function(_, snip)
