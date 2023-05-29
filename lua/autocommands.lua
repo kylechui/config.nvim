@@ -15,6 +15,7 @@ autocmd("BufWritePre", {
         "*.c",
         "*.cpp",
         "*.css",
+        "*.h",
         "*.hs",
         "*.java",
         "*.js",
@@ -25,6 +26,7 @@ autocmd("BufWritePre", {
         "*.py",
         "*.tex",
         "*.ts",
+        "*.tsx",
     },
     callback = function()
         vim.lsp.buf.format({
@@ -36,26 +38,23 @@ autocmd("BufWritePre", {
     end,
     group = formatCode,
 })
--- Opens PDF files in Zathura instead of viewing the binary in Neovim
-local openPDF = augroup("openPDF", {})
+-- Opens non-text files in the default program instead of in Neovim
+local openFile = augroup("openFile", {})
 autocmd("BufReadPost", {
     pattern = {
+        "*.jpeg",
+        "*.jpg",
         "*.pdf",
+        "*.png",
     },
     callback = function()
-        vim.fn.jobstart('zathura "' .. vim.fn.expand("%") .. '"', {
+        vim.fn.jobstart('xdg-open "' .. vim.fn.expand("%") .. '"', {
             detach = true,
         })
         vim.api.nvim_buf_delete(0, {})
     end,
-    group = openPDF,
+    group = openFile,
 })
--- Refreshes the status line anytime the cursor has moved
---[[ local updateStatusline = augroup("updateStatusline", {})
-autocmd({ "CursorMoved", "CursorMovedI" }, {
-    callback = require("lualine").refresh,
-    group = updateStatusline,
-}) ]]
 -- Sets filetype of exercism samples (in Firefox)
 local setFirefoxFiletype = augroup("setFirefoxFiletype", {})
 autocmd({ "BufReadPost", "CursorMovedI" }, {
