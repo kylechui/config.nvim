@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 
-vim.wo.colorcolumn = "120"
+vim.opt_local.colorcolumn = "120"
 
 map("n", "<C-'>", "<Cmd>source %<CR>", { silent = true, buffer = true })
 map("n", "<Leader>t", function()
@@ -23,15 +23,15 @@ map("n", "<Leader>T", "<Plug>PlenaryTestFile")
 require("nvim-surround").buffer_setup({
     surrounds = {
         ["p"] = {
-            add = { "vim.pretty_print(", ")" },
+            add = { "vim.print(", ")" },
             find = function()
                 return require("nvim-surround.config").get_selection({
                     query = { capture = "@pretty_print", type = "function_calls" },
                 })
             end,
-            delete = "^(vim%.pretty_print%()().-(%))()$",
+            delete = "^(vim%.print%()().-(%))()$",
             change = {
-                target = "^(vim%.pretty_print)()%(.-%)()()$",
+                target = "^(vim%.print)()%(.-%)()()$",
                 replacement = function()
                     return { { "print" }, { "" } }
                 end,

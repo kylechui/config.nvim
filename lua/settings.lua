@@ -48,6 +48,7 @@ g.neovide_cursor_animation_length = 0.05
 g.neovide_cursor_animate_in_insert_mode = 0
 
 local notify = vim.notify
+---@diagnostic disable-next-line: duplicate-set-field
 vim.notify = function(msg, ...)
     if msg:match("warning: multiple different client offset_encodings") then
         return

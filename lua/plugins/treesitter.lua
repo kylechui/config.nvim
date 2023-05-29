@@ -39,7 +39,7 @@ return {
                 highlight = {
                     enable = true,
                     disable = { "latex" },
-                    additional_vim_regex_highlighting = { "latex", "markdown" },
+                    additional_vim_regex_highlighting = { "latex" },
                 },
                 playground = {
                     enable = true,

@@ -120,8 +120,8 @@ return {
                     .new(opts, {
                         prompt_title = "Find Directory",
                         finder = finders.new_table({
-                            results = vim.fs.find(function(name, path)
-                                local full_path = path .. "/" .. name
+                            results = vim.fs.find(function(name)
+                                local full_path = name
                                 local exclude = {
                                     "/%.",
                                     "/_",
