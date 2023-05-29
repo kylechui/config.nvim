@@ -31,5 +31,10 @@ ht.start_or_attach({
                 })
             end
         end,
+        default_settings = {
+            haskell = {
+                formattingProvider = "stylish-haskell",
+            },
+        },
     },
 })
