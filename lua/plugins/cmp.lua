@@ -103,10 +103,16 @@ return {
                 }),
             })
 
-            -- vim.opt_global.dictionary = { "~/.config/nvim/spell/en.utf-8.add", "/usr/share/dict/words" }
+            vim.opt_global.dictionary = {
+                "~/.config/nvim/spell/en.utf-8.add",
+                "$WORDLIST",
+            }
             require("cmp_dictionary").setup({
                 dic = {
-                    ["*"] = { "~/.config/nvim/spell/en.utf-8.add", "/usr/share/dict/words" },
+                    ["*"] = {
+                        "~/.config/nvim/spell/en.utf-8.add",
+                        "$WORDLIST",
+                    },
                 },
                 first_case_insensitive = true,
             })
