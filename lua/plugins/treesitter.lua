@@ -27,6 +27,7 @@ return {
                     "haskell",
                     "help",
                     "java",
+                    "latex",
                     "lua",
                     "markdown",
                     "markdown_inline",
@@ -54,8 +55,6 @@ return {
                         enable = true,
                         keymaps = {
                             ["ac"] = "@comment.outer",
-                            ["af"] = "@function.outer",
-                            ["if"] = "@function.inner",
                             ["af"] = "@call.outer",
                             ["if"] = "@call.inner",
                             ["al"] = "@loop.outer",
