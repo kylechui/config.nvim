@@ -54,8 +54,10 @@ return {
                 single_file_support = true,
             })
 
+            lspconfig.jsonls.setup({})
+
             lspconfig.lua_ls.setup({
-                on_attach = function()
+                on_attach = function(c, b)
                     setup_lsp_keybinds()
                 end,
                 settings = {
@@ -64,7 +66,13 @@ return {
                             checkThirdParty = false,
                         },
                         diagnostics = {
-                            globals = { "it", "describe", "before_each" }, -- Plenary test suite variables
+                            enable = false,
+                        },
+                        format = {
+                            enable = false,
+                        },
+                        hint = {
+                            enable = true,
                         },
                     },
                 },
@@ -84,7 +92,7 @@ return {
                 end,
             })
 
-            lspconfig.rnix.setup({
+            lspconfig.nixd.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
                 end,
@@ -118,12 +126,6 @@ return {
                             { detach = true }
                         )
                     end, { buffer = true })
-                end,
-            })
-
-            lspconfig.tsserver.setup({
-                on_attach = function()
-                    setup_lsp_keybinds()
                 end,
             })
         end,

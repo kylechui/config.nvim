@@ -177,9 +177,7 @@ return {
             return standardize("cout") .. " << "
         end),
         i(0),
-        f(function()
-            return " << " .. standardize("endl;")
-        end),
+        t(' << "\\n";'),
     }),
     -- C++: Vector
     s("vec", {

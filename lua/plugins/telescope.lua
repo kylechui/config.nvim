@@ -59,7 +59,7 @@ return {
                     "objects/",
                     "refs/",
                     "info/",
-                    "logs/",
+                    "/logs/",
                     "worktrees/",
                 },
             })

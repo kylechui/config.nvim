@@ -11,6 +11,7 @@ return {
                     return "gf"
                 end
             end,
+            expr = true,
         },
         {
             "<Localleader>n",
@@ -20,6 +21,7 @@ return {
                     return "<Cmd>ObsidianNew " .. title .. "<CR>"
                 end
             end,
+            expr = true,
         },
         {
             "<Localleader>o",

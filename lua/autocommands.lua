@@ -22,6 +22,7 @@ autocmd("BufWritePre", {
         "*.lua",
         "*.md",
         "*.ml",
+        "*.mli",
         "*.nix",
         "*.py",
         "*.tex",
