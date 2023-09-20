@@ -7,12 +7,8 @@ return {
                 "folke/neodev.nvim",
                 ft = "lua",
             },
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
         },
         config = function()
-            require("mason").setup()
-            require("mason-lspconfig").setup()
             local map = vim.keymap.set
             -- Whenever our LSP server attaches to a buffer, load these keybinds
             local setup_lsp_keybinds = function()
