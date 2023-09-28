@@ -5,10 +5,18 @@ return {
         build = ":TSUpdate",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
-            "nvim-treesitter/playground",
+            "JoosepAlviste/nvim-ts-context-commentstring",
             {
                 "windwp/nvim-ts-autotag",
-                ft = { "html", "xml", "javascript", "typescript" },
+                ft = {
+                    "html",
+                    "xml",
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "typescriptreact",
+                    "markdown",
+                },
             },
         },
         config = function()
@@ -27,6 +35,7 @@ return {
                     "haskell",
                     "help",
                     "java",
+                    "javascript",
                     "latex",
                     "lua",
                     "markdown",
@@ -35,15 +44,13 @@ return {
                     "ocaml",
                     "python",
                     "query",
+                    "typescript",
                     "vim",
                 },
                 highlight = {
                     enable = true,
                     disable = { "latex" },
                     additional_vim_regex_highlighting = { "latex" },
-                },
-                playground = {
-                    enable = true,
                 },
                 query_linter = {
                     enable = true,
@@ -77,7 +84,12 @@ return {
     {
         "Wansmer/treesj",
         keys = {
-            { "gJ", "<Cmd>TSJToggle<CR>" },
+            {
+                "gJ",
+                function()
+                    require("treesj").toggle()
+                end,
+            },
         },
         opts = {
             use_default_keymaps = false,
