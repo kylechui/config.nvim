@@ -3,17 +3,6 @@ return {
     ft = { "markdown" },
     keys = {
         {
-            "gf",
-            function()
-                if require("obsidian").util.cursor_on_markdown_link() then
-                    return "<Cmd>ObsidianFollowLink<CR>"
-                else
-                    return "gf"
-                end
-            end,
-            expr = true,
-        },
-        {
             "<Localleader>n",
             function()
                 local title = vim.fn.input("Note title: ")
@@ -27,16 +16,26 @@ return {
             "<Localleader>o",
             "<Cmd>ObsidianOpen<CR>",
         },
-        -- vim.keymap.set("x", "<Bslash>ll", function()
-        --     local title = vim.fn.input("Note title: ")
-        --     if title then
-        --         return ":ObsidianLink " .. title .. "<CR>"
-        --     end
-        -- end, { buffer = true, silent = true, expr = true })
-        -- vim.keymap.set("x", "<Bslash>ln", function()
-        --     local title = vim.fn.input("Note title: ")
-        --     return ":ObsidianLinkNew " .. title .. "<CR>"
-        -- end, { buffer = true, silent = true, expr = true })
+        {
+            mode = "x",
+            "<Bslash>ll",
+            function()
+                local title = vim.fn.input("Note title: ")
+                if title then
+                    return ":ObsidianLink " .. title .. "<CR>"
+                end
+            end,
+            expr = true,
+        },
+        {
+            mode = "x",
+            "<Bslash>ln",
+            function()
+                local title = vim.fn.input("Note title: ")
+                return ":ObsidianLinkNew " .. title .. "<CR>"
+            end,
+            expr = true,
+        },
     },
     version = "v1.*",
     config = function()
@@ -48,6 +47,21 @@ return {
             note_id_func = function(title)
                 return title
             end,
+            note_frontmatter_func = function(note)
+                return {
+                    id = note.id,
+                    aliases = {},
+                    tags = note.tags,
+                }
+            end,
+            mappings = {
+                ["gf"] = {
+                    action = function()
+                        return require("obsidian").util.gf_passthrough()
+                    end,
+                    opts = { expr = true, buffer = true },
+                },
+            },
         })
     end,
 }
