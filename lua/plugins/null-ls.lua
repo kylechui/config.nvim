@@ -21,7 +21,7 @@ return {
                 }),
                 require("null-ls").builtins.formatting.nixfmt,
                 require("null-ls").builtins.formatting.ocamlformat,
-                require("null-ls").builtins.formatting.prettierd, -- TODO: Waiting for prettierd to be packaged by Nix
+                require("null-ls").builtins.formatting.prettierd,
                 require("null-ls").builtins.formatting.stylish_haskell,
                 require("null-ls").builtins.formatting.stylua.with({
                     extra_args = { "--indent-type", "Spaces" },
