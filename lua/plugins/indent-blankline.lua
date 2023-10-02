@@ -1,11 +1,11 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     event = "VeryLazy",
     opts = {
-        show_end_of_line = true,
-        show_current_context = true,
-        show_current_context_start = true,
-        char = "┆",
+        indent = {
+            char = "┆",
+        },
     },
     init = function()
         vim.opt.list = true
