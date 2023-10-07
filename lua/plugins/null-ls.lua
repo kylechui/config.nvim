@@ -21,7 +21,9 @@ return {
                 }),
                 require("null-ls").builtins.formatting.nixfmt,
                 require("null-ls").builtins.formatting.ocamlformat,
-                require("null-ls").builtins.formatting.prettierd,
+                require("null-ls").builtins.formatting.prettierd.with({
+                    extra_args = { "--prose-wrap=always" },
+                }),
                 require("null-ls").builtins.formatting.stylish_haskell,
                 require("null-ls").builtins.formatting.stylua.with({
                     extra_args = { "--indent-type", "Spaces" },
