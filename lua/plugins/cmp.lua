@@ -105,13 +105,13 @@ return {
 
             vim.opt_global.dictionary = {
                 "~/.config/nvim/spell/en.utf-8.add",
-                "$WORDLIST",
+                vim.env.WORDLIST,
             }
             require("cmp_dictionary").setup({
                 dic = {
                     ["*"] = {
                         "~/.config/nvim/spell/en.utf-8.add",
-                        "$WORDLIST",
+                        vim.env.WORDLIST,
                     },
                 },
                 first_case_insensitive = true,
