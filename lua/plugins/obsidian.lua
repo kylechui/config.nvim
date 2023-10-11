@@ -22,17 +22,8 @@ return {
             function()
                 local title = vim.fn.input("Note title: ")
                 if title then
-                    return ":ObsidianLink " .. title .. "<CR>"
+                    return ":ObsidianLinkNew " .. title .. "<CR>"
                 end
-            end,
-            expr = true,
-        },
-        {
-            mode = "x",
-            "<Bslash>ln",
-            function()
-                local title = vim.fn.input("Note title: ")
-                return ":ObsidianLinkNew " .. title .. "<CR>"
             end,
             expr = true,
         },
@@ -48,10 +39,11 @@ return {
                 return title
             end,
             note_frontmatter_func = function(note)
+                local parent_dir = vim.fn.expand("%:h:t"):gsub("%s+", "")
                 return {
                     id = note.id,
                     aliases = {},
-                    tags = note.tags,
+                    tags = parent_dir == "obelisk" and {} or { parent_dir },
                 }
             end,
             mappings = {
