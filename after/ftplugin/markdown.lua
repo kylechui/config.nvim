@@ -32,5 +32,26 @@ require("nvim-surround").buffer_setup({
                 end,
             },
         },
+        ["n"] = {
+            add = function()
+                local title = vim.fn.input("Note title: ")
+                return {
+                    { "[[" .. title .. "|" },
+                    { "]]" },
+                }
+            end,
+            find = "%[%b[]%]",
+            delete = "^([^|]+|)().-(%]%])()$",
+            change = {
+                target = "^%[%[([^|]+)().-()()$",
+                replacement = function()
+                    local title = vim.fn.input("Note title: ")
+                    return {
+                        { title },
+                        { "" },
+                    }
+                end,
+            },
+        },
     },
 })
