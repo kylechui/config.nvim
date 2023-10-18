@@ -33,7 +33,6 @@ return {
                     "c",
                     "cpp",
                     "haskell",
-                    "help",
                     "java",
                     "javascript",
                     "latex",
@@ -46,6 +45,7 @@ return {
                     "query",
                     "typescript",
                     "vim",
+                    "vimdoc",
                 },
                 highlight = {
                     enable = true,
