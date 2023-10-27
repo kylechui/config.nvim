@@ -1,6 +1,5 @@
 return {
     "rebelot/kanagawa.nvim",
-    compile = true,
     priority = 1000,
     opts = {
         overrides = function()
