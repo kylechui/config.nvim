@@ -88,7 +88,7 @@ return {
                 end,
             })
 
-            lspconfig.nixd.setup({
+            lspconfig.nil_ls.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
                 end,
