@@ -11,7 +11,7 @@
   "gx.nvim": { "branch": "main", "commit": "b967c7ace36372d938cc33ab1612dc39f3694e42" },
   "haskell-tools.nvim": { "branch": "2.x.x", "commit": "92e097c6832405fb64e4c44a7ce8bebe7836cae6" },
   "indent-blankline.nvim": { "branch": "master", "commit": "2ec42d26c933e7a129fe056dfc11a207afff252d" },
-  "kanagawa.nvim": { "branch": "master", "commit": "a4e99f089110c6d00bc33f5497709200e914e763" },
+  "kanagawa.nvim": { "branch": "master", "commit": "c19b9023842697ec92caf72cd3599f7dd7be4456" },
   "lazy.nvim": { "branch": "main", "commit": "6a2c47e6424a3f1e373bfeb714b716f6be13501c" },
   "lsp_signature.nvim": { "branch": "master", "commit": "bdf3dc7bb03edd25c2173e0e31c2fb122052ed23" },
   "lspkind.nvim": { "branch": "master", "commit": "57610d5ab560c073c465d6faf0c19f200cb67e6e" },
