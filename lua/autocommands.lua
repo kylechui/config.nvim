@@ -56,14 +56,3 @@ autocmd("BufReadPost", {
     end,
     group = openFile,
 })
--- Sets filetype of exercism samples (in Firefox)
-local setFirefoxFiletype = augroup("setFirefoxFiletype", {})
-autocmd({ "BufReadPost", "CursorMovedI" }, {
-    pattern = {
-        "exercism.*",
-    },
-    callback = function()
-        vim.bo.filetype = "ocaml"
-    end,
-    group = setFirefoxFiletype,
-})
