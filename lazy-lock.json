@@ -9,7 +9,7 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
-  "copilot.vim": { "branch": "release", "commit": "309b3c803d1862d5e84c7c9c5749ae04010123b8" },
+  "copilot.lua": { "branch": "master", "commit": "73047082d72fcfdde1f73b7f17ad495cffcbafaa" },
   "gx.nvim": { "branch": "main", "commit": "b967c7ace36372d938cc33ab1612dc39f3694e42" },
   "haskell-tools.nvim": { "branch": "2.x.x", "commit": "92e097c6832405fb64e4c44a7ce8bebe7836cae6" },
   "indent-blankline.nvim": { "branch": "master", "commit": "2ec42d26c933e7a129fe056dfc11a207afff252d" },
