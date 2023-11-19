@@ -1,20 +1,15 @@
 return {
     "epwalsh/obsidian.nvim",
     ft = { "markdown" },
+    version = "v2.*",
     keys = {
         {
-            "<Localleader>n",
-            function()
-                local title = vim.fn.input("Note title: ")
-                if title ~= "" then
-                    return "<Cmd>ObsidianNew " .. title .. "<CR>"
-                end
-            end,
-            expr = true,
+            "<Localleader>o",
+            vim.cmd.ObsidianOpen,
         },
         {
-            "<Localleader>o",
-            "<Cmd>ObsidianOpen<CR>",
+            "<Localleader>b",
+            vim.cmd.ObsidianBacklinks,
         },
         {
             mode = "x",
@@ -28,7 +23,6 @@ return {
             expr = true,
         },
     },
-    version = "v1.*",
     config = function()
         require("obsidian").setup({
             dir = vim.env.OBSIDIAN_VAULT,
