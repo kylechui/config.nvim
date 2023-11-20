@@ -17,8 +17,7 @@ doing homework in LaTeX, as well as light programming in Lua, OCaml, etc.
 - Terminal: I use [WezTerm](https://github.com/wez/wezterm) as my interface of
   choice
 
-![nvim](./screenshot.png)
-![nvim](./screenshot2.png)
+![nvim](./screenshot.png) ![nvim](./screenshot2.png)
 
 ## Dependencies
 

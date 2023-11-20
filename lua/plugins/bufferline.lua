@@ -1,10 +1,10 @@
 return {
     "akinsho/bufferline.nvim",
-    version = "v3.*",
+    version = "^v4.4.0",
     lazy = false,
     keys = {
-        { "<Leader>j", "<Cmd>BufferLineCycleNext<CR>" },
-        { "<Leader>k", "<Cmd>BufferLineCyclePrev<CR>" },
+        { "<Leader>j", vim.cmd.BufferLineCycleNext },
+        { "<Leader>k", vim.cmd.BufferLineCyclePrev },
     },
     config = true,
 }

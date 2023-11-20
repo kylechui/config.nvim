@@ -1,7 +1,7 @@
 return {
     "epwalsh/obsidian.nvim",
+    version = "^2.1.1",
     ft = { "markdown" },
-    version = "v2.*",
     keys = {
         {
             "<Localleader>o",

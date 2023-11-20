@@ -5,6 +5,7 @@ return {
         dependencies = {
             {
                 "folke/neodev.nvim",
+                version = "^2.5.2",
                 ft = "lua",
             },
         },

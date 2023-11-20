@@ -1,6 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.4",
+    version = "^0.1.4",
     keys = { "<Leader>f", "<Leader>s" },
     dependencies = {
         "nvim-lua/plenary.nvim",

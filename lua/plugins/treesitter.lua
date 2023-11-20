@@ -5,7 +5,15 @@ return {
         build = ":TSUpdate",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
-            "JoosepAlviste/nvim-ts-context-commentstring",
+            {
+                "JoosepAlviste/nvim-ts-context-commentstring",
+                config = function()
+                    vim.g.skip_ts_context_commentstring_module = true
+                    require("ts_context_commentstring").setup({
+                        enable_autocmd = false,
+                    })
+                end,
+            },
             {
                 "windwp/nvim-ts-autotag",
                 ft = {
@@ -23,10 +31,6 @@ return {
             require("nvim-treesitter.configs").setup({
                 autotag = {
                     enable = true,
-                },
-                context_commentstring = {
-                    enable = true,
-                    enable_autocmd = false,
                 },
                 ensure_installed = {
                     "bash",
