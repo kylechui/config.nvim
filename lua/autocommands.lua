@@ -16,6 +16,7 @@ autocmd("BufWritePre", {
         "*.cpp",
         "*.css",
         "*.h",
+        "*.hpp",
         "*.hs",
         "*.java",
         "*.js",
