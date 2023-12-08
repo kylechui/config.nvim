@@ -1,5 +1,5 @@
 return {
-    "lukas-reineke/indent-blankline.nvim",
+    [1] = "lukas-reineke/indent-blankline.nvim",
     version = "^3.3.7",
     main = "ibl",
     event = "VeryLazy",

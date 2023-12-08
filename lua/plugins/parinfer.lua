@@ -1,5 +1,4 @@
 return {
-    "eraserhd/parinfer-rust",
-    build = "cargo build --release",
-    ft = { "scheme", "query" },
+    [1] = "gpanders/nvim-parinfer",
+    ft = { "dune", "scheme", "query" },
 }

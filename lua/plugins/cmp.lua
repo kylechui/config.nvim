@@ -1,10 +1,10 @@
 return {
     {
-        "hrsh7th/nvim-cmp",
+        [1] = "hrsh7th/nvim-cmp",
         event = { "InsertEnter", "CmdLineEnter" },
         dependencies = {
             {
-                "uga-rosa/cmp-dictionary",
+                [1] = "uga-rosa/cmp-dictionary",
                 config = function()
                     require("cmp_dictionary").update()
                 end,
@@ -14,7 +14,7 @@ return {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-path",
             {
-                "saadparwaiz1/cmp_luasnip",
+                [1] = "saadparwaiz1/cmp_luasnip",
                 dependencies = "L3MON4D3/LuaSnip",
                 config = function()
                     local ls = require("luasnip")

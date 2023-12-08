@@ -1,10 +1,10 @@
 return {
     {
-        "neovim/nvim-lspconfig",
+        [1] = "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             {
-                "folke/neodev.nvim",
+                [1] = "folke/neodev.nvim",
                 version = "^2.5.2",
                 ft = "lua",
             },
@@ -128,14 +128,14 @@ return {
         end,
     },
     {
-        "ray-x/lsp_signature.nvim",
+        [1] = "ray-x/lsp_signature.nvim",
         event = "LspAttach",
         opts = {
             hint_enable = false,
         },
     },
     {
-        "onsails/lspkind.nvim",
+        [1] = "onsails/lspkind.nvim",
         event = "LspAttach",
     },
 }

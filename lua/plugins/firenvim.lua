@@ -1,5 +1,5 @@
 return {
-    "glacambre/firenvim",
+    [1] = "glacambre/firenvim",
     cond = not not vim.g.started_by_firenvim,
     build = function()
         vim.fn["firenvim#install"](0)

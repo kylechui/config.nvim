@@ -1,5 +1,5 @@
 return {
-    "stevearc/oil.nvim",
+    [1] = "stevearc/oil.nvim",
     version = "^2.4.0",
     dependencies = "nvim-tree/nvim-web-devicons",
     keys = {

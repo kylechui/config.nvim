@@ -1,12 +1,12 @@
 return {
     {
-        "nvim-treesitter/nvim-treesitter",
+        [1] = "nvim-treesitter/nvim-treesitter",
         event = "BufRead",
         build = ":TSUpdate",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
             {
-                "JoosepAlviste/nvim-ts-context-commentstring",
+                [1] = "JoosepAlviste/nvim-ts-context-commentstring",
                 config = function()
                     vim.g.skip_ts_context_commentstring_module = true
                     require("ts_context_commentstring").setup({
@@ -15,7 +15,7 @@ return {
                 end,
             },
             {
-                "windwp/nvim-ts-autotag",
+                [1] = "windwp/nvim-ts-autotag",
                 ft = {
                     "html",
                     "xml",
@@ -68,7 +68,7 @@ return {
         end,
     },
     {
-        "Wansmer/treesj",
+        [1] = "Wansmer/treesj",
         keys = {
             {
                 "gJ",

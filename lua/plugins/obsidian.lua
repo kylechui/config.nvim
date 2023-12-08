@@ -1,5 +1,5 @@
 return {
-    "epwalsh/obsidian.nvim",
+    [1] = "epwalsh/obsidian.nvim",
     version = "^2.1.1",
     ft = { "markdown" },
     keys = {
@@ -13,8 +13,8 @@ return {
         },
         {
             mode = "x",
-            "<Bslash>ll",
-            function()
+            [1] = "<Bslash>ll",
+            [2] = function()
                 local title = vim.fn.input("Note title: ")
                 if title then
                     return ":ObsidianLinkNew " .. title .. "<CR>"

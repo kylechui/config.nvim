@@ -1,5 +1,5 @@
 return {
-    "pmizio/typescript-tools.nvim",
+    [1] = "pmizio/typescript-tools.nvim",
     ft = {
         "javascript",
         "javascriptreact",

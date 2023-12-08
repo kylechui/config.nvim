@@ -1,10 +1,13 @@
 return {
-    "nvim-telescope/telescope.nvim",
+    [1] = "nvim-telescope/telescope.nvim",
     version = "^0.1.4",
     keys = { "<Leader>f", "<Leader>s" },
     dependencies = {
         "nvim-lua/plenary.nvim",
-        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        {
+            [1] = "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make",
+        },
     },
     config = function()
         local actions = require("telescope.actions")

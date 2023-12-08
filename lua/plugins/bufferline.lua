@@ -1,5 +1,5 @@
 return {
-    "akinsho/bufferline.nvim",
+    [1] = "akinsho/bufferline.nvim",
     version = "^v4.4.0",
     lazy = false,
     keys = {

@@ -1,5 +1,5 @@
 return {
-    "rebelot/kanagawa.nvim",
+    [1] = "rebelot/kanagawa.nvim",
     priority = 1000,
     opts = {
         overrides = function()

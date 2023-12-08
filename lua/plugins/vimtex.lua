@@ -1,5 +1,5 @@
 return {
-    "lervag/vimtex",
+    [1] = "lervag/vimtex",
     version = "^2.13.0",
     config = function()
         vim.g.tex_flavor = "latex"

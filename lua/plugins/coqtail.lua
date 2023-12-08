@@ -1,5 +1,5 @@
 return {
-    "whonore/Coqtail",
+    [1] = "whonore/Coqtail",
     version = "^1.7.0",
     ft = "coq",
     config = function()

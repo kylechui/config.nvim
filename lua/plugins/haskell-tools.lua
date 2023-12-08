@@ -1,5 +1,5 @@
 return {
-    "mrcjkb/haskell-tools.nvim",
+    [1] = "mrcjkb/haskell-tools.nvim",
     ft = "haskell",
     dependencies = {
         "nvim-lua/plenary.nvim",

@@ -1,5 +1,5 @@
 return {
-    "L3MON4D3/LuaSnip",
+    [1] = "L3MON4D3/LuaSnip",
     version = "^2.1.0",
     event = "InsertEnter",
     config = function()
