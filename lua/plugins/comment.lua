@@ -1,6 +1,6 @@
 return {
     [1] = "numToStr/Comment.nvim",
-    versoin = "^0.8.0",
+    version = "^0.8.0",
     keys = {
         { mode = "n", [1] = "<C-/>", [2] = "<Plug>(comment_toggle_linewise_current)" },
         {
@@ -17,5 +17,8 @@ return {
             [1] = "gb",
         },
     },
-    config = true,
+    config = function()
+        require("Comment").setup()
+        require("Comment.ft").set("coq", { "(*%s*)", "(*%s*)" })
+    end,
 }
