@@ -7,5 +7,7 @@ return {
         vim.keymap.set("n", "<A-l>", vim.cmd.CoqToLine, { silent = true })
         vim.keymap.set("n", "<A-j>", vim.cmd.CoqNext, { silent = true })
         vim.keymap.set("n", "<A-k>", vim.cmd.CoqUndo, { silent = true })
+        vim.cmd.highlight("CoqtailChecked guibg=#1a651a")
+        vim.cmd.highlight("CoqtailSent guibg=#258e25")
     end,
 }
