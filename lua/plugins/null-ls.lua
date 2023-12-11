@@ -1,7 +1,7 @@
 return {
     [1] = "jose-elias-alvarez/null-ls.nvim",
     event = "LspAttach",
-    ft = { "markdown", "css" }, -- Other filetypes are handled by LspAttach
+    ft = { "markdown", "css", "sh", "bash", "fish" }, -- Other filetypes are handled by LspAttach
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
         require("null-ls").setup({
@@ -30,6 +30,8 @@ return {
                 }),
                 require("null-ls").builtins.diagnostics.selene,
                 require("null-ls").builtins.diagnostics.mypy,
+                require("null-ls").builtins.code_actions.shellcheck,
+                require("null-ls").builtins.diagnostics.shellcheck,
             },
         })
     end,
