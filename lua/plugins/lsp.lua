@@ -80,6 +80,11 @@ return {
                     create_codelens_autocmd(client)
                     setup_lsp_keybinds()
                 end,
+                settings = {
+                    codelens = {
+                        enable = true,
+                    },
+                },
                 single_file_support = true,
             })
 
