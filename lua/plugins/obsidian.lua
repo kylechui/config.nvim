@@ -2,6 +2,7 @@ return {
     [1] = "epwalsh/obsidian.nvim",
     version = "^2.1.1",
     ft = { "markdown" },
+    dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
         {
             "<Localleader>o",
@@ -46,6 +47,12 @@ return {
                         return require("obsidian").util.gf_passthrough()
                     end,
                     opts = { expr = true, buffer = true },
+                },
+                ["<Leader>ch"] = {
+                    action = function()
+                        return require("obsidian").util.toggle_checkbox()
+                    end,
+                    opts = { buffer = true },
                 },
             },
         })
