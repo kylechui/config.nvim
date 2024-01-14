@@ -40,5 +40,24 @@ require("nvim-surround").buffer_setup({
                 end,
             },
         },
+        ["e"] = {
+            add = function()
+                local env = config.get_input("Enter an environment: ")
+                return { { "\\begin{" .. env .. "}" }, { "\\end{" .. env .. "}" } }
+            end,
+            find = function()
+                return config.get_selection({
+                    node = "generic_environment",
+                })
+            end,
+            delete = [[^(\begin%b{})().*(\end%b{})()$]],
+            change = {
+                target = [[^\begin{(.-)()%}.*\end{(.-)()}$]],
+                replacement = function()
+                    local env = require("nvim-surround.config").get_input("Environment: ")
+                    return { { env }, { env } }
+                end,
+            },
+        },
     },
 })
