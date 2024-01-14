@@ -107,6 +107,12 @@ return nil,
         s("mscr", fmt([[\mathscr{{{}}}]], i(1)), { condition = in_mathzone }),
         -- LaTeX: Math text
         s({ trig = "tt", wordTrig = false }, fmt([[\text{{{}}}]], i(1)), { condition = in_mathzone }),
+        -- LaTeX: Binomial Coefficient
+        s(
+            { trig = "binom", wordTrig = false },
+            fmt([[\binom{{{}}}{{{}}}]], { i(1), i(2) }),
+            { condition = in_mathzone }
+        ),
         -- LaTeX: Parenthesis-delimited fractions
         s({ trig = "(%b())/", regTrig = true, wordTrig = false }, {
             d(1, function(_, snip)
@@ -312,7 +318,7 @@ return nil,
             { condition = in_mathzone }
         ),
         -- LaTeX: Functions
-        s({ trig = "(%a):", regTrig = true, wordTrig = false }, {
+        s({ trig = "(%w):", regTrig = true, wordTrig = false }, {
             d(1, function(_, snip)
                 return sn(1, {
                     t(snip.captures[1] .. "\\colon "),

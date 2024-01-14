@@ -94,6 +94,12 @@ return {
         end),
         { condition = in_text }
     ),
+    -- LaTeX: Math blackboard font
+    s({ trig = "\\(%u)", regTrig = true, wordTrig = false }, {
+        f(function(_, snip)
+            return "\\mathbb{" .. snip.captures[1] .. "}"
+        end),
+    }, { condition = in_mathzone }),
     -- LaTeX: Lowercase greek letters
     s({ trig = ";(%l)", regTrig = true, wordTrig = false }, {
         f(function(_, snip)
@@ -163,6 +169,8 @@ return {
     s({ trig = "tt", wordTrig = false }, fmt([[\text{{{}}}]], i(1)), { condition = in_mathzone }),
     -- LaTeX: Teletype text
     s({ trig = "TT", wordTrig = false }, fmt([[\texttt{{{}}}]], i(1)), { condition = in_mathzone }),
+    -- LaTeX: Binomial Coefficient
+    s({ trig = "binom", wordTrig = false }, fmt([[\binom{{{}}}{{{}}}]], { i(1), i(2) }), { condition = in_mathzone }),
     -- LaTeX: Parenthesis-delimited fractions
     s({ trig = "(%b())/", regTrig = true, wordTrig = false }, {
         d(1, function(_, snip)
@@ -269,7 +277,10 @@ return {
         end),
     }, { condition = in_mathzone }),
     -- LaTeX: Set notation
-    s({ trig = "set", wordTrig = false }, {
+    s({ trig = "([^\\])set", regTrig = true }, {
+        f(function(_, snip)
+            return snip.captures[1]
+        end),
         t("\\left\\{"),
         i(1),
         t("\\right\\}"),
@@ -288,9 +299,9 @@ return {
     }, { condition = in_mathzone }),
     -- LaTeX: Absolute Value
     s({ trig = "abs", wordTrig = false }, {
-        t("\\left\\lvert"),
+        t("|"),
         i(1),
-        t("\\right\\rvert"),
+        t("|"),
     }, { condition = in_mathzone }),
     -- LaTeX: General environment
     s(
@@ -317,5 +328,28 @@ return {
             }
         ),
         { condition = in_mathzone }
+    ),
+    -- LaTeX: Align environment
+    s(
+        { trig = "^(%s*)ali", regTrig = true },
+        fmt(
+            [[
+            {}\begin{{align*}}
+            {}  {}
+            {}\end{{align*}}
+    ]],
+            {
+                f(function(_, snip)
+                    return snip.captures[1]
+                end),
+                f(function(_, snip)
+                    return snip.captures[1]
+                end),
+                i(0),
+                f(function(_, snip)
+                    return snip.captures[1]
+                end),
+            }
+        )
     ),
 }
