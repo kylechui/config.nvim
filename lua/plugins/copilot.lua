@@ -4,6 +4,9 @@ return {
     event = "InsertEnter",
     config = function()
         require("copilot").setup({
+            filetypes = {
+                tex = false,
+            },
             suggestion = {
                 auto_trigger = true,
                 keymap = {
