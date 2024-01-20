@@ -5,6 +5,7 @@ vim.bo.softtabstop = 2
 vim.bo.shiftwidth = 2
 
 vim.keymap.set("n", "<C-CR>", "<Cmd>VimtexCompile<CR>", { buffer = true })
+vim.keymap.del("i", "]]", { buffer = true })
 
 local config = require("nvim-surround.config")
 require("nvim-surround").buffer_setup({
