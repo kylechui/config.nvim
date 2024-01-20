@@ -281,9 +281,9 @@ return {
         f(function(_, snip)
             return snip.captures[1]
         end),
-        t("\\left\\{"),
+        t("\\{"),
         i(1),
-        t("\\right\\}"),
+        t("\\}"),
     }, { condition = in_mathzone }),
     -- LaTeX: Tuple
     s({ trig = "tup", wordTrig = false }, {
