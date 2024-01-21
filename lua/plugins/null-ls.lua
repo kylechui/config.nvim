@@ -20,6 +20,7 @@ return {
                     },
                 }),
                 require("null-ls").builtins.formatting.nixfmt,
+                require("null-ls").builtins.formatting.rustfmt,
                 require("null-ls").builtins.formatting.ocamlformat,
                 require("null-ls").builtins.formatting.prettierd.with({
                     extra_args = { "--prose-wrap=always" },

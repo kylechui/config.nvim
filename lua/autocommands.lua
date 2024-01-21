@@ -26,6 +26,7 @@ autocmd("BufWritePre", {
         "*.mli",
         "*.nix",
         "*.py",
+        "*.rs",
         "*.tex",
         "*.ts",
         "*.tsx",
