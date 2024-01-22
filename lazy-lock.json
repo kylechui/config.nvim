@@ -11,6 +11,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "copilot.lua": { "branch": "master", "commit": "38a41d0d78f8823cc144c99784528b9a68bdd608" },
   "coq-lsp.nvim": { "branch": "main", "commit": "9a07014fc228a31cae79a5251f19b81524aaa2ac" },
+  "fidget.nvim": { "branch": "main", "commit": "3a93300c076109d86c7ce35ec67a8034ae6ba9db" },
   "gx.nvim": { "branch": "main", "commit": "eba0eef8143060428c9baf9b14bda6f76b5547b3" },
   "haskell-tools.nvim": { "branch": "2.x.x", "commit": "92e097c6832405fb64e4c44a7ce8bebe7836cae6" },
   "indent-blankline.nvim": { "branch": "master", "commit": "9807dab165b2d8ca74ae756fa0494fb26adbee41" },
