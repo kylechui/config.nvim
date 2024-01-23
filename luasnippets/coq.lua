@@ -10,12 +10,6 @@ return nil,
             i(1),
             t("∣"),
         }),
-        s({ trig = "\\psi", wordTrig = true }, {
-            t("ψ"),
-        }),
-        s({ trig = "\\phi", wordTrig = true }, {
-            t("φ"),
-        }),
         s({ trig = "xx", wordTrig = true }, {
             t("×"),
         }),
