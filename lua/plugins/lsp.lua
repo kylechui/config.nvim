@@ -100,14 +100,6 @@ return {
                 end,
             })
 
-            lspconfig.rust_analyzer.setup({
-                on_attach = function(client)
-                    create_codelens_autocmd(client)
-                    setup_lsp_keybinds()
-                end,
-                single_file_support = true,
-            })
-
             lspconfig.texlab.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
