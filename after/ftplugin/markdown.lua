@@ -9,6 +9,9 @@ vim.keymap.set("n", "<C-CR>", "<Cmd>MarkdownPreview<CR>", { buffer = true })
 vim.keymap.set("n", "<Leader>u", function()
     require("cmp_dictionary").update()
 end, { buffer = true })
+vim.keymap.set("n", "<Leader>a", function()
+    vim.cmd("Copilot! attach")
+end, { buffer = true })
 
 require("nvim-surround").buffer_setup({
     surrounds = {
