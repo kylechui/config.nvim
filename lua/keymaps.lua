@@ -26,6 +26,8 @@ map({ "n", "x" }, "k", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "k" : "
 map("x", ".", ":normal.<CR>", { silent = true })
 -- Better deletion of visual selections
 map("x", "<Leader>p", '"_dP', { silent = true })
+-- Quit all buffers
+map("n", "<Leader>q", "<Cmd>qall<CR>", { silent = true })
 -- Open todo list
 map("n", "<Leader>t", function()
     vim.cmd.edit("~/todo.md")
