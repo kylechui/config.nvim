@@ -5,7 +5,7 @@ return {
         { "<Leader>g", "<Cmd>Git<CR>" },
         { "<Leader>gp", "<Cmd>Git push<CR>" },
         { "<Leader>gm", "<Cmd>Gvdiffsplit!<CR>" },
-        { "<Leader>h", "<Cmd>diffget //2<CR>" },
-        { "<Leader>l", "<Cmd>diffget //3<CR>" },
+        { "<Leader>h", "<Cmd>diffget LOCAL<CR>" },
+        { "<Leader>l", "<Cmd>diffget REMOTE<CR>" },
     },
 }
