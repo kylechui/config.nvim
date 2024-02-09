@@ -1,6 +1,6 @@
 return {
     [1] = "epwalsh/obsidian.nvim",
-    version = "^2.1.1",
+    version = "^3.0.0",
     ft = { "markdown" },
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
