@@ -19,6 +19,8 @@ map("n", "<C-j>", "<C-w>j", { silent = true })
 map("n", "<C-k>", "<C-w>k", { silent = true })
 map("n", "<C-l>", "<C-w>l", { silent = true })
 map("n", "<C-w>", "<Cmd>bd!<CR>", { silent = true })
+-- Resize windows
+map("n", "<Leader>=", "<Cmd>wincmd =<CR>", { silent = true })
 -- Navigate by wrapped lines by default
 map({ "n", "x" }, "j", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "j" : "gj"', { silent = true, expr = true })
 map({ "n", "x" }, "k", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "k" : "gk"', { silent = true, expr = true })
