@@ -6,5 +6,9 @@ return {
         { "<Leader>j", vim.cmd.BufferLineCycleNext },
         { "<Leader>k", vim.cmd.BufferLineCyclePrev },
     },
-    config = true,
+    opts = {
+        options = {
+            buffer_close_icon = "×",
+        },
+    },
 }
