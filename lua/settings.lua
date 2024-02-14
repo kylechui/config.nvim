@@ -42,8 +42,6 @@ opt.lazyredraw = true
 -- Force vertical splits to always open on the right
 opt.splitright = true
 opt.completeopt = { "menu", "menuone", "noselect" }
--- Disable mouse
-opt.mouse = ""
 
 local notify = vim.notify
 ---@diagnostic disable-next-line: duplicate-set-field
