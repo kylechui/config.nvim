@@ -1,6 +1,5 @@
 -- I'm lazy
 local opt = vim.opt
-local g = vim.g
 
 -- Define environment variables
 vim.env.BOOKS = "~/Documents/Books/"
@@ -43,9 +42,8 @@ opt.lazyredraw = true
 -- Force vertical splits to always open on the right
 opt.splitright = true
 opt.completeopt = { "menu", "menuone", "noselect" }
--- Neovide-specific cursor settings
-g.neovide_cursor_animation_length = 0.05
-g.neovide_cursor_animate_in_insert_mode = 0
+-- Disable mouse
+opt.mouse = ""
 
 local notify = vim.notify
 ---@diagnostic disable-next-line: duplicate-set-field
