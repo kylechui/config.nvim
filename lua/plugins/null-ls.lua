@@ -1,5 +1,5 @@
 return {
-    [1] = "jose-elias-alvarez/null-ls.nvim",
+    [1] = "nvimtools/none-ls.nvim",
     event = "LspAttach",
     ft = { "markdown", "css", "rust", "sh", "bash", "fish" }, -- Other filetypes are handled by LspAttach
     dependencies = "nvim-lua/plenary.nvim",
