@@ -1,7 +1,6 @@
 local in_mathzone = function()
     local current_node = vim.treesitter.get_node({ ignore_injections = false })
     while current_node do
-        vim.print(current_node:type())
         if current_node:type() == "source_file" then
             return true
         end
@@ -277,7 +276,7 @@ return {
         end),
     }, { condition = in_mathzone }),
     -- LaTeX: Set notation
-    s({ trig = "([^\\])set", regTrig = true }, {
+    s({ trig = "([^\\bp])set", regTrig = true, wordTrig = false }, {
         f(function(_, snip)
             return snip.captures[1]
         end),
