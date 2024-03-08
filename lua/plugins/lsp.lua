@@ -75,6 +75,13 @@ return {
                 },
             })
 
+            lspconfig.markdown_oxide.setup({
+                on_attach = function(client)
+                    create_codelens_autocmd(client)
+                    setup_lsp_keybinds()
+                end,
+            })
+
             lspconfig.ocamllsp.setup({
                 on_attach = function(client)
                     create_codelens_autocmd(client)

@@ -35,33 +35,5 @@ return {
                 require("null-ls").builtins.diagnostics.shellcheck,
             },
         })
-        require("null-ls").register({
-            method = require("null-ls").methods.DIAGNOSTICS,
-            filetypes = { "markdown" },
-            generator = {
-                fn = function(params)
-                    local diagnostics = {}
-                    local client = require("obsidian").get_client()
-                    for i, line in ipairs(params.content) do
-                        local index = 1
-                        while line:find("%[%b[]%]", index) do
-                            local start, stop = line:find("%[%b[]%]", index)
-                            local location, _, _ = require("obsidian").util.cursor_link(line, start)
-                            if not client:resolve_note(location, 10) then
-                                table.insert(diagnostics, {
-                                    row = i,
-                                    col = start,
-                                    end_col = stop,
-                                    message = "Missing note: " .. location,
-                                    severity = vim.diagnostic.severity.INFO,
-                                })
-                            end
-                            index = stop + 1
-                        end
-                    end
-                    return diagnostics
-                end,
-            },
-        })
     end,
 }
