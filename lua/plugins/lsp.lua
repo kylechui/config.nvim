@@ -29,7 +29,7 @@ return {
                     vim.lsp.codelens.refresh()
                     local refreshCodelens = vim.api.nvim_create_augroup("refreshCodelens", {})
                     vim.api.nvim_create_autocmd({
-                        "BufEnter",
+                        "LspAttach",
                         "InsertLeave",
                         "TextChanged",
                     }, {

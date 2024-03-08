@@ -6,6 +6,7 @@ return {
         progress = {
             ignore = {
                 "null-ls",
+                "markdown_oxide",
             },
         },
     },
