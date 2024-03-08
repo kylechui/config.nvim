@@ -76,6 +76,8 @@ return {
             })
 
             lspconfig.markdown_oxide.setup({
+                root_dir = require("lspconfig.util").root_pattern(".obsidian"),
+                single_file_support = false,
                 on_attach = function(client)
                     create_codelens_autocmd(client)
                     setup_lsp_keybinds()
