@@ -42,6 +42,8 @@ opt.lazyredraw = true
 -- Force vertical splits to always open on the right
 opt.splitright = true
 opt.completeopt = { "menu", "menuone", "noselect" }
+-- Set title for tabbed environments
+opt.title = true
 
 local notify = vim.notify
 ---@diagnostic disable-next-line: duplicate-set-field
