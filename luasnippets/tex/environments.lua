@@ -31,14 +31,17 @@ return nil,
     {
         -- LaTeX: General environment
         s(
-            "beg",
+            { trig = "([^\\])beg", regTrig = true },
             fmt(
                 [[
-            \begin{{{}}}
-              {}
-            \end{{{}}}
+            {}\begin{{{}}}
+               {}
+             \end{{{}}}
         ]],
                 {
+                    f(function(_, snip)
+                        return snip.captures[1]
+                    end),
                     i(1),
                     i(0),
                     rep(1),
