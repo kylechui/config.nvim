@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+vim.opt_local.shiftwidth = 2
 
 local open_term = function(command)
     vim.cmd("belowright 15split +term | startinsert")
