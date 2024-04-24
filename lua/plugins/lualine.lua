@@ -11,23 +11,8 @@ return {
             lualine_a = { "mode" },
             lualine_b = {
                 "branch",
-                {
-                    "diff",
-                    symbols = {
-                        added = " ",
-                        modified = " ",
-                        removed = " ",
-                    },
-                },
-                {
-                    "diagnostics",
-                    symbols = {
-                        error = " ",
-                        warn = " ",
-                        info = " ",
-                        hint = " ",
-                    },
-                },
+                "diff",
+                "diagnostics",
             },
             lualine_c = {
                 {
