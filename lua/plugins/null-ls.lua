@@ -7,12 +7,7 @@ return {
         require("null-ls").setup({
             sources = {
                 require("null-ls").builtins.formatting.black,
-                require("null-ls").builtins.formatting.clang_format.with({
-                    extra_args = {
-                        "--style",
-                        "{BasedOnStyle: Google, IndentWidth: 4, BreakBeforeBinaryOperators: NonAssignment, AllowShortFunctionsOnASingleLine: None}",
-                    },
-                }),
+                require("null-ls").builtins.formatting.clang_format,
                 require("null-ls").builtins.formatting.latexindent.with({
                     extra_args = {
                         "-y",
