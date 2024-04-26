@@ -71,6 +71,7 @@ return {
             require("telescope.builtin").find_files({
                 prompt_title = "Books",
                 cwd = vim.env.BOOKS,
+                previewer = false,
             })
         end, { silent = true })
         vim.keymap.set("n", "<Leader>ff", function()
