@@ -44,12 +44,18 @@ return {
             require("neodev").setup({})
             local lspconfig = require("lspconfig")
 
-            lspconfig.clangd.setup({
+            lspconfig.bashls.setup({
+                on_attach = function()
+                    setup_lsp_keybinds()
+                end,
+            })
+
+            --[[ lspconfig.clangd.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
                 end,
                 single_file_support = true,
-            })
+            }) ]]
 
             lspconfig.jsonls.setup({})
 

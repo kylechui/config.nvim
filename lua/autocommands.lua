@@ -33,12 +33,7 @@ autocmd("BufWritePre", {
         "*.tsx",
     },
     callback = function()
-        vim.lsp.buf.format({
-            filter = function(client)
-                return client.name == "null-ls"
-            end,
-            bufnr = 0,
-        })
+        vim.lsp.buf.format({ bufnr = 0 })
     end,
     group = formatCode,
 })
