@@ -63,7 +63,7 @@ return {
                             checkThirdParty = false,
                         },
                         diagnostics = {
-                            enable = false,
+                            enable = true,
                         },
                         format = {
                             enable = false,
