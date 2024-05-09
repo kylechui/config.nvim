@@ -19,6 +19,8 @@ map("n", "<C-j>", "<C-w>j", { silent = true })
 map("n", "<C-k>", "<C-w>k", { silent = true })
 map("n", "<C-l>", "<C-w>l", { silent = true })
 map("n", "<C-w>", "<Cmd>bd!<CR>", { silent = true })
+vim.keymap.del("n", "<C-w>d", { silent = true })
+vim.keymap.del("n", "<C-w><C-d>", { silent = true })
 -- Resize windows
 map("n", "<Leader>=", "<Cmd>wincmd =<CR>", { silent = true })
 -- Navigate by wrapped lines by default
