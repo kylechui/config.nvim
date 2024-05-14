@@ -8,12 +8,14 @@ return {
             vim.g.coqtail_noimap = true
             vim.g.loaded_coqtail = true
             vim.g["coqtail#supported"] = false
+            vim.keymap.set("n", "<Leader>i", function()
+                vim.cmd.CoqLsp("open_info_panel")
+            end, { silent = true, buffer = true })
         end,
     },
     config = function()
         require("coq-lsp").setup({
             lsp = {
-                autostart = false,
                 on_attach = function()
                     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = true })
                     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { silent = true, buffer = true })
