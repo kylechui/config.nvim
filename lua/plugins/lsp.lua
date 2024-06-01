@@ -4,9 +4,10 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             {
-                [1] = "folke/neodev.nvim",
-                version = "^2.5.2",
+                [1] = "folke/lazydev.nvim",
+                version = "^1.0.0",
                 ft = "lua",
+                opts = true,
             },
         },
         config = function()
@@ -40,8 +41,6 @@ return {
                 end
             end
 
-            -- IMPORTANT: make sure to setup neodev BEFORE require("lspconfig")
-            require("neodev").setup({})
             local lspconfig = require("lspconfig")
 
             lspconfig.bashls.setup({
