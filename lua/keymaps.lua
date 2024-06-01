@@ -37,7 +37,7 @@ map("n", "<Leader>t", function()
     vim.cmd.edit("~/todo.md")
 end, { silent = true })
 -- Spell check
-map("i", "<C-l>", "<C-g>u<ESC>b[s1z=`]a<C-g>u", { silent = true })
+map("i", "<C-l>", "<C-g>u<ESC>[s1z=`]a<C-g>u", { silent = true })
 -- Font size adjustment
 map("n", "<C-=>", function()
     require("utils").adjust_font_size(1)
