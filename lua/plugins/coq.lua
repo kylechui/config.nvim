@@ -27,6 +27,9 @@ return {
                     vim.keymap.set("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = true })
                 end,
                 single_file_support = true,
+                init_options = {
+                    show_stats_on_hover = true,
+                },
             },
         })
         vim.cmd.highlight("CoqtailChecked guibg=#1a651a")
