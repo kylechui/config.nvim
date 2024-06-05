@@ -117,23 +117,6 @@ return {
             lspconfig.texlab.setup({
                 on_attach = function()
                     setup_lsp_keybinds()
-                    vim.keymap.set("n", "K", function()
-                        local curpos = vim.api.nvim_win_get_cursor(0)
-                        curpos[2] = curpos[2] + 1
-                        local file = vim.fn.expand("%:p:r"):gsub(" ", "\\ ")
-                        vim.fn.jobstart(
-                            "zathura --synctex-forward "
-                                .. tostring(curpos[1])
-                                .. ":"
-                                .. tostring(curpos[2])
-                                .. ":"
-                                .. file
-                                .. ".tex "
-                                .. file
-                                .. ".pdf",
-                            { detach = true }
-                        )
-                    end, { buffer = true })
                 end,
             })
         end,

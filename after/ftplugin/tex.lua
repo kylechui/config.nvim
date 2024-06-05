@@ -7,6 +7,24 @@ vim.bo.shiftwidth = 2
 vim.keymap.set("n", "<C-CR>", "<Cmd>VimtexCompile<CR>", { buffer = true })
 vim.keymap.del("i", "]]", { buffer = true })
 
+vim.keymap.set("n", "K", function()
+    local curpos = vim.api.nvim_win_get_cursor(0)
+    curpos[2] = curpos[2] + 1
+    local file = vim.fn.expand("%:p:r"):gsub(" ", "\\ ")
+    vim.fn.jobstart(
+        "zathura --synctex-forward "
+            .. tostring(curpos[1])
+            .. ":"
+            .. tostring(curpos[2])
+            .. ":"
+            .. file
+            .. ".tex "
+            .. file
+            .. ".pdf",
+        { detach = true }
+    )
+end, { buffer = true })
+
 local config = require("nvim-surround.config")
 require("nvim-surround").buffer_setup({
     surrounds = {
