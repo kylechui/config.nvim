@@ -32,8 +32,11 @@ return {
                 map("n", "<Leader>dl", require("telescope.builtin").diagnostics, { buffer = true })
                 map("n", "<Leader>r", require("utils").rename_var, { buffer = true })
                 map("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = true })
+                map("n", "<Leader>i", function()
+                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+                end, { buffer = true })
             end,
         })
-        vim.lsp.inlay_hint.enable()
+        vim.lsp.inlay_hint.enable(true, { bufnr = 0 })
     end,
 }
