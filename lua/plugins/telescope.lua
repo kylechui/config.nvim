@@ -24,7 +24,6 @@ return {
                     },
                 },
                 prompt_prefix = " λ ",
-                -- selection_caret = " > ",
                 sorting_strategy = "ascending",
                 layout_config = {
                     horizontal = {
@@ -39,7 +38,7 @@ return {
                     height = 0.85,
                     preview_cutoff = 60,
                 },
-                border = {},
+                borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
             },
         })
 
