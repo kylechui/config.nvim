@@ -17,7 +17,7 @@ return {
                     i = {
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
-                        [""] = { "<C-S-w>", type = "command" },
+                        [""] = { [1] = "<C-S-w>", type = "command" },
                     },
                     n = {
                         ["q"] = require("telescope.actions").close,
@@ -118,7 +118,6 @@ return {
                 local pickers = require("telescope.pickers")
                 local finders = require("telescope.finders")
                 local conf = require("telescope.config").values
-                local action_state = require("telescope.actions.state")
                 opts = opts or {}
                 pickers
                     .new(opts, {
@@ -150,16 +149,6 @@ return {
                             }),
                         }),
                         sorter = conf.generic_sorter(opts),
-                        attach_mappings = function(prompt_bufnr, map)
-                            actions.select_default:replace(function()
-                                actions.close(prompt_bufnr)
-                                local selection = action_state.get_selected_entry()
-                                require("nvim-tree.api").tree.toggle({
-                                    path = selection[1]:gsub("~", vim.env.HOME),
-                                })
-                            end)
-                            return true
-                        end,
                     })
                     :find()
             end
