@@ -107,6 +107,8 @@ return {
                     setup_lsp_keybinds()
                 end,
             })
+            -- Only used for formatting
+            lspconfig.ruff.setup({})
 
             lspconfig.nixd.setup({
                 on_attach = function()

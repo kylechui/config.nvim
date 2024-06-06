@@ -6,7 +6,6 @@ return {
     config = function()
         require("null-ls").setup({
             sources = {
-                require("null-ls").builtins.formatting.black,
                 require("null-ls").builtins.formatting.clang_format,
                 require("null-ls").builtins.formatting.nixfmt,
                 require("null-ls").builtins.formatting.ocamlformat,
