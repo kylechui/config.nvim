@@ -13,10 +13,17 @@ return {
         config = function()
             local map = vim.keymap.set
             -- Whenever our LSP server attaches to a buffer, load these keybinds
-            local setup_lsp_keybinds = function()
+            local setup_lsp_keybinds = function(client)
+                if client.supports_method("textDocument/hover") then
+                    map("n", "K", vim.lsp.buf.hover, { silent = true, buffer = true })
+                end
+                if client.supports_method("textDocument/inlayHints") then
+                    map("n", "<Leader>i", function()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+                    end, { buffer = true })
+                end
                 map("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = true })
                 map("n", "gd", vim.lsp.buf.definition, { silent = true, buffer = true })
-                map("n", "K", vim.lsp.buf.hover, { silent = true, buffer = true })
                 map("n", "<Leader>dj", vim.diagnostic.goto_next, { buffer = true })
                 map("n", "<Leader>dk", vim.diagnostic.goto_prev, { buffer = true })
                 map("n", "<Leader>dl", require("telescope.builtin").diagnostics, { buffer = true })
@@ -44,23 +51,23 @@ return {
             local lspconfig = require("lspconfig")
 
             lspconfig.bashls.setup({
-                on_attach = function()
-                    setup_lsp_keybinds()
+                on_attach = function(client)
+                    setup_lsp_keybinds(client)
                 end,
             })
 
-            --[[ lspconfig.clangd.setup({
-                on_attach = function()
-                    setup_lsp_keybinds()
+            lspconfig.clangd.setup({
+                on_attach = function(client)
+                    setup_lsp_keybinds(client)
                 end,
                 single_file_support = true,
-            }) ]]
+            })
 
             lspconfig.jsonls.setup({})
 
             lspconfig.lua_ls.setup({
-                on_attach = function(c, b)
-                    setup_lsp_keybinds()
+                on_attach = function(client)
+                    setup_lsp_keybinds(client)
                 end,
                 settings = {
                     Lua = {
@@ -85,14 +92,14 @@ return {
                 single_file_support = false,
                 on_attach = function(client)
                     create_codelens_autocmd(client)
-                    setup_lsp_keybinds()
+                    setup_lsp_keybinds(client)
                 end,
             })
 
             lspconfig.ocamllsp.setup({
                 on_attach = function(client)
                     create_codelens_autocmd(client)
-                    setup_lsp_keybinds()
+                    setup_lsp_keybinds(client)
                 end,
                 settings = {
                     codelens = {
@@ -103,22 +110,22 @@ return {
             })
 
             lspconfig.pyright.setup({
-                on_attach = function()
-                    setup_lsp_keybinds()
+                on_attach = function(client)
+                    setup_lsp_keybinds(client)
                 end,
             })
             -- Only used for formatting
             lspconfig.ruff.setup({})
 
             lspconfig.nixd.setup({
-                on_attach = function()
-                    setup_lsp_keybinds()
+                on_attach = function(client)
+                    setup_lsp_keybinds(client)
                 end,
             })
 
             lspconfig.texlab.setup({
-                on_attach = function()
-                    setup_lsp_keybinds()
+                on_attach = function(client)
+                    setup_lsp_keybinds(client)
                 end,
             })
         end,
