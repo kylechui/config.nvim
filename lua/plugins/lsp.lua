@@ -124,13 +124,6 @@ return {
         end,
     },
     {
-        [1] = "ray-x/lsp_signature.nvim",
-        event = "LspAttach",
-        opts = {
-            hint_enable = false,
-        },
-    },
-    {
         [1] = "onsails/lspkind.nvim",
         event = "LspAttach",
     },
