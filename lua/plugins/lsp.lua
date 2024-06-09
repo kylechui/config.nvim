@@ -76,7 +76,13 @@ return {
                         },
                         diagnostics = {
                             enable = true,
+                            globals = {
+                                "describe",
+                                "before_each",
+                                "it",
+                            },
                         },
+                        -- Handled by stylua
                         format = {
                             enable = false,
                         },
