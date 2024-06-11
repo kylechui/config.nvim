@@ -44,13 +44,3 @@ opt.splitright = true
 opt.completeopt = { "menu", "menuone", "noselect" }
 -- Set title for tabbed environments
 opt.title = true
-
-local notify = vim.notify
----@diagnostic disable-next-line: duplicate-set-field
-vim.notify = function(msg, ...)
-    if msg:match("warning: multiple different client offset_encodings") then
-        return
-    end
-
-    notify(msg, ...)
-end
