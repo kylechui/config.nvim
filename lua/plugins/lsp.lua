@@ -63,7 +63,11 @@ return {
                 single_file_support = true,
             })
 
-            lspconfig.jsonls.setup({})
+            lspconfig.jsonls.setup({
+                on_attach = function(client)
+                    setup_lsp_keybinds(client)
+                end,
+            })
 
             lspconfig.lua_ls.setup({
                 on_attach = function(client)
