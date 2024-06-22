@@ -1,7 +1,7 @@
 return {
     [1] = "nvimtools/none-ls.nvim",
     event = "LspAttach",
-    ft = { "css" }, -- Other filetypes are handled by LspAttach
+    ft = { "css", "markdown" }, -- Other filetypes are handled by LspAttach
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
         require("null-ls").setup({
