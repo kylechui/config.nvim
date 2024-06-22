@@ -32,7 +32,5 @@ return {
                 },
             },
         })
-        vim.cmd.highlight("CoqtailChecked guibg=#1a651a")
-        vim.cmd.highlight("CoqtailSent guibg=#113300")
     end,
 }
