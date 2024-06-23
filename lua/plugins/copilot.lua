@@ -5,9 +5,11 @@ return {
     config = function()
         require("copilot").setup({
             filetypes = {
-                tex = false,
+                coq = true,
+                ["."] = false,
             },
             suggestion = {
+                auto_trigger = true,
                 keymap = {
                     accept = "<C-Space>",
                 },
