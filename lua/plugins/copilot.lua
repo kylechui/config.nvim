@@ -6,7 +6,7 @@ return {
         require("copilot").setup({
             filetypes = {
                 coq = true,
-                ["."] = false,
+                ["*"] = false,
             },
             suggestion = {
                 auto_trigger = true,
