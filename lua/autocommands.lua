@@ -16,6 +16,7 @@ autocmd("BufWritePre", {
         "*.cc",
         "*.cpp",
         "*.css",
+        "*.gleam",
         "*.h",
         "*.hpp",
         "*.hs",
@@ -41,6 +42,7 @@ autocmd("BufWritePre", {
 local openFile = augroup("openFile", {})
 autocmd("BufReadPost", {
     pattern = {
+        "*.epub",
         "*.jpeg",
         "*.jpg",
         "*.pdf",

@@ -63,6 +63,12 @@ return {
                 single_file_support = true,
             })
 
+            lspconfig.gleam.setup({
+                on_attach = function(client)
+                    setup_lsp_keybinds(client)
+                end,
+            })
+
             lspconfig.jsonls.setup({
                 on_attach = function(client)
                     setup_lsp_keybinds(client)
