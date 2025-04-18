@@ -6,12 +6,10 @@ return {
         vim.g.rustaceanvim = {
             server = {
                 on_attach = function(client)
-                    if client.supports_method("textDocument/inlayHints") then
-                        vim.lsp.inlay_hint.enable()
-                        vim.keymap.set("n", "<Leader>ih", function()
-                            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-                        end, { buffer = true })
-                    end
+                    vim.lsp.inlay_hint.enable()
+                    vim.keymap.set("n", "<Leader>ih", function()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                    end, { buffer = true })
                     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = true })
                     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { silent = true, buffer = true })
                     vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true, buffer = true })
