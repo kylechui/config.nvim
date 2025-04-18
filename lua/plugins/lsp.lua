@@ -18,7 +18,7 @@ return {
                     map("n", "K", vim.lsp.buf.hover, { silent = true, buffer = true })
                 end
                 if client.supports_method("textDocument/inlayHints") then
-                    map("n", "<Leader>i", function()
+                    map("n", "<Leader>ih", function()
                         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
                     end, { buffer = true })
                 end
@@ -132,12 +132,6 @@ return {
             })
             -- Only used for formatting
             lspconfig.ruff.setup({})
-
-            lspconfig.rust_analyzer.setup({
-                on_attach = function(client)
-                    setup_lsp_keybinds(client)
-                end,
-            })
 
             lspconfig.nixd.setup({
                 on_attach = function(client)

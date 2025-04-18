@@ -37,6 +37,6 @@ return {
                 end, { buffer = true })
             end,
         })
-        vim.lsp.inlay_hint.enable(true, { bufnr = 0 })
+        vim.lsp.inlay_hint.enable()
     end,
 }
