@@ -19,13 +19,13 @@ return {
                 end
                 if client.supports_method("textDocument/inlayHints") then
                     map("n", "<Leader>i", function()
-                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
                     end, { buffer = true })
                 end
                 map("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = true })
                 map("n", "gd", vim.lsp.buf.definition, { silent = true, buffer = true })
-                map("n", "<Leader>dj", vim.diagnostic.goto_next, { buffer = true })
-                map("n", "<Leader>dk", vim.diagnostic.goto_prev, { buffer = true })
+                map("n", "<Leader>dn", vim.diagnostic.goto_next, { buffer = true })
+                map("n", "<Leader>dp", vim.diagnostic.goto_prev, { buffer = true })
                 map("n", "<Leader>dl", require("telescope.builtin").diagnostics, { buffer = true })
                 map("n", "<Leader>r", require("utils").rename_var, { buffer = true })
                 map("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = true })
@@ -132,6 +132,12 @@ return {
             })
             -- Only used for formatting
             lspconfig.ruff.setup({})
+
+            lspconfig.rust_analyzer.setup({
+                on_attach = function(client)
+                    setup_lsp_keybinds(client)
+                end,
+            })
 
             lspconfig.nixd.setup({
                 on_attach = function(client)

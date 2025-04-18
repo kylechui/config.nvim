@@ -57,13 +57,13 @@ return {
                     ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
                     ["<CR>"] = cmp.config.disable,
                 }),
-                sources = cmp.config.sources({
-                    { name = "path" },
-                    { name = "nvim_lsp" },
-                    { name = "buffer", keyword_length = 2 },
-                    { name = "luasnip" },
-                    { name = "dictionary", keyword_length = 2 },
-                }),
+                sources = cmp.config.sources(
+                    { { name = "path" } },
+                    { { name = "nvim_lsp" } },
+                    { { name = "buffer", keyword_length = 2 } },
+                    { { name = "luasnip" } },
+                    { { name = "dictionary", keyword_length = 2 } }
+                ),
                 formatting = {
                     format = lspkind.cmp_format({
                         mode = "symbol", -- show only symbol annotations
