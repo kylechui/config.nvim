@@ -28,17 +28,6 @@ return {
                 },
                 "filename",
             },
-            lualine_x = {
-                function()
-                    local count
-                    if (vim.fn.mode()):lower() == "v" then
-                        count = vim.fn.wordcount().visual_words
-                    else
-                        count = vim.fn.wordcount().words
-                    end
-                    return ("%sW"):format(count)
-                end,
-            },
             lualine_y = { "progress" },
             lualine_z = { "location" },
         },
