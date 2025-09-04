@@ -75,34 +75,6 @@ return {
                 end,
             })
 
-            lspconfig.lua_ls.setup({
-                on_attach = function(client)
-                    setup_lsp_keybinds(client)
-                end,
-                settings = {
-                    Lua = {
-                        workspace = {
-                            checkThirdParty = false,
-                        },
-                        diagnostics = {
-                            enable = true,
-                            globals = {
-                                "describe",
-                                "before_each",
-                                "it",
-                            },
-                        },
-                        -- Handled by stylua
-                        format = {
-                            enable = false,
-                        },
-                        hint = {
-                            enable = true,
-                        },
-                    },
-                },
-            })
-
             lspconfig.markdown_oxide.setup({
                 root_dir = require("lspconfig.util").root_pattern(".obsidian"),
                 single_file_support = false,
