@@ -36,4 +36,5 @@ require("lazy").setup("plugins", {
 require("autocommands")
 require("settings")
 require("keymaps")
-require("lsp")
+
+vim.lsp.enable({ "luals" })

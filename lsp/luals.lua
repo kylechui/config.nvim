@@ -1,23 +1,4 @@
--- Whenever our LSP server attaches to a buffer, load these keybinds
-local setup_lsp_keybinds = function(client)
-    if client.supports_method("textDocument/hover") then
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true, buffer = true })
-    end
-    if client.supports_method("textDocument/inlayHints") then
-        vim.keymap.set("n", "<Leader>ih", function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-        end, { buffer = true })
-    end
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = true })
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { silent = true, buffer = true })
-    vim.keymap.set("n", "<Leader>dn", vim.diagnostic.goto_next, { buffer = true })
-    vim.keymap.set("n", "<Leader>dp", vim.diagnostic.goto_prev, { buffer = true })
-    vim.keymap.set("n", "<Leader>dl", require("telescope.builtin").diagnostics, { buffer = true })
-    vim.keymap.set("n", "<Leader>r", require("utils").rename_var, { buffer = true })
-    vim.keymap.set("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = true })
-end
-
-vim.lsp.config.luals = {
+return {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
     root_markers = {
@@ -41,7 +22,7 @@ vim.lsp.config.luals = {
             "lua/?/init.lua",
         },
     },
-    on_attach = setup_lsp_keybinds,
+    on_attach = require("utils").setup_lsp_keymaps,
     settings = {
         Lua = {
             workspace = {
@@ -69,5 +50,3 @@ vim.lsp.config.luals = {
         },
     },
 }
-
-vim.lsp.enable({ "luals" })
