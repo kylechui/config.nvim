@@ -37,4 +37,13 @@ require("autocommands")
 require("settings")
 require("keymaps")
 
-vim.lsp.enable({ "luals" })
+vim.lsp.enable({
+    "bashls",
+    "clangd",
+    "gleam",
+    "jsonls",
+    "lua_ls",
+    "nixd",
+    "ocamllsp",
+    "pyright",
+})
