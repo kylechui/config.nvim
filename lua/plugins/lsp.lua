@@ -2,14 +2,6 @@ return {
     {
         [1] = "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
-        dependencies = {
-            {
-                [1] = "folke/lazydev.nvim",
-                version = "^1.0.0",
-                ft = "lua",
-                opts = true,
-            },
-        },
     },
     {
         [1] = "onsails/lspkind.nvim",
