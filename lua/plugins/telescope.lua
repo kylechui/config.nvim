@@ -159,6 +159,9 @@ return {
                 cwd = vim.env.OBSIDIAN_VAULT,
             })
         end, { silent = true })
+        vim.keymap.set("n", "<Leader>fc", function()
+            require("telescope.builtin").commands()
+        end, { silent = true })
         require("telescope").load_extension("fzf")
     end,
 }
