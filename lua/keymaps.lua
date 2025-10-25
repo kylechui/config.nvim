@@ -1,4 +1,6 @@
 local map = vim.keymap.set
+-- Quitting Neovim
+map("n", "<Leader>qq", "<Cmd>qall<CR>", { silent = true })
 -- Saving files with <C-s>
 map("n", "<C-s>", vim.cmd.update, { silent = true })
 map({ "i", "x" }, "<C-s>", "<Esc><Cmd>up!<CR>", { silent = true })
@@ -13,14 +15,25 @@ map("n", ">", ">>", { silent = true })
 map("n", "<", "<<", { silent = true })
 map("x", ">", ">gv", { silent = true })
 map("x", "<", "<gv", { silent = true })
+-- Better window navigation/deletion
+map("n", "<Leader>wh", "<C-w>h", { silent = true })
+map("n", "<Leader>wj", "<C-w>j", { silent = true })
+map("n", "<Leader>wk", "<C-w>k", { silent = true })
+map("n", "<Leader>wl", "<C-w>l", { silent = true })
+map("n", "<Leader>wH", "<C-w>H", { silent = true })
+map("n", "<Leader>wJ", "<C-w>J", { silent = true })
+map("n", "<Leader>wK", "<C-w>K", { silent = true })
+map("n", "<Leader>wL", "<C-w>L", { silent = true })
+map("n", "<Leader>wd", vim.cmd.close, { silent = true })
+map("n", "<Leader>wx", "<Cmd>bd!<CR>", { silent = true })
 -- Better buffer navigation/deletion
-map("n", "<C-h>", "<C-w>h", { silent = true })
-map("n", "<C-j>", "<C-w>j", { silent = true })
-map("n", "<C-k>", "<C-w>k", { silent = true })
-map("n", "<C-l>", "<C-w>l", { silent = true })
-map("n", "<C-w>", "<Cmd>bd!<CR>", { silent = true })
-vim.keymap.del("n", "<C-w>d", { silent = true })
-vim.keymap.del("n", "<C-w><C-d>", { silent = true })
+map("n", "<Leader><Tab>", "<C-^>", { silent = true })
+map("n", "<Leader>bd", function()
+    -- Switch to alternate buffer, then delete the original buffer to preserve window layout
+    vim.cmd("buffer #")
+    vim.cmd("bdelete #")
+end, { silent = true })
+map("n", "<Leader>bx", "<Cmd>bd!<CR>", { silent = true })
 -- Resize windows
 map("n", "<Leader>=", "<Cmd>wincmd =<CR>", { silent = true })
 -- Navigate by wrapped lines by default
