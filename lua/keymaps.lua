@@ -15,7 +15,7 @@ map("n", ">", ">>", { silent = true })
 map("n", "<", "<<", { silent = true })
 map("x", ">", ">gv", { silent = true })
 map("x", "<", "<gv", { silent = true })
--- Better window navigation/deletion
+-- Better window management
 map("n", "<Leader>wh", "<C-w>h", { silent = true })
 map("n", "<Leader>wj", "<C-w>j", { silent = true })
 map("n", "<Leader>wk", "<C-w>k", { silent = true })
@@ -26,6 +26,7 @@ map("n", "<Leader>wK", "<C-w>K", { silent = true })
 map("n", "<Leader>wL", "<C-w>L", { silent = true })
 map("n", "<Leader>wd", vim.cmd.close, { silent = true })
 map("n", "<Leader>wx", "<Cmd>bd!<CR>", { silent = true })
+map("n", "<Leader>w=", "<Cmd>wincmd =<CR>", { silent = true })
 -- Better buffer navigation/deletion
 map("n", "<Leader><Tab>", "<C-^>", { silent = true })
 map("n", "<Leader>bd", function()
@@ -34,8 +35,9 @@ map("n", "<Leader>bd", function()
     vim.cmd("bdelete #")
 end, { silent = true })
 map("n", "<Leader>bx", "<Cmd>bd!<CR>", { silent = true })
--- Resize windows
-map("n", "<Leader>=", "<Cmd>wincmd =<CR>", { silent = true })
+-- Navigating through quickfix list
+map("n", "<Leader>qfn", "<Cmd>cnext<CR>", { silent = true })
+map("n", "<Leader>qfp", "<Cmd>cprev<CR>", { silent = true })
 -- Navigate by wrapped lines by default
 map({ "n", "x" }, "j", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "j" : "gj"', { silent = true, expr = true })
 map({ "n", "x" }, "k", 'v:count ? (v:count > 5 ? "m\'" . v:count : "") . "k" : "gk"', { silent = true, expr = true })
@@ -44,11 +46,7 @@ map("x", ".", ":normal.<CR>", { silent = true })
 -- Better deletion of visual selections
 map("x", "<Leader>p", '"_dP', { silent = true })
 -- Quit all buffers
-map("n", "<Leader>q", "<Cmd>qall<CR>", { silent = true })
--- Open todo list
-map("n", "<Leader>t", function()
-    vim.cmd.edit("~/todo.md")
-end, { silent = true })
+map("n", "<Leader>qq", "<Cmd>qall<CR>", { silent = true })
 -- Spell check
 map("i", "<C-l>", "<C-g>u<ESC>[s1z=`]a<C-g>u", { silent = true })
 -- Font size adjustment
