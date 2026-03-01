@@ -11,7 +11,7 @@ map("n", "<Leader>t", function()
 
     if cur_path then
         require("plenary.test_harness").test_directory(cur_path .. "/tests", {
-            minimal_init = cur_path .. "/tests/minimal_init.lua",
+            init = cur_path .. "/tests/minimal_init.lua",
         })
     end
 end, {

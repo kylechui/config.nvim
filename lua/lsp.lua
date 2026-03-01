@@ -1,4 +1,3 @@
-
 local M = {}
 
 -- Custom rename function to start with empty prompt
@@ -22,12 +21,12 @@ M.setup_lsp_keymaps = function(client)
     end
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = true })
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { silent = true, buffer = true })
-    vim.keymap.set("n", "<Leader>dn", function()
-        vim.diagnostic.jump({ count = 1 })
-    end, { buffer = true })
-    vim.keymap.set("n", "<Leader>dp", function()
-        vim.diagnostic.jump({ count = -1 })
-    end, { buffer = true })
+    vim.keymap.set("n", "]d", function()
+        vim.diagnostic.jump({ count = 1, float = true })
+    end, { silent = true })
+    vim.keymap.set("n", "[d", function()
+        vim.diagnostic.jump({ count = -1, float = true })
+    end, { silent = true })
     vim.keymap.set("n", "<Leader>dl", require("telescope.builtin").diagnostics, { buffer = true })
     vim.keymap.set("n", "<Leader>r", M.rename_var, { buffer = true })
     vim.keymap.set("n", "<Leader>c", vim.lsp.buf.code_action, { buffer = true })

@@ -56,3 +56,9 @@ autocmd("BufReadPost", {
     end,
     group = openFile,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        require("lsp").setup_lsp_keymaps(vim.lsp.get_client_by_id(args.data.client_id))
+    end,
+})

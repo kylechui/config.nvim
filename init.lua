@@ -46,4 +46,5 @@ vim.lsp.enable({
     "nixd",
     "ocamllsp",
     "pyright",
+    "rust_analyzer",
 })

@@ -3,8 +3,8 @@ return {
     version = "^v4.4.0",
     lazy = false,
     keys = {
-        { "<Leader>j", vim.cmd.BufferLineCycleNext },
-        { "<Leader>k", vim.cmd.BufferLineCyclePrev },
+        { "<M-.>", vim.cmd.BufferLineCycleNext },
+        { "<M-,>", vim.cmd.BufferLineCyclePrev },
     },
     opts = {
         options = {

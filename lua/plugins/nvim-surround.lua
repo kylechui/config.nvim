@@ -1,6 +1,5 @@
 return {
-    dir = "/home/kylec/Documents/github/nvim-surround/main",
-    event = "VeryLazy",
+    [1] = "kylechui/nvim-surround",
     config = function()
         require("nvim-surround").setup({
             move_cursor = "sticky",
