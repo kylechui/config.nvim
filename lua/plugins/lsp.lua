@@ -1,7 +1,20 @@
 return {
     {
         [1] = "neovim/nvim-lspconfig",
-        event = { "BufReadPre", "BufNewFile" },
+        lazy = false,
+        config = function()
+            vim.lsp.enable({
+                "bashls",
+                "clangd",
+                "gleam",
+                "jsonls",
+                "lua_ls",
+                "nixd",
+                "ocamllsp",
+                "pyright",
+                "rust_analyzer",
+            })
+        end,
     },
     {
         [1] = "onsails/lspkind.nvim",
